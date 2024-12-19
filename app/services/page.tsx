@@ -245,7 +245,7 @@ export default function Services() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.map((service, index) => (
-                <ServiceCard key={service.title} service={service} />
+                <ServiceCard key={index} service={service} />
               ))}
             </div>
           </div>
