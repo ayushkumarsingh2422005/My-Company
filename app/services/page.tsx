@@ -5,6 +5,15 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { HiOutlineArrowRight } from 'react-icons/hi'
 import type { CSSProperties } from 'react'
+import { IconType } from 'react-icons'
+
+interface Service {
+  icon: IconType;
+  title: string;
+  description: string;
+  features: string[];
+  color: string;
+}
 
 const services = [
   {
@@ -72,8 +81,8 @@ const GridBackground = () => (
     />
   </div>
 )
-// 77:35  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-const ServiceCard = ({ service }: { service: any; index: number }) => {
+
+const ServiceCard = ({ service }: { service: Service }) => {
 
   return (
     <motion.div
@@ -236,7 +245,7 @@ export default function Services() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.map((service, index) => (
-                <ServiceCard key={service.title} service={service} index={index} />
+                <ServiceCard key={service.title} service={service} />
               ))}
             </div>
           </div>
