@@ -24,16 +24,25 @@ const FloatingParticles = () => {
     scale: number;
   }>>([]);
 
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    
     const particlesArray = Array.from({ length: 20 }, (_, i) => ({
       id: i,
-      x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-      y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
+      x: Math.random() * width,
+      y: Math.random() * height,
       opacity: 0.2 + Math.random() * 0.5,
       scale: 0.2 + Math.random() * 0.8,
     }));
+    
     setParticles(particlesArray);
   }, []);
+
+  if (!mounted) return null;
 
   return (
     <div className="absolute inset-0 overflow-hidden">
@@ -48,8 +57,8 @@ const FloatingParticles = () => {
             scale: particle.scale,
           }}
           animate={{
-            y: [null, '-100vh'],
-            opacity: [null, 0],
+            y: [particle.y, particle.y - 1000],
+            opacity: [particle.opacity, 0],
           }}
           transition={{
             duration: 5 + Math.random() * 10,
