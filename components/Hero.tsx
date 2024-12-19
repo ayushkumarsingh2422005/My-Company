@@ -143,7 +143,7 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="relative z-10">Let's Connect</span>
+              <span className="relative z-10">Let&apos;s Connect</span>
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
             </motion.button>
           </motion.div>

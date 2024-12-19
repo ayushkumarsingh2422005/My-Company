@@ -43,7 +43,7 @@ const Navbar = () => {
             <Link href="#contact" 
               className="px-4 py-2 rounded-full bg-purple-600 hover:bg-purple-700 transition-all hover:shadow-lg hover:shadow-purple-500/25"
             >
-              Let's Talk
+              Let&apos;s Talk
             </Link>
           </div>
 
@@ -79,7 +79,7 @@ const Navbar = () => {
                 About
               </Link>
               <Link href="#contact" className="block text-purple-500 hover:text-purple-400 transition-colors">
-                Let's Talk
+                Let&apos;s Talk
               </Link>
             </div>
           </motion.div>

@@ -28,7 +28,15 @@ const projects = [
   }
 ]
 
-const ProjectCard = ({ title, category, image, tech, index }: any) => (
+interface ProjectCardProps {
+  title: string;
+  category: string;
+  image: string;
+  tech: string[];
+  index: number;
+}
+
+const ProjectCard = ({ title, category, image, tech, index }: ProjectCardProps) => (
   <motion.div
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -82,7 +90,7 @@ const Projects = () => {
             Recent Projects
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Explore our latest work and see how we've helped our clients achieve their digital goals.
+            Explore our latest work and see how we&apos;ve helped our clients achieve their digital goals.
           </p>
         </motion.div>
 

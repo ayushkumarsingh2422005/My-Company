@@ -30,7 +30,16 @@ const testimonials = [
   }
 ]
 
-const TestimonialCard = ({ content, author, role, rating, image, index }: any) => (
+interface TestimonialCardProps {
+  content: string;
+  author: string;
+  role: string;
+  rating: number;
+  image: string;
+  index: number;
+}
+
+const TestimonialCard = ({ content, author, role, rating, image, index }: TestimonialCardProps) => (
   <motion.div
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -78,7 +87,7 @@ const Testimonials = () => {
             What Our Clients Say
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Don't just take our word for it. Here's what our clients have to say about their experience working with us.
+            Don&apos;t just take our word for it. Here&apos;s what our clients have to say about their experience working with us.
           </p>
         </motion.div>
 
