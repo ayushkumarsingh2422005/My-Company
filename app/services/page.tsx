@@ -73,7 +73,7 @@ const GridBackground = () => (
   </div>
 )
 // 77:35  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-const ServiceCard = ({ service, index }: { service: any; index: number }) => {
+const ServiceCard = ({ service }: { service: any; index: number }) => {
 
   return (
     <motion.div
