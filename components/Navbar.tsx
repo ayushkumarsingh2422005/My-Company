@@ -2,10 +2,20 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
+const navItems = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services' },
+  { name: 'Projects', path: '/projects' },
+  { name: 'About', path: '/about' },
+  { name: 'Contact', path: '/contact' }
+]
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +24,22 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const handleNavClick = (path: string) => {
+    setIsOpen(false)
+    if (path.startsWith('/#')) {
+      const element = document.querySelector(path.substring(1))
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+  }
+
+  const isActive = (path: string) => {
+    if (path === '/') return pathname === '/'
+    if (path.startsWith('/#')) return false
+    return pathname.startsWith(path)
+  }
 
   return (
     <motion.nav 
@@ -31,17 +57,23 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="#work" className="hover:text-purple-500 transition-colors">
-              Our Work
-            </Link>
-            <Link href="#services" className="hover:text-purple-500 transition-colors">
-              Services
-            </Link>
-            <Link href="#about" className="hover:text-purple-500 transition-colors">
-              About
-            </Link>
-            <Link href="#contact" 
-              className="px-4 py-2 rounded-full bg-purple-600 hover:bg-purple-700 transition-all hover:shadow-lg hover:shadow-purple-500/25"
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                href={item.path}
+                onClick={() => handleNavClick(item.path)}
+                className={`relative group ${
+                  isActive(item.path) ? 'text-purple-500' : 'text-gray-300'
+                }`}
+              >
+                {item.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 group-hover:w-full transition-all duration-300" />
+              </Link>
+            ))}
+            <Link
+              href="/#contact"
+              onClick={() => handleNavClick('/#contact')}
+              className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:shadow-lg hover:shadow-purple-500/25 transition-all"
             >
               Let&apos;s Talk
             </Link>
@@ -49,12 +81,18 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden p-2"
+            className="md:hidden p-2 focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <div className="w-6 h-0.5 bg-white mb-1.5 transition-all"></div>
-            <div className="w-6 h-0.5 bg-white mb-1.5 transition-all"></div>
-            <div className="w-6 h-0.5 bg-white transition-all"></div>
+            <div className={`w-6 h-0.5 bg-white mb-1.5 transition-all ${
+              isOpen ? 'transform rotate-45 translate-y-2' : ''
+            }`} />
+            <div className={`w-6 h-0.5 bg-white mb-1.5 transition-all ${
+              isOpen ? 'opacity-0' : ''
+            }`} />
+            <div className={`w-6 h-0.5 bg-white transition-all ${
+              isOpen ? 'transform -rotate-45 -translate-y-2' : ''
+            }`} />
           </button>
         </div>
       </div>
@@ -69,16 +107,23 @@ const Navbar = () => {
             className="md:hidden bg-black/90 backdrop-blur-md"
           >
             <div className="px-4 py-6 space-y-4">
-              <Link href="#work" className="block hover:text-purple-500 transition-colors">
-                Our Work
-              </Link>
-              <Link href="#services" className="block hover:text-purple-500 transition-colors">
-                Services
-              </Link>
-              <Link href="#about" className="block hover:text-purple-500 transition-colors">
-                About
-              </Link>
-              <Link href="#contact" className="block text-purple-500 hover:text-purple-400 transition-colors">
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  href={item.path}
+                  onClick={() => handleNavClick(item.path)}
+                  className={`block py-2 ${
+                    isActive(item.path) ? 'text-purple-500' : 'text-gray-300'
+                  } hover:text-purple-500 transition-colors`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <Link
+                href="/#contact"
+                onClick={() => handleNavClick('/#contact')}
+                className="block text-purple-500 hover:text-purple-400 transition-colors"
+              >
                 Let&apos;s Talk
               </Link>
             </div>
@@ -89,4 +134,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar 
+export default Navbar
