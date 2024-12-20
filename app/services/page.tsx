@@ -7,6 +7,7 @@ import type { CSSProperties } from 'react'
 import { IconType } from 'react-icons'
 import { useEffect, useState } from 'react'
 import * as Icons from 'react-icons/fi'
+import { useRouter } from 'next/navigation'
 
 interface Service {
   _id: string;
@@ -178,6 +179,7 @@ export default function Services() {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const router = useRouter();
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -340,6 +342,7 @@ export default function Services() {
                 Let&apos;s discuss how we can help you achieve your digital goals with our comprehensive services.
               </p>
               <motion.button
+                onClick={() => router.push('/contact')}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all"

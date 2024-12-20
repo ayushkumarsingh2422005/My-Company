@@ -224,12 +224,20 @@ export default function InquiriesManagement() {
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold text-white">Inquiries Management</h1>
-          <button
-            onClick={() => router.push('/admin/dashboard')}
-            className="px-4 py-2 bg-[#2a2a2a] text-white rounded hover:bg-[#3a3a3a] transition-colors"
-          >
-            Back to Dashboard
-          </button>
+          <div className="flex gap-4">
+            <button
+              onClick={() => router.push('/admin/dashboard')}
+              className="px-4 py-2 bg-[#2a2a2a] text-white rounded hover:bg-[#3a3a3a] transition-colors"
+            >
+              Back to Dashboard
+            </button>
+            <button
+              onClick={() => router.push('/admin')}
+              className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors"
+            >
+              Logout
+            </button>
+          </div>
         </div>
 
         {error && (

@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { useRouter } from 'next/navigation'
 
 // Background Components
 const GradientOrbs = () => (
@@ -331,6 +332,8 @@ export default function Contact() {
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
 
+  const router = useRouter();
+
   return (
     <>
       <Navbar />
@@ -366,22 +369,28 @@ export default function Contact() {
               {
                 title: 'Email',
                 value: 'contact@digitai.com',
-                icon: '📧'
+                icon: '📧',
+                href: 'mailto:contact@digitai.com'
               },
               {
                 title: 'Phone',
                 value: '+1 (555) 123-4567',
-                icon: '📱'
+                icon: '📱',
+                href: 'tel:+15551234567'
               },
               {
                 title: 'Location',
                 value: 'San Francisco, CA',
-                icon: '📍'
+                icon: '📍',
+                href: 'https://maps.google.com/?q=San+Francisco,+CA'
               }
             ].map((item, index) => (
-              <motion.div 
+              <motion.a 
                 key={index} 
-                className="p-8 text-center"
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-8 text-center hover:bg-white/5 rounded-xl transition-colors cursor-pointer"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 * index }}
@@ -389,7 +398,7 @@ export default function Contact() {
                 <div className="text-4xl mb-4">{item.icon}</div>
                 <h3 className="text-xl font-bold mb-2">{item.title}</h3>
                 <p className="text-gray-400">{item.value}</p>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
         </div>

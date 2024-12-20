@@ -1,6 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { 
   FaGithub, 
@@ -13,6 +14,7 @@ const Footer = () => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,6 +50,21 @@ const Footer = () => {
       setMessage('');
     }, 5000);
   };
+
+  const quickLinks = [
+    { name: 'About', path: '/about' },
+    { name: 'Services', path: '/services' },
+    { name: 'Projects', path: '/projects' },
+    { name: 'Contact', path: '/contact' }
+  ];
+
+  const services = [
+    { name: 'Web Development', path: '/services#web-development' },
+    { name: 'Mobile Apps', path: '/services#mobile-apps' },
+    { name: 'UI/UX Design', path: '/services#ui-ux-design' },
+    { name: 'Cloud Solutions', path: '/services#cloud-solutions' },
+    { name: 'Digital Marketing', path: '/services#digital-marketing' }
+  ];
 
   return (
     <footer className="relative pt-24 pb-12 overflow-hidden">
@@ -110,13 +127,13 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
             <ul className="space-y-4">
-              {['About', 'Services', 'Projects', 'Blog', 'Contact'].map((item) => (
-                <li key={item}>
+              {quickLinks.map((item) => (
+                <li key={item.name}>
                   <Link 
-                    href={`#${item.toLowerCase()}`}
+                    href={item.path}
                     className="text-gray-400 hover:text-purple-500 transition-colors"
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}
@@ -127,19 +144,13 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6">Services</h3>
             <ul className="space-y-4">
-              {[
-                'Web Development',
-                'Mobile Apps',
-                'UI/UX Design',
-                'Cloud Solutions',
-                'Digital Marketing'
-              ].map((item) => (
-                <li key={item}>
+              {services.map((item) => (
+                <li key={item.name}>
                   <Link 
-                    href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
+                    href={item.path}
                     className="text-gray-400 hover:text-purple-500 transition-colors"
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}

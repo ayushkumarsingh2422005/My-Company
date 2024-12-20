@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { FaLinkedinIn, FaTwitter, FaGithub } from 'react-icons/fa'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { useRouter } from 'next/navigation'
 
 // Add Floating Gradient Orbs
 const GradientOrbs = () => (
@@ -437,6 +438,7 @@ export default function About() {
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.5])
+  const router = useRouter();
 
   return (
     <>
@@ -563,6 +565,7 @@ export default function About() {
               Let&apos;s create something amazing together. Get in touch with our team.
             </motion.p>
             <motion.button
+              onClick={() => router.push('/contact')}
               variants={scaleOnHover}
               initial="initial"
               whileHover="hover"

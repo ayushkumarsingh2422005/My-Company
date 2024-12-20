@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 const navItems = [
   { name: 'Home', path: '/' },
@@ -16,6 +16,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,7 +28,9 @@ const Navbar = () => {
 
   const handleNavClick = (path: string) => {
     setIsOpen(false)
-    if (path.startsWith('/#')) {
+    if (path === '/contact') {
+      router.push('/contact')
+    } else if (path.startsWith('/#')) {
       const element = document.querySelector(path.substring(1))
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' })
@@ -70,13 +73,12 @@ const Navbar = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 group-hover:w-full transition-all duration-300" />
               </Link>
             ))}
-            <Link
-              href="/#contact"
-              onClick={() => handleNavClick('/#contact')}
+            <button
+              onClick={() => router.push('/contact')}
               className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:shadow-lg hover:shadow-purple-500/25 transition-all"
             >
               Let&apos;s Talk
-            </Link>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -119,13 +121,15 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
-              <Link
-                href="/#contact"
-                onClick={() => handleNavClick('/#contact')}
-                className="block text-purple-500 hover:text-purple-400 transition-colors"
+              <button
+                onClick={() => {
+                  setIsOpen(false)
+                  router.push('/contact')
+                }}
+                className="block w-full text-left py-2 text-purple-500 hover:text-purple-400 transition-colors"
               >
                 Let&apos;s Talk
-              </Link>
+              </button>
             </div>
           </motion.div>
         )}
