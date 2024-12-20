@@ -176,7 +176,7 @@ export default function Projects() {
           setError(error || 'Failed to fetch projects');
         }
       } catch (error) {
-        setError('An error occurred while fetching projects');
+        setError('An error occurred while fetching projects: ' + error);
       } finally {
         setLoading(false);
       }

@@ -1,6 +1,5 @@
 'use client'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { FiMonitor, FiSmartphone, FiLayout, FiCloud, FiTrendingUp, FiShield } from 'react-icons/fi'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { HiOutlineArrowRight } from 'react-icons/hi'
@@ -192,7 +191,7 @@ export default function Services() {
           setError('Failed to fetch services');
         }
       } catch (error) {
-        setError('An error occurred while fetching services');
+        setError('An error occurred while fetching services: ' + error);
       } finally {
         setLoading(false);
       }

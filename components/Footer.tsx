@@ -39,7 +39,7 @@ const Footer = () => {
       }
     } catch (error) {
       setStatus('error');
-      setMessage('An error occurred. Please try again later.');
+      setMessage('An error occurred. Please try again later: ' + error);
     }
 
     // Reset status after 5 seconds
