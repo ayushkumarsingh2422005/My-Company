@@ -41,9 +41,9 @@ export default function InquiriesManagement() {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   const [statusFilter, setStatusFilter] = useState<string>('');
   const [debouncedSearch] = useState(() => {
-    const debounce = <T extends (...args: any[]) => any>(fn: T, ms: number) => {
+    const debounce = <T extends (value: string) => void>(fn: T, ms: number) => {
       let timeoutId: NodeJS.Timeout;
-      return function (this: any, ...args: Parameters<T>) {
+      return function (this: unknown, ...args: Parameters<T>) {
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => fn.apply(this, args), ms);
       };
@@ -79,9 +79,12 @@ export default function InquiriesManagement() {
         setContacts(data.data);
       } else {
         setError('Failed to fetch inquiries');
+        console.error('Failed to fetch inquiries:', data);
       }
-    } catch (error) {
-      setError('An error occurred while fetching inquiries');
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'An error occurred while fetching inquiries';
+      setError(errorMessage);
+      console.error('Error fetching inquiries:', err);
     } finally {
       setLoading(false);
     }
@@ -91,7 +94,7 @@ export default function InquiriesManagement() {
     if (status === 'authenticated') {
       fetchContacts();
     }
-  }, [status]);
+  }, [status, fetchContacts]);
 
   const handleStatusChange = async (contactId: string, newStatus: string) => {
     try {
@@ -108,10 +111,14 @@ export default function InquiriesManagement() {
       if (response.ok) {
         fetchContacts();
       } else {
+        const errorData = await response.json();
         setError('Failed to update status');
+        console.error('Failed to update status:', errorData);
       }
-    } catch (error) {
-      setError('An error occurred while updating status');
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'An error occurred while updating status';
+      setError(errorMessage);
+      console.error('Error updating status:', err);
     }
   };
 
@@ -133,10 +140,14 @@ export default function InquiriesManagement() {
         setNewNote('');
         fetchContacts();
       } else {
+        const errorData = await response.json();
         setError('Failed to add note');
+        console.error('Failed to add note:', errorData);
       }
-    } catch (error) {
-      setError('An error occurred while adding note');
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'An error occurred while adding note';
+      setError(errorMessage);
+      console.error('Error adding note:', err);
     }
   };
 
@@ -157,10 +168,14 @@ export default function InquiriesManagement() {
         setSelectedContact(null);
         fetchContacts();
       } else {
+        const errorData = await response.json();
         setError('Failed to delete inquiry');
+        console.error('Failed to delete inquiry:', errorData);
       }
-    } catch (error) {
-      setError('An error occurred while deleting inquiry');
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'An error occurred while deleting inquiry';
+      setError(errorMessage);
+      console.error('Error deleting inquiry:', err);
     }
   };
 
