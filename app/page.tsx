@@ -7,7 +7,7 @@ import TechStack from '@/components/TechStack'
 import Testimonials from '@/components/Testimonials'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
-import { FiArrowRight, FiCheck } from 'react-icons/fi'
+import { FiArrowRight } from 'react-icons/fi'
 
 // Background Components
 const GradientOrbs = () => (
