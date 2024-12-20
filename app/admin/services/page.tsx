@@ -20,7 +20,7 @@ interface Service {
 }
 
 export default function ServicesManagement() {
-  const { data: _session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);

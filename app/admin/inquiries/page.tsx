@@ -29,7 +29,7 @@ interface Contact {
 }
 
 export default function InquiriesManagement() {
-  const { data: _session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);

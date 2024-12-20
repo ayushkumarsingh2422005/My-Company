@@ -14,7 +14,7 @@ const DOMAINS = [
 ];
 
 export default function ProjectsManagement() {
-  const { data: _session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);

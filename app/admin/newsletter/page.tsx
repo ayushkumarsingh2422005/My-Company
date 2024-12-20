@@ -18,7 +18,7 @@ interface AddResult {
 }
 
 export default function NewsletterManagement() {
-  const { data: _session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
   const [subscribers, setSubscribers] = useState<Subscriber[]>([]);
   const [loading, setLoading] = useState(true);
