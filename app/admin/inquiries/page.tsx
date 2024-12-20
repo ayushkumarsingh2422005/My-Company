@@ -41,11 +41,11 @@ export default function InquiriesManagement() {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   const [statusFilter, setStatusFilter] = useState<string>('');
   const [debouncedSearch] = useState(() => {
-    const debounce = (fn: Function, ms: number) => {
+    const debounce = <T extends (...args: any[]) => any>(fn: T, ms: number) => {
       let timeoutId: NodeJS.Timeout;
-      return function (...args: any[]) {
+      return function (this: any, ...args: Parameters<T>) {
         clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => fn.apply(null, args), ms);
+        timeoutId = setTimeout(() => fn.apply(this, args), ms);
       };
     };
     return debounce((value: string) => {
