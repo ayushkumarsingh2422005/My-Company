@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-export default function UnsubscribePage() {
+function UnsubscribeContent() {
   const [status, setStatus] = useState<'loading' | 'success' | 'error' | 'initial'>('loading');
   const [message, setMessage] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(true);
@@ -111,5 +111,25 @@ export default function UnsubscribePage() {
         )}
       </div>
     </div>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-[#0f0f0f] p-4">
+      <div className="max-w-md w-full bg-[#1a1a1a] p-8 rounded-lg shadow-xl border border-gray-800">
+        <div className="text-center text-gray-300">
+          Loading...
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function UnsubscribePage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <UnsubscribeContent />
+    </Suspense>
   );
 } 
