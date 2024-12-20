@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@types/js-cookie": "^3.0.6",
     "@types/react": "^19.0.2",
     "cloudinary": "^2.5.1",
     "framer-motion": "^11.15.0",
     "gsap": "^3.12.5",
+    "js-cookie": "^3.0.5",
     "mongoose": "^8.9.2",
     "next": "^15.1.2",
     "next-auth": "^4.24.11",

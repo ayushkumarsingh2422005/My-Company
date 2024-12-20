@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ChevronDownIcon, SparklesIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link'
 
 const GradientBlob = () => (
   <div className="absolute inset-0 overflow-hidden">
@@ -144,7 +145,7 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="relative z-10">View Our Work</span>
+              <Link href={'/projects'} className="relative z-10">View Our Work</Link>
               <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity" />
             </motion.button>
             <motion.button 
@@ -152,7 +153,7 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="relative z-10">Let&apos;s Connect</span>
+              <Link href={'/contact'} className="relative z-10">Let&apos;s Connect</Link>
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
             </motion.button>
           </motion.div>
