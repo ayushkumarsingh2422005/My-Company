@@ -6,59 +6,19 @@ import Footer from '@/components/Footer'
 import { HiOutlineArrowRight } from 'react-icons/hi'
 import type { CSSProperties } from 'react'
 import { IconType } from 'react-icons'
+import { useEffect, useState } from 'react'
+import * as Icons from 'react-icons/fi'
 
 interface Service {
-  icon: IconType;
+  _id: string;
   title: string;
   description: string;
+  icon: string;
   features: string[];
   color: string;
+  order: number;
+  isActive: boolean;
 }
-
-const services = [
-  {
-    icon: FiMonitor,
-    title: "Web Development",
-    description: "Custom web applications built with cutting-edge technologies for optimal performance and scalability.",
-    features: ["React/Next.js", "Full-stack Solutions", "E-commerce", "CMS Integration"],
-    color: "from-purple-500 to-pink-500"
-  },
-  {
-    icon: FiSmartphone,
-    title: "Mobile Development",
-    description: "Native and cross-platform mobile applications that deliver exceptional user experiences.",
-    features: ["iOS & Android", "React Native", "Flutter", "Mobile UI/UX"],
-    color: "from-blue-500 to-cyan-500"
-  },
-  {
-    icon: FiLayout,
-    title: "UI/UX Design",
-    description: "User-centered design solutions that combine aesthetics with functionality.",
-    features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
-    color: "from-green-500 to-emerald-500"
-  },
-  {
-    icon: FiCloud,
-    title: "Cloud Solutions",
-    description: "Scalable cloud infrastructure and services for modern digital businesses.",
-    features: ["AWS/Azure", "Cloud Migration", "DevOps", "Microservices"],
-    color: "from-orange-500 to-yellow-500"
-  },
-  {
-    icon: FiTrendingUp,
-    title: "Digital Marketing",
-    description: "Data-driven marketing strategies to grow your online presence and reach.",
-    features: ["SEO/SEM", "Social Media", "Content Strategy", "Analytics"],
-    color: "from-red-500 to-rose-500"
-  },
-  {
-    icon: FiShield,
-    title: "Cybersecurity",
-    description: "Comprehensive security solutions to protect your digital assets and data.",
-    features: ["Security Audits", "Penetration Testing", "Compliance", "Training"],
-    color: "from-indigo-500 to-violet-500"
-  }
-]
 
 // Floating Gradient Orbs
 const GradientOrbs = () => (
@@ -83,6 +43,12 @@ const GridBackground = () => (
 )
 
 const ServiceCard = ({ service }: { service: Service }) => {
+  const Icon = Icons[service.icon as keyof typeof Icons] as IconType;
+
+  if (!Icon) {
+    console.warn(`Icon ${service.icon} not found`);
+    return null;
+  }
 
   return (
     <motion.div
@@ -100,12 +66,8 @@ const ServiceCard = ({ service }: { service: Service }) => {
               ['--tw-gradient-to' as string]: service.color.split(' ')[2]
             } as CSSProperties}
           />
-          <service.icon className="w-12 h-12 relative z-10 bg-gradient-to-r text-transparent bg-clip-text" 
-            style={{
-              background: `linear-gradient(to right, var(--tw-gradient-stops))`,
-              ['--tw-gradient-from' as string]: service.color.split(' ')[0].split('-')[1],
-              ['--tw-gradient-to' as string]: service.color.split(' ')[2]
-            } as CSSProperties}
+          <Icon 
+            className="w-12 h-12 relative z-10 text-purple-500" 
           />
         </div>
         
@@ -214,6 +176,30 @@ const processSteps = [
 export default function Services() {
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
+  const [services, setServices] = useState<Service[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await fetch('/api/services');
+        const data = await response.json();
+
+        if (data.success) {
+          setServices(data.data);
+        } else {
+          setError('Failed to fetch services');
+        }
+      } catch (error) {
+        setError('An error occurred while fetching services');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, []);
 
   return (
     <>
@@ -243,11 +229,17 @@ export default function Services() {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service, index) => (
-                <ServiceCard key={index} service={service} />
-              ))}
-            </div>
+            {loading ? (
+              <div className="text-center text-white">Loading services...</div>
+            ) : error ? (
+              <div className="text-center text-red-400">{error}</div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {services.map((service) => (
+                  <ServiceCard key={service._id} service={service} />
+                ))}
+              </div>
+            )}
           </div>
         </section>
 

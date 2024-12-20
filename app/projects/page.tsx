@@ -6,15 +6,17 @@ import Link from 'next/link'
 import { HiOutlineArrowRight } from 'react-icons/hi'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { useEffect, useState } from 'react'
+import { Project } from '@/app/types/project'
 
-// Add these interfaces at the top of the file, after the imports
-interface Project {
-  title: string;
-  description: string;
-  image: string;
-  tech: string[];
-  link: string;
-  category: string;
+interface ApiResponse {
+  success: boolean;
+  data: Project[];
+  error?: string;
+}
+
+interface ProjectsByDomain {
+  [key: string]: Project[];
 }
 
 interface Domain {
@@ -46,98 +48,34 @@ const GridBackground = () => (
   </div>
 )
 
-const domains = [
-  {
+const DOMAIN_INFO = {
+  web: {
     id: 'web',
     title: 'Web Development',
     description: 'Modern web applications built with cutting-edge technologies.',
-    projects: [
-      {
-        title: 'E-commerce Platform',
-        description: 'A full-featured online shopping platform with real-time inventory management.',
-        image: '/projects/web/ecommerce.png',
-        tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'MongoDB'],
-        link: '#',
-        category: 'E-commerce'
-      },
-      {
-        title: 'SaaS Dashboard',
-        description: 'Analytics and management dashboard for SaaS businesses.',
-        image: '/projects/web/saas.png',
-        tech: ['React', 'Node.js', 'PostgreSQL', 'AWS'],
-        link: '#',
-        category: 'Business'
-      },
-      {
-        title: 'Learning Management System',
-        description: 'Interactive platform for online education and course management.',
-        image: '/projects/web/lms.png',
-        tech: ['Vue.js', 'Django', 'Redis', 'Docker'],
-        link: '#',
-        category: 'Education'
-      }
-    ]
   },
-  {
+  mobile: {
     id: 'mobile',
     title: 'Mobile Development',
     description: 'Native and cross-platform mobile applications.',
-    projects: [
-      {
-        title: 'Fitness Tracking App',
-        description: 'Personal fitness tracker with social features and workout plans.',
-        image: '/projects/mobile/image.png',
-        tech: ['React Native', 'Firebase', 'Redux', 'Node.js'],
-        link: '#',
-        category: 'Health & Fitness'
-      },
-      {
-        title: 'Food Delivery App',
-        description: 'On-demand food delivery platform with real-time order tracking.',
-        image: '/projects/mobile/image.png',
-        tech: ['Flutter', 'GraphQL', 'MongoDB', 'Google Maps'],
-        link: '#',
-        category: 'Food & Beverage'
-      }
-    ]
   },
-  {
+  ai: {
     id: 'ai',
     title: 'AI Solutions',
     description: 'Intelligent applications powered by machine learning.',
-    projects: [
-      {
-        title: 'AI Content Generator',
-        description: 'Advanced content generation tool using GPT models.',
-        image: '/projects/ai/content.png',
-        tech: ['Python', 'TensorFlow', 'OpenAI', 'FastAPI'],
-        link: '#',
-        category: 'Content Creation'
-      },
-      {
-        title: 'Computer Vision System',
-        description: 'Real-time object detection and analysis system.',
-        image: '/projects/ai/content.png',
-        tech: ['PyTorch', 'OpenCV', 'CUDA', 'Docker'],
-        link: '#',
-        category: 'Computer Vision'
-      }
-    ]
   }
-]
+} as const;
 
 const ProjectCard = ({ project }: { project: Project; index: number }) => {
-
   return (
     <motion.div 
-      className="group backdrop-blur-sm rounded-xl  hover:border-none transition-all"
+      className="group backdrop-blur-sm rounded-xl hover:border-none transition-all"
       whileHover={{ scale: 1.02 }}
       transition={{ type: 'spring', stiffness: 300 }}
     >
-      {/* Image Container */}
       <div className="relative h-64 overflow-hidden rounded-xl">
         <Image
-          src={project.image}
+          src={project.image.url}
           alt={project.title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -145,14 +83,12 @@ const ProjectCard = ({ project }: { project: Project; index: number }) => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
       </div>
 
-      {/* Content */}
       <div className="relative -mt-20 mx-4">
         <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/10">
           <span className="text-sm text-purple-400">{project.category}</span>
           <h3 className="text-xl font-bold mt-2 mb-3">{project.title}</h3>
           <p className="text-gray-400 text-sm mb-4">{project.description}</p>
           
-          {/* Tech Stack */}
           <div className="flex flex-wrap gap-2 mb-4">
             {project.tech.map((tech: string) => (
               <span
@@ -164,7 +100,6 @@ const ProjectCard = ({ project }: { project: Project; index: number }) => {
             ))}
           </div>
 
-          {/* Link */}
           <Link 
             href={project.link}
             className="inline-flex items-center text-sm text-purple-400 hover:text-purple-300 transition-colors"
@@ -198,7 +133,7 @@ const DomainSection = ({ domain }: { domain: Domain; index: number }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {domain.projects.map((project: Project, i: number) => (
-          <ProjectCard key={project.title} project={project} index={i} />
+          <ProjectCard key={project._id} project={project} index={i} />
         ))}
       </div>
     </section>
@@ -208,6 +143,47 @@ const DomainSection = ({ domain }: { domain: Domain; index: number }) => {
 export default function Projects() {
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
+  const [domains, setDomains] = useState<Domain[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch('/api/projects');
+        const { success, data, error } = await response.json() as ApiResponse;
+
+        if (success && data) {
+          // Group projects by domainId
+          const projectsByDomain = data.reduce<ProjectsByDomain>((acc, project) => {
+            if (!acc[project.domainId]) {
+              acc[project.domainId] = [];
+            }
+            if (project.isActive) {
+              acc[project.domainId].push(project);
+            }
+            return acc;
+          }, {});
+
+          // Create domain objects with their respective projects
+          const domainData = Object.entries(projectsByDomain).map(([domainId, projects]) => ({
+            ...DOMAIN_INFO[domainId as keyof typeof DOMAIN_INFO],
+            projects: [...projects].sort((a, b) => a.order - b.order)
+          }));
+
+          setDomains(domainData);
+        } else {
+          setError(error || 'Failed to fetch projects');
+        }
+      } catch (error) {
+        setError('An error occurred while fetching projects');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault()
@@ -217,11 +193,26 @@ export default function Projects() {
     }
   }
 
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-xl text-white">Loading...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-xl text-red-400">{error}</div>
+      </div>
+    );
+  }
+
   return (
     <>
       <Navbar />
       <main className="min-h-screen pt-24 relative">
-        {/* Background Elements */}
         <motion.div 
           className="fixed inset-0 bg-[radial-gradient(circle_at_center,rgba(123,49,255,0.05)_0%,transparent_100%)]"
           style={{ y }}
@@ -229,9 +220,7 @@ export default function Projects() {
         <GradientOrbs />
         <GridBackground />
 
-        {/* Content */}
         <div className="max-w-7xl mx-auto px-4 relative">
-          {/* Hero Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -245,7 +234,6 @@ export default function Projects() {
             </p>
           </motion.div>
 
-          {/* Domain Navigation */}
           <div className="flex flex-wrap justify-center gap-4 mb-20">
             {domains.map((domain) => (
               <Link
@@ -259,7 +247,6 @@ export default function Projects() {
             ))}
           </div>
 
-          {/* Domain Sections */}
           {domains.map((domain, index) => (
             <DomainSection key={domain.id} domain={domain} index={index} />
           ))}
