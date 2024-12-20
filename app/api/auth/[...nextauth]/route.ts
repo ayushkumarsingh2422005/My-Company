@@ -1,6 +1,19 @@
 import { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import NextAuth from 'next-auth/next';
+import { JWT } from 'next-auth/jwt';
+import { Session } from 'next-auth';
+
+interface ExtendedUser {
+  id: string;
+  name?: string | null;
+  email?: string | null;
+  image?: string | null;
+}
+
+interface ExtendedSession extends Session {
+  user: ExtendedUser;
+}
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -43,11 +56,14 @@ export const authOptions: AuthOptions = {
       }
       return token;
     },
-    async session({ session, token }) {
-      if (session.user) {
-        (session.user as any).id = token.id;
-      }
-      return session;
+    async session({ session, token }): Promise<ExtendedSession> {
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.id as string
+        }
+      };
     }
   }
 };
