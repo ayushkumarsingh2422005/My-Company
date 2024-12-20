@@ -1,7 +1,6 @@
 import { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import NextAuth from 'next-auth/next';
-import { JWT } from 'next-auth/jwt';
 import { Session } from 'next-auth';
 
 interface ExtendedUser {
