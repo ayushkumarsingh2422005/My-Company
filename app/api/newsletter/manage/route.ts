@@ -11,7 +11,7 @@ export async function POST(req: Request) {
     switch (action) {
       case 'create': {
         // Split emails and clean them
-        const emails = email.split(',').map(e => e.trim()).filter(Boolean);
+        const emails = email.split(',').map((e: string) => e.trim()).filter(Boolean);
         const results = [];
         const errors = [];
 
@@ -44,10 +44,11 @@ export async function POST(req: Request) {
             });
             results.push({
               email: singleEmail,
-              status: 'created'
+              status: 'created',
+              unsubscribeToken: newSubscriber.unsubscribeToken
             });
-          } catch (error: any) {
-            errors.push(`Failed to add ${singleEmail}: ${error.message}`);
+          } catch (error: unknown) {
+            errors.push(`Failed to add ${singleEmail}: ${error instanceof Error ? error.message : 'Unknown error'}`);
           }
         }
 
@@ -83,9 +84,9 @@ export async function POST(req: Request) {
           { status: 400 }
         );
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: error instanceof Error ? error.message : 'An unknown error occurred' },
       { status: 400 }
     );
   }

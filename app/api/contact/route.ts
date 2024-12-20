@@ -9,9 +9,9 @@ export async function POST(req: Request) {
 
     const contact = await Contact.create(data);
     return NextResponse.json({ success: true, data: contact });
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: error instanceof Error ? error.message : 'An unknown error occurred' },
       { status: 400 }
     );
   }
@@ -48,14 +48,14 @@ export async function GET(req: Request) {
     }
 
     // Add sorting
-    const sortOptions: { [key: string]: any } = {};
+    const sortOptions: Record<string, 1 | -1> = {};
     sortOptions[sortBy] = sortOrder === 'asc' ? 1 : -1;
 
     const contacts = await Contact.find(query).sort(sortOptions);
     return NextResponse.json({ success: true, data: contacts });
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: error instanceof Error ? error.message : 'An unknown error occurred' },
       { status: 400 }
     );
   }
