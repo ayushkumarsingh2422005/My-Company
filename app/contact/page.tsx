@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { useRouter } from 'next/navigation'
 
 // Background Components
 const GradientOrbs = () => (
@@ -331,8 +330,6 @@ const ContactForm = () => {
 export default function Contact() {
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
-
-  const router = useRouter();
 
   return (
     <>
