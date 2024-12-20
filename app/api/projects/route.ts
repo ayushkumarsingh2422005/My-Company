@@ -1,18 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth/[...nextauth]/route';
-// import dbConnect from '@/lib/dbConnect';
 import dbConnect from '@/app/lib/mongodb';
 import Project from '@/app/models/Project';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     await dbConnect();
     const projects = await Project.find().sort({ order: 1 });
     return NextResponse.json({ success: true, data: projects });
-  } catch (error) {
+  } catch (error: unknown) {
     return NextResponse.json(
-      { success: false, error: 'Failed to fetch projects' },
+      { success: false, error: error instanceof Error ? error.message : 'Failed to fetch projects' },
       { status: 500 }
     );
   }
@@ -32,9 +31,9 @@ export async function POST(request: NextRequest) {
     const data = await request.json();
     const project = await Project.create(data);
     return NextResponse.json({ success: true, data: project });
-  } catch (error) {
+  } catch (error: unknown) {
     return NextResponse.json(
-      { success: false, error: 'Failed to create project' },
+      { success: false, error: error instanceof Error ? error.message : 'Failed to create project' },
       { status: 500 }
     );
   }
@@ -68,9 +67,9 @@ export async function PUT(request: NextRequest) {
     }
 
     return NextResponse.json({ success: true, data: project });
-  } catch (error) {
+  } catch (error: unknown) {
     return NextResponse.json(
-      { success: false, error: 'Failed to update project' },
+      { success: false, error: error instanceof Error ? error.message : 'Failed to update project' },
       { status: 500 }
     );
   }
@@ -107,9 +106,9 @@ export async function DELETE(request: NextRequest) {
     }
 
     return NextResponse.json({ success: true, data: project });
-  } catch (error) {
+  } catch (error: unknown) {
     return NextResponse.json(
-      { success: false, error: 'Failed to delete project' },
+      { success: false, error: error instanceof Error ? error.message : 'Failed to delete project' },
       { status: 500 }
     );
   }

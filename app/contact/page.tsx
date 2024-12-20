@@ -78,7 +78,7 @@ const ContactForm = () => {
       }
     } catch (error) {
       setStatus('error');
-      setMessage('An error occurred. Please try again later.');
+      setMessage('An error occurred. Please try again later.' + error);
     }
   }
 

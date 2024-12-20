@@ -6,10 +6,19 @@ if (!process.env.MONGODB_URI) {
 
 const MONGODB_URI: string = process.env.MONGODB_URI;
 
-let cached = (global as any).mongoose;
+interface CachedConnection {
+  conn: typeof mongoose | null;
+  promise: Promise<typeof mongoose> | null;
+}
+
+declare global {
+  var mongoose: { conn: typeof mongoose | null; promise: Promise<typeof mongoose> | null } | undefined;
+}
+
+let cached: CachedConnection = global.mongoose || { conn: null, promise: null };
 
 if (!cached) {
-  cached = (global as any).mongoose = { conn: null, promise: null };
+  cached = global.mongoose = { conn: null, promise: null };
 }
 
 async function dbConnect() {

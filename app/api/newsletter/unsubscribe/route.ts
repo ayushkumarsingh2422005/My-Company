@@ -20,9 +20,9 @@ export async function POST(req: Request) {
     await subscriber.save();
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: error instanceof Error ? error.message : 'An unknown error occurred' },
       { status: 400 }
     );
   }

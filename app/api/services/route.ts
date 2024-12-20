@@ -10,9 +10,9 @@ export async function GET() {
     await dbConnect();
     const services = await Service.find({ isActive: true }).sort('order');
     return NextResponse.json({ success: true, data: services });
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: error instanceof Error ? error.message : 'Failed to fetch services' },
       { status: 400 }
     );
   }
@@ -33,9 +33,9 @@ export async function POST(req: Request) {
     const data = await req.json();
     const service = await Service.create(data);
     return NextResponse.json({ success: true, data: service });
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: error instanceof Error ? error.message : 'Failed to create service' },
       { status: 400 }
     );
   }
@@ -70,9 +70,9 @@ export async function PUT(req: Request) {
     }
 
     return NextResponse.json({ success: true, data: service });
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: error instanceof Error ? error.message : 'Failed to update service' },
       { status: 400 }
     );
   }
@@ -110,9 +110,9 @@ export async function DELETE(req: Request) {
     }
 
     return NextResponse.json({ success: true, data: service });
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: error instanceof Error ? error.message : 'Failed to delete service' },
       { status: 400 }
     );
   }

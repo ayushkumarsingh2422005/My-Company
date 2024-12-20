@@ -3,6 +3,12 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth/[...nextauth]/route';
 import { v2 as cloudinary } from 'cloudinary';
 
+// Define type for Cloudinary response
+interface CloudinaryResponse {
+  secure_url: string;
+  public_id: string;
+}
+
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -38,7 +44,7 @@ export async function POST(request: NextRequest) {
     const base64File = `data:${file.type};base64,${base64String}`;
 
     // Upload to Cloudinary
-    const result = await new Promise((resolve, reject) => {
+    const result = await new Promise<CloudinaryResponse>((resolve, reject) => {
       cloudinary.uploader.upload(
         base64File,
         {
@@ -47,7 +53,7 @@ export async function POST(request: NextRequest) {
         },
         (error, result) => {
           if (error) reject(error);
-          else resolve(result);
+          else resolve(result as CloudinaryResponse);
         }
       );
     });
@@ -55,13 +61,13 @@ export async function POST(request: NextRequest) {
     // Return the Cloudinary URL and public ID
     return NextResponse.json({
       success: true,
-      url: (result as any).secure_url,
-      publicId: (result as any).public_id,
+      url: result.secure_url,
+      publicId: result.public_id,
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Upload error:', error);
     return NextResponse.json(
-      { success: false, error: 'Failed to upload file' },
+      { success: false, error: error instanceof Error ? error.message : 'Failed to upload file' },
       { status: 500 }
     );
   }
@@ -88,18 +94,18 @@ export async function DELETE(request: NextRequest) {
     }
 
     // Delete from Cloudinary
-    const result = await new Promise((resolve, reject) => {
+    const result = await new Promise<{ result: string }>((resolve, reject) => {
       cloudinary.uploader.destroy(publicId, (error, result) => {
         if (error) reject(error);
-        else resolve(result);
+        else resolve({ result: result as string });
       });
     });
 
     return NextResponse.json({ success: true, result });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Delete error:', error);
     return NextResponse.json(
-      { success: false, error: 'Failed to delete file' },
+      { success: false, error: error instanceof Error ? error.message : 'Failed to delete file' },
       { status: 500 }
     );
   }

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/app/lib/mongodb';
 import Newsletter from '@/app/models/Newsletter';
 import crypto from 'crypto';
+import { MongoError } from 'mongodb';
 
 export async function POST(req: Request) {
   try {
@@ -44,9 +45,9 @@ export async function POST(req: Request) {
       data: newsletter,
       message: 'Thank you for subscribing to our newsletter!'
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     // Handle unique index violation explicitly
-    if (error.code === 11000) {
+    if (error instanceof MongoError && error.code === 11000) {
       return NextResponse.json(
         { success: false, error: 'This email is already registered.' },
         { status: 400 }
@@ -54,7 +55,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: error instanceof Error ? error.message : 'An unknown error occurred' },
       { status: 400 }
     );
   }
@@ -65,9 +66,9 @@ export async function GET() {
     await dbConnect();
     const subscribers = await Newsletter.find({}).sort({ subscribedAt: -1 });
     return NextResponse.json({ success: true, data: subscribers });
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: error instanceof Error ? error.message : 'An unknown error occurred' },
       { status: 400 }
     );
   }
