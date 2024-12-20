@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion'
 import { StarIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const testimonials = [
   {
@@ -103,9 +104,9 @@ const Testimonials = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="text-center mt-12"
         >
-          <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all">
+          <Link href={'/clients'} className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all">
             Read More Reviews
-          </button>
+          </Link>
         </motion.div>
       </div>
     </section>
