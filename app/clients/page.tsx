@@ -146,7 +146,7 @@ export default function Clients() {
                       </div>
 
                       <blockquote className="text-gray-300 italic border-l-4 border-purple-500/50 pl-4">
-                        "{client.testimonial}"
+                      &quot;{client.testimonial}&quot;
                       </blockquote>
                     </div>
 

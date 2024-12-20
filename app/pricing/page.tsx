@@ -179,8 +179,8 @@ const PricingCalculator = () => {
   };
 
   const calculatePrice = () => {
-    let basePrice = 35000; // Competitive base price in INR for a React + Express stack
-    let totalMultiplier = techStacks.find(stack => stack.id === selectedStack)?.multiplier || 1;
+    const basePrice = 35000; // Competitive base price in INR for a React + Express stack
+    const totalMultiplier = techStacks.find(stack => stack.id === selectedStack)?.multiplier || 1;
 
     // Calculate feature prices
     let featurePrice = 0;
@@ -551,7 +551,7 @@ export default function Pricing() {
               Solution Cost Calculator
             </h1>
             <p className="text-xl text-gray-400 mb-8">
-              Get an instant estimate for your tech solution - whether it's web, mobile, cloud, or enterprise applications.
+              Get an instant estimate for your tech solution - whether it&apos;s web, mobile, cloud, or enterprise applications.
             </p>
           </motion.div>
 
@@ -565,13 +565,13 @@ export default function Pricing() {
               <h2 className="text-2xl font-bold mb-4 text-gradient">We Work With All Budgets! 🚀</h2>
               <div className="space-y-6">
                 <p className="text-gray-300">
-                  Whether you're a startup with a tight budget or an enterprise with complex needs, we have solutions for everyone.
+                  Whether you&apos;re a startup with a tight budget or an enterprise with complex needs, we have solutions for everyone.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                   <div className="p-4 rounded-lg bg-black/20">
                     <div className="text-xl mb-2">💡</div>
                     <h3 className="font-semibold text-purple-400 mb-1">Small Budget?</h3>
-                    <p className="text-gray-400">Starting from just ₹15,000 for basic solutions. We'll help you get started!</p>
+                    <p className="text-gray-400">Starting from just ₹15,000 for basic solutions. We&apos;ll help you get started!</p>
                   </div>
                   <div className="p-4 rounded-lg bg-black/20">
                     <div className="text-xl mb-2">🌱</div>
@@ -581,13 +581,13 @@ export default function Pricing() {
                   <div className="p-4 rounded-lg bg-black/20">
                     <div className="text-xl mb-2">💼</div>
                     <h3 className="font-semibold text-purple-400 mb-1">Custom Needs?</h3>
-                    <p className="text-gray-400">Let's discuss your requirements and find the perfect solution within your budget.</p>
+                    <p className="text-gray-400">Let&apos;s discuss your requirements and find the perfect solution within your budget.</p>
                   </div>
                 </div>
                 <div className="mt-6 text-sm text-gray-400">
-                  <p className="mb-2">✨ No project is too small - we're here to help you succeed! ✨</p>
+                  <p className="mb-2">✨ No project is too small - we&apos;re here to help you succeed! ✨</p>
                   <p className="text-xs">
-                    Below you'll find our standard pricing for different services, but remember - 
+                    Below you&apos;ll find our standard pricing for different services, but remember - 
                     we can always customize a solution to fit your budget.
                   </p>
                 </div>

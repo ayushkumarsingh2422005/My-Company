@@ -399,7 +399,7 @@ export default function Contact() {
                     <div className="ml-4">
                       <h3 className="font-semibold mb-1">Email</h3>
                       <p className="text-gray-400">ayush.mauraya.dev@gmail.com</p>
-                      <p className="text-sm text-gray-500 mt-1">We'll respond within 24 hours</p>
+                      <p className="text-sm text-gray-500 mt-1">We&apos;ll respond within 24 hours</p>
                     </div>
                   </a>
 
