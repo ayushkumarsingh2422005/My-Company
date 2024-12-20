@@ -26,7 +26,7 @@ export default function AdminLogin() {
 
       router.push('/admin/dashboard');
     } catch (error) {
-      setError('Something went wrong');
+      setError('Something went wrong: ' + error);
     }
   };
 

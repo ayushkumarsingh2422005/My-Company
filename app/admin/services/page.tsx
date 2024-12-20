@@ -20,7 +20,7 @@ interface Service {
 }
 
 export default function ServicesManagement() {
-  const { data: session, status } = useSession();
+  const { data: _session, status } = useSession();
   const router = useRouter();
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
@@ -54,7 +54,7 @@ export default function ServicesManagement() {
         setError('Failed to fetch services');
       }
     } catch (error) {
-      setError('An error occurred while fetching services');
+      setError('An error occurred while fetching services: ' + error);
     } finally {
       setLoading(false);
     }
@@ -125,7 +125,7 @@ export default function ServicesManagement() {
         setError(data.error || 'Failed to save service');
       }
     } catch (error) {
-      setError('An error occurred while saving the service');
+      setError('An error occurred while saving the service: ' + error);
     } finally {
       setLoading(false);
     }
@@ -165,7 +165,7 @@ export default function ServicesManagement() {
         setError(data.error || 'Failed to delete service');
       }
     } catch (error) {
-      setError('An error occurred while deleting the service');
+      setError('An error occurred while deleting the service: ' + error);
     }
   };
 

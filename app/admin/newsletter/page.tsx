@@ -18,7 +18,7 @@ interface AddResult {
 }
 
 export default function NewsletterManagement() {
-  const { data: session, status } = useSession();
+  const { data: _session, status } = useSession();
   const router = useRouter();
   const [subscribers, setSubscribers] = useState<Subscriber[]>([]);
   const [loading, setLoading] = useState(true);
@@ -47,7 +47,7 @@ export default function NewsletterManagement() {
         setError('Failed to fetch subscribers');
       }
     } catch (error) {
-      setError('An error occurred while fetching subscribers');
+      setError('An error occurred while fetching subscribers: ' + error);
     } finally {
       setLoading(false);
     }
@@ -86,7 +86,7 @@ export default function NewsletterManagement() {
         setError(data.error || 'Failed to add subscriber(s)');
       }
     } catch (error) {
-      setError('An error occurred while adding subscriber(s)');
+      setError('An error occurred while adding subscriber(s): ' + error);
     }
   };
 
@@ -106,7 +106,7 @@ export default function NewsletterManagement() {
         setError('Failed to delete subscriber');
       }
     } catch (error) {
-      setError('An error occurred while deleting subscriber');
+      setError('An error occurred while deleting subscriber: ' + error);
     }
   };
 
@@ -124,7 +124,7 @@ export default function NewsletterManagement() {
         setError('Failed to toggle subscription');
       }
     } catch (error) {
-      setError('An error occurred while toggling subscription');
+      setError('An error occurred while toggling subscription: ' + error);
     }
   };
 

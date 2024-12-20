@@ -14,7 +14,7 @@ const DOMAINS = [
 ];
 
 export default function ProjectsManagement() {
-  const { data: session, status } = useSession();
+  const { data: _session, status } = useSession();
   const router = useRouter();
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
@@ -55,7 +55,7 @@ export default function ProjectsManagement() {
         setError('Failed to fetch projects');
       }
     } catch (error) {
-      setError('An error occurred while fetching projects');
+      setError('An error occurred while fetching projects: ' + error);
     } finally {
       setLoading(false);
     }
@@ -95,7 +95,7 @@ export default function ProjectsManagement() {
         setError('Failed to upload image');
       }
     } catch (error) {
-      setError('An error occurred while uploading the image');
+      setError('An error occurred while uploading the image: ' + error);
     } finally {
       setUploadingImage(false);
     }
@@ -168,7 +168,7 @@ export default function ProjectsManagement() {
         setError(data.error || 'Failed to save project');
       }
     } catch (error) {
-      setError('An error occurred while saving the project');
+      setError('An error occurred while saving the project: ' + error);
     } finally {
       setLoading(false);
     }
@@ -210,7 +210,7 @@ export default function ProjectsManagement() {
         setError(data.error || 'Failed to delete project');
       }
     } catch (error) {
-      setError('An error occurred while deleting the project');
+      setError('An error occurred while deleting the project: ' + error);
     }
   };
 
