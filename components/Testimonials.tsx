@@ -8,25 +8,25 @@ const testimonials = [
   {
     id: 1,
     content: "Working with this team was an absolute game-changer for our digital presence. Their attention to detail and creative solutions exceeded our expectations.",
-    author: "Sarah Johnson",
-    role: "CEO at TechVision",
+    author: "Mukul Sinha",
+    role: "Owner of M-Fest",
     rating: 5,
     image: "/testimonials/avatar1.png"
   },
   {
     id: 2,
     content: "The level of creativity and technical expertise they brought to our project was outstanding. They truly understand modern web development.",
-    author: "Michael Chen",
-    role: "Founder of StartupX",
+    author: "Ayush Kumar Singh",
+    role: "Owner of Codophile.in",
     rating: 5,
     image: "/testimonials/avatar2.png"
   },
   {
     id: 3,
     content: "Their innovative approach and dedication to delivering exceptional results made them the perfect partner for our digital transformation.",
-    author: "Emma Davis",
-    role: "Marketing Director",
-    rating: 5,
+    author: "Vikash Kumar",
+    role: "Owner of Affestionary",
+    rating: 4,
     image: "/testimonials/avatar3.png"
   }
 ]

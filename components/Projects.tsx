@@ -7,24 +7,24 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline'
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    category: "Web Development",
-    image: "/projects/project1.png",
-    tech: ["Next.js", "Tailwind", "Stripe"],
+    title: "M-Fest",
+    category: "App Development",
+    image: "/projects/project1.jpg",
+    tech: ["Flutter", "Express", "Firebase"],
   },
   {
     id: 2,
-    title: "Mobile Banking App",
-    category: "App Development",
+    title: "Codophile.in",
+    category: "Web Development",
     image: "/projects/project2.png",
-    tech: ["React Native", "Node.js", "AWS"],
+    tech: ["Django", "Python", "MySQL"],
   },
   {
     id: 3,
-    title: "AI Dashboard",
-    category: "Web Application",
+    title: "Affestionary",
+    category: "Full Stack Application",
     image: "/projects/project3.png",
-    tech: ["React", "Python", "TensorFlow"],
+    tech: ["React", "Node.js", "MongoDB"],
   }
 ]
 

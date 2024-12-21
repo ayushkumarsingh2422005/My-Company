@@ -7,28 +7,28 @@ const technologies = [
   {
     category: "Frontend",
     techs: [
-      { name: "React", icon: "/tech/react.svg", level: 95 },
-      { name: "Next.js", icon: "/tech/nextjs.svg", level: 90 },
-      { name: "TypeScript", icon: "/tech/typescript.svg", level: 85 },
+      { name: "React", icon: "/tech/react.png", level: 95 },
+      { name: "Next.js", icon: "/tech/nextjs.png", level: 90 },
+      { name: "TypeScript", icon: "/tech/typescript.png", level: 85 },
       { name: "Tailwind", icon: "/tech/tailwind.svg", level: 95 },
     ]
   },
   {
     category: "Backend",
     techs: [
-      { name: "Node.js", icon: "/tech/nodejs.svg", level: 90 },
-      { name: "Python", icon: "/tech/python.svg", level: 85 },
-      { name: "MongoDB", icon: "/tech/mongodb.svg", level: 88 },
-      { name: "PostgreSQL", icon: "/tech/postgresql.svg", level: 85 },
+      { name: "Node.js", icon: "/tech/nodejs.png", level: 90 },
+      { name: "Python", icon: "/tech/python.png", level: 85 },
+      { name: "MongoDB", icon: "/tech/mongodb.png", level: 88 },
+      { name: "PostgreSQL", icon: "/tech/postgresql.png", level: 85 },
     ]
   },
   {
     category: "Tools & Platforms",
     techs: [
-      { name: "AWS", icon: "/tech/aws.svg", level: 82 },
-      { name: "Docker", icon: "/tech/docker.svg", level: 80 },
-      { name: "Git", icon: "/tech/git.svg", level: 92 },
-      { name: "Figma", icon: "/tech/figma.svg", level: 88 },
+      { name: "AWS", icon: "/tech/aws.png", level: 82 },
+      { name: "Docker", icon: "/tech/docker.png", level: 80 },
+      { name: "Git", icon: "/tech/git.png", level: 92 },
+      { name: "Figma", icon: "/tech/figma.png", level: 88 },
     ]
   }
 ]
