@@ -1,6 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const technologies = [
   {
@@ -112,9 +113,9 @@ const TechStack = () => {
           <p className="text-gray-400 mb-8">
             Need a custom technology stack for your project?
           </p>
-          <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all">
+          <Link href="/contact" className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all">
             Let&apos;s Discuss Your Requirements
-          </button>
+          </Link>
         </motion.div>
       </div>
     </section>

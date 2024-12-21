@@ -2,7 +2,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FaLinkedinIn, FaTwitter, FaGithub } from 'react-icons/fa'
+import { FaLinkedinIn, FaGithub, FaInstagram } from 'react-icons/fa'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { useRouter } from 'next/navigation'
@@ -29,97 +29,145 @@ const GridBackground = () => (
   </div>
 )
 
+const services = [
+  {
+    title: "Web Development",
+    description: "Full-stack development with modern frameworks and technologies",
+    icon: "💻",
+    tech: ["React", "Next.js", "Node.js", "Python", "Django"]
+  },
+  {
+    title: "Mobile Development",
+    description: "Native and cross-platform mobile app development",
+    icon: "📱",
+    tech: ["React Native", "Flutter", "iOS", "Android"]
+  },
+  {
+    title: "Cloud Solutions",
+    description: "Scalable cloud architecture and DevOps services",
+    icon: "☁️",
+    tech: ["AWS", "Azure", "Docker", "Kubernetes"]
+  },
+  {
+    title: "AI & Machine Learning",
+    description: "Custom AI solutions and data analytics",
+    icon: "🤖",
+    tech: ["TensorFlow", "PyTorch", "OpenAI", "Data Science"]
+  }
+]
+
 const goals = [
   {
-    title: "Digital Excellence",
-    description: "Striving to deliver exceptional digital solutions that exceed expectations",
+    title: "Technical Excellence",
+    description: "Delivering cutting-edge solutions with the latest technologies",
     icon: "🎯"
   },
   {
-    title: "Global Impact",
-    description: "Creating meaningful impact through innovative digital solutions worldwide",
-    icon: "🌍"
+    title: "Innovation First",
+    description: "Pushing boundaries with AI-driven development and creative solutions",
+    icon: "💡"
   },
   {
     title: "Client Success",
-    description: "Ensuring our clients&apos; success through dedicated partnership and support",
+    description: "Ensuring project success through agile methodology and clear communication",
     icon: "🚀"
   }
 ]
 
-const achievements = [
-  {
-    title: "Industry Recognition",
-    description: "Awarded Best Digital Agency 2023",
-    icon: "🏆"
-  },
-  {
-    title: "Global Presence",
-    description: "Successfully delivered projects across 15+ countries",
-    icon: "🌐"
-  },
-  {
-    title: "Client Trust",
-    description: "95% client retention rate with long-term partnerships",
-    icon: "🤝"
-  },
-  {
-    title: "Project Success",
-    description: "100+ successful project deliveries",
-    icon: "✨"
-  }
-]
+// const achievements = [
+//   {
+//     title: "Tech Innovation Award",
+//     description: "Recognized for breakthrough AI implementations",
+//     icon: "🏆"
+//   },
+//   {
+//     title: "Global Impact",
+//     description: "Served clients across 20+ countries",
+//     icon: "🌐"
+//   },
+//   {
+//     title: "Perfect Reviews",
+//     description: "5-star rating on major freelance platforms",
+//     icon: "⭐"
+//   },
+//   {
+//     title: "Project Excellence",
+//     description: "100+ successful tech projects delivered",
+//     icon: "✨"
+//   }
+// ]
 
 const teamMembers = [
   {
-    name: "John Doe",
-    role: "Founder & CEO",
+    name: "Ayush Kumar Singh",
+    role: "Lead Developer",
     image: "/team/member1.png",
-    bio: "Visionary leader with 10+ years in digital innovation",
+    bio: "10+ years in full-stack development, specialized in Multiple Technologies",
     social: {
-      linkedin: "#",
-      twitter: "#",
-      github: "#"
+      linkedin: "https://www.linkedin.com/in/its-ayushkrsingh/",
+      instagram: "https://www.instagram.com/ayush.kr._singh/",
+      github: "https://github.com/ayushkumarsingh2422005"
     }
   },
-  // Add more team members...
+  // {
+  //   name: "Sarah Johnson",
+  //   role: "AI/ML Specialist",
+  //   image: "/team/member2.png",
+  //   bio: "PhD in Machine Learning, 6+ years of industry experience",
+  //   social: {
+  //     linkedin: "#",
+  //     twitter: "#",
+  //     github: "#"
+  //   }
+  // },
+  // {
+  //   name: "Mike Zhang",
+  //   role: "Mobile Development Expert",
+  //   image: "/team/member3.png",
+  //   bio: "8+ years in mobile app development, React Native enthusiast",
+  //   social: {
+  //     linkedin: "#",
+  //     twitter: "#",
+  //     github: "#"
+  //   }
+  // }
 ]
 
 const coreValues = [
   {
-    title: "Excellence",
-    description: "Striving for perfection in every project we undertake",
-    icon: "⭐"
-  },
-  {
     title: "Innovation",
-    description: "Pushing boundaries with creative solutions",
+    description: "Embracing cutting-edge technologies and creative solutions",
     icon: "💡"
   },
   {
-    title: "Integrity",
-    description: "Building trust through transparent relationships",
+    title: "Quality",
+    description: "Delivering clean, efficient, and scalable code",
+    icon: "⭐"
+  },
+  {
+    title: "Transparency",
+    description: "Clear communication and honest project timelines",
     icon: "🤝"
   },
   {
-    title: "Growth",
-    description: "Continuous learning and improvement",
-    icon: "📈"
+    title: "Agility",
+    description: "Fast adaptation to changes and quick problem-solving",
+    icon: "🚀"
   }
 ]
 
 const satisfactionMetrics = [
-  { label: "Client Satisfaction", value: "98%", icon: "😊" },
-  { label: "Project Success Rate", value: "100%", icon: "🎯" },
-  { label: "On-time Delivery", value: "95%", icon: "⏰" },
-  { label: "Client Retention", value: "92%", icon: "🤝" }
+  { label: "Code Quality Score", value: "98%", icon: "💻" },
+  { label: "On-time Delivery", value: "100%", icon: "⏰" },
+  { label: "Client Satisfaction", value: "99%", icon: "😊" },
+  { label: "Bug-free Projects", value: "95%", icon: "🛡️" }
 ]
 
 const stats = [
-  { label: "Projects Completed", value: "200+", icon: "🚀" },
-  { label: "Team Members", value: "50+", icon: "👥" },
-  { label: "Years Experience", value: "5+", icon: "⏳" },
-  { label: "Global Clients", value: "100+", icon: "🌍" }
+  { label: "Tech Projects", value: "200+", icon: "💻" },
+  { label: "Expert Developers", value: "20+", icon: "👨‍💻" },
+  { label: "Years Experience", value: "8+", icon: "⏳" },
+  { label: "Tech Stack", value: "15+", icon: "🛠️" }
 ]
 
 // Add animation variants
@@ -187,47 +235,47 @@ const GoalsSection = () => (
 )
 
 // Component for Achievements Section
-const AchievementsSection = () => (
-  <section className="py-20 relative">
-    <div className="max-w-7xl mx-auto px-4">
-      <motion.h2 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="text-3xl font-bold mb-16 text-center text-gradient"
-      >
-        Our Achievements
-      </motion.h2>
-      <motion.div 
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-      >
-        {achievements.map((achievement) => (
-          <motion.div
-            key={achievement.title}
-            variants={fadeInUp}
-            whileHover={{ scale: 1.05 }}
-            className="glass-effect p-6 rounded-xl text-center group"
-          >
-            <motion.div 
-              initial={{ scale: 1 }}
-              whileHover={{ scale: 1.2, rotate: 360 }}
-              transition={{ duration: 0.5 }}
-              className="text-4xl mb-4"
-            >
-              {achievement.icon}
-            </motion.div>
-            <h3 className="text-xl font-bold mb-2">{achievement.title}</h3>
-            <p className="text-gray-400">{achievement.description}</p>
-          </motion.div>
-        ))}
-      </motion.div>
-    </div>
-  </section>
-)
+// const AchievementsSection = () => (
+//   <section className="py-20 relative">
+//     <div className="max-w-7xl mx-auto px-4">
+//       <motion.h2 
+//         initial={{ opacity: 0 }}
+//         whileInView={{ opacity: 1 }}
+//         viewport={{ once: true }}
+//         className="text-3xl font-bold mb-16 text-center text-gradient"
+//       >
+//         Our Achievements
+//       </motion.h2>
+//       <motion.div 
+//         variants={staggerContainer}
+//         initial="initial"
+//         whileInView="animate"
+//         viewport={{ once: true }}
+//         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+//       >
+//         {achievements.map((achievement) => (
+//           <motion.div
+//             key={achievement.title}
+//             variants={fadeInUp}
+//             whileHover={{ scale: 1.05 }}
+//             className="glass-effect p-6 rounded-xl text-center group"
+//           >
+//             <motion.div 
+//               initial={{ scale: 1 }}
+//               whileHover={{ scale: 1.2, rotate: 360 }}
+//               transition={{ duration: 0.5 }}
+//               className="text-4xl mb-4"
+//             >
+//               {achievement.icon}
+//             </motion.div>
+//             <h3 className="text-xl font-bold mb-2">{achievement.title}</h3>
+//             <p className="text-gray-400">{achievement.description}</p>
+//           </motion.div>
+//         ))}
+//       </motion.div>
+//     </div>
+//   </section>
+// )
 
 // Component for Client Satisfaction Section
 const SatisfactionSection = () => (
@@ -420,8 +468,8 @@ const TeamSection = () => (
               <Link href={member.social.linkedin} className="hover:text-purple-500">
                 <FaLinkedinIn />
               </Link>
-              <Link href={member.social.twitter} className="hover:text-purple-500">
-                <FaTwitter />
+              <Link href={member.social.instagram} className="hover:text-purple-500">
+                <FaInstagram />
               </Link>
               <Link href={member.social.github} className="hover:text-purple-500">
                 <FaGithub />
@@ -430,6 +478,63 @@ const TeamSection = () => (
           </motion.div>
         ))}
       </div>
+    </div>
+  </section>
+)
+
+// Add Services Section
+const ServicesSection = () => (
+  <section className="py-20 relative">
+    <div className="max-w-7xl mx-auto px-4">
+      <motion.h2 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="text-3xl font-bold mb-16 text-center text-gradient"
+      >
+        Our Services
+      </motion.h2>
+      <motion.div 
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-8"
+      >
+        {services.map((service, index) => (
+          <motion.div
+            key={index}
+            variants={fadeInUp}
+            whileHover={{ scale: 1.02 }}
+            className="glass-effect p-8 rounded-xl hover:border-purple-500/30 transition-all duration-300"
+          >
+            <div className="flex items-start gap-6">
+              <motion.div 
+                initial={{ scale: 1 }}
+                whileHover={{ scale: 1.2, rotate: 360 }}
+                transition={{ duration: 0.5 }}
+                className="text-4xl mb-4 bg-gradient-to-r from-purple-600/20 to-pink-600/20 p-4 rounded-xl"
+              >
+                {service.icon}
+              </motion.div>
+              <div>
+                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                <p className="text-gray-400 mb-4">{service.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {service.tech.map((tech, i) => (
+                    <span 
+                      key={i}
+                      className="text-sm px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
     </div>
   </section>
 )
@@ -488,7 +593,7 @@ export default function About() {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="text-4xl md:text-6xl font-bold mb-6 text-gradient"
               >
-                Our Story
+                Elite Tech Solutions
               </motion.h1>
               <motion.p 
                 initial={{ opacity: 0 }}
@@ -496,7 +601,7 @@ export default function About() {
                 transition={{ duration: 0.5, delay: 0.5 }}
                 className="text-xl text-gray-400"
               >
-                Crafting digital experiences that inspire, innovate, and impact
+                Your trusted partner for premium freelance tech services. We transform ideas into powerful digital solutions.
               </motion.p>
             </motion.div>
 
@@ -538,9 +643,10 @@ export default function About() {
           </div>
         </section>
 
+        <ServicesSection />
         <GoalsSection />
         <JourneySection />
-        <AchievementsSection />
+        {/* <AchievementsSection /> */}
         <CoreValuesSection />
         <TeamSection />
         <SatisfactionSection />
@@ -554,7 +660,7 @@ export default function About() {
               viewport={{ once: true }}
               className="text-3xl font-bold mb-6 text-gradient"
             >
-              Ready to Work Together?
+              Ready to Build Something Amazing?
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -562,7 +668,7 @@ export default function About() {
               viewport={{ once: true }}
               className="text-gray-400 mb-8 max-w-2xl mx-auto"
             >
-              Let&apos;s create something amazing together. Get in touch with our team.
+              Let&apos;s transform your ideas into reality with cutting-edge technology and expert development.
             </motion.p>
             <motion.button
               onClick={() => router.push('/contact')}
@@ -572,7 +678,7 @@ export default function About() {
               whileTap="tap"
               className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all"
             >
-              Contact Us
+              Start Your Project
             </motion.button>
           </div>
         </section>
