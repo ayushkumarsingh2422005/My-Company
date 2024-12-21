@@ -5,8 +5,13 @@ import { Providers } from './providers'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Digital Creative Studio',
+  title: 'DigiCraft - Digital Creative Studio',
   description: 'Crafting Digital Experiences',
+  icons: {
+    icon: [
+      { url: '/logo.svg' },
+    ],
+  },
 }
 
 export default function RootLayout({
