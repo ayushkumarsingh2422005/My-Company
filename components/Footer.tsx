@@ -3,8 +3,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useState } from 'react'
 import { 
-  FaGithub, 
-  FaTwitter, 
+  FaGithub,
   FaLinkedinIn, 
   FaInstagram 
 } from 'react-icons/fa'
@@ -83,7 +82,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <motion.a
-                href="https://github.com"
+                href="https://github.com/ayushkumarsingh2422005"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
@@ -92,16 +91,7 @@ const Footer = () => {
                 <FaGithub size={24} />
               </motion.a>
               <motion.a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -3 }}
-                className="text-gray-400 hover:text-purple-500 transition-colors"
-              >
-                <FaTwitter size={24} />
-              </motion.a>
-              <motion.a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/its-ayushkrsingh/"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
@@ -110,7 +100,7 @@ const Footer = () => {
                 <FaLinkedinIn size={24} />
               </motion.a>
               <motion.a
-                href="https://instagram.com"
+                href="https://www.instagram.com/ayush.kr._singh/"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
