@@ -28,12 +28,16 @@ interface Client {
   isActive: boolean;
 }
 
+interface ApiError extends Error {
+  message: string;
+}
+
 export default function TestimonialsManagement() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
   const [clients, setClients] = useState<Client[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [, setError] = useState('');
   const [selectedClient, setSelectedClient] = useState<Client | null>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
@@ -179,9 +183,10 @@ export default function TestimonialsManagement() {
       } else {
         throw new Error(data.error || 'Failed to save testimonial');
       }
-    } catch (error: any) {
-      console.error('Error submitting form:', error);
-      toast.error('An error occurred: ' + (error.message || 'Failed to save testimonial'));
+    } catch (error: unknown) {
+      const apiError = error as ApiError;
+      console.error('Error submitting form:', apiError);
+      toast.error('An error occurred: ' + (apiError.message || 'Failed to save testimonial'));
     } finally {
       setLoading(false);
     }
