@@ -98,7 +98,7 @@ const ServiceCard = ({ service }: { service: Service }) => {
 
 const StatsSection = () => {
   const stats = [
-    { value: '100+', label: 'Projects Completed' },
+    { value: '30+', label: 'Projects Completed' },
     { value: '50+', label: 'Happy Clients' },
     { value: '5+', label: 'Years Experience' },
     { value: '24/7', label: 'Support' },

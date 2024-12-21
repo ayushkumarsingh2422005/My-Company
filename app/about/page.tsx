@@ -2,7 +2,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FaLinkedinIn, FaGithub, FaInstagram } from 'react-icons/fa'
+import { FaLinkedinIn, FaGithub, FaInstagram, FaWhatsapp, FaEnvelope } from 'react-icons/fa'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { useRouter } from 'next/navigation'
@@ -97,40 +97,96 @@ const goals = [
 //   }
 // ]
 
-const teamMembers = [
+const mainDeveloper = {
+  name: "Ayush Kumar Singh",
+  role: "Founder & Lead Developer",
+  image: "/team/ayush.png",
+  bio: "5+ years in Tech development, specialized in Multiple Technologies. Passionate about creating innovative solutions and leading teams to success.",
+  expertise: [
+    "Full-Stack Development",
+    "Cloud Architecture",
+    "System Design",
+    "UI/UX Design",
+    "Project Management",
+    "DevOps",
+    "App Development"
+  ],
+  technologies: [
+    "React/Next.js",
+    "Node.js",
+    "Python",
+    "AWS",
+    "MongoDB",
+    "TypeScript",
+    "Flutter",
+    "Django",
+    "Docker",
+    "Kubernetes",
+    "Java",
+    "Native Android",
+    "More ..."
+  ],
+  achievements: [
+    "Successfully delivered 10+ client based projects",
+    "Built scalable solutions for enterprise clients",
+    "Mentored other developers",
+    "Led multiple high-impact projects"
+  ],
+  social: {
+    linkedin: "https://www.linkedin.com/in/its-ayushkrsingh/",
+    instagram: "https://www.instagram.com/ayush.kr._singh/",
+    github: "https://github.com/ayushkumarsingh2422005",
+    whatsapp: "https://wa.me/+918299797516",
+    email: "ayushkumarsingh2422005@gmail.com"
+  }
+}
+
+const otherTeamMembers = [
   {
-    name: "Ayush Kumar Singh",
-    role: "Lead Developer",
-    image: "/team/member1.png",
-    bio: "10+ years in full-stack development, specialized in Multiple Technologies",
+    name: "Sonu Hansda",
+    role: "Web/App Developer + DevOps",
+    image: "/team/sonu.png",
+    bio: "Full-stack developer with 6+ years of experience, specializing in frameworks like MERN, Django, Next.js, and Flutter, with expertise in DevOps.",
     social: {
-      linkedin: "https://www.linkedin.com/in/its-ayushkrsingh/",
-      instagram: "https://www.instagram.com/ayush.kr._singh/",
-      github: "https://github.com/ayushkumarsingh2422005"
+      linkedin: "https://www.linkedin.com/in/sonu-hansda",
+      instagram: "https://www.instagram.com/_sonu.hansda",
+      github: "https://www.github.com/Sonu-Hansda"
     }
   },
-  // {
-  //   name: "Sarah Johnson",
-  //   role: "AI/ML Specialist",
-  //   image: "/team/member2.png",
-  //   bio: "PhD in Machine Learning, 6+ years of industry experience",
-  //   social: {
-  //     linkedin: "#",
-  //     twitter: "#",
-  //     github: "#"
-  //   }
-  // },
-  // {
-  //   name: "Mike Zhang",
-  //   role: "Mobile Development Expert",
-  //   image: "/team/member3.png",
-  //   bio: "8+ years in mobile app development, React Native enthusiast",
-  //   social: {
-  //     linkedin: "#",
-  //     twitter: "#",
-  //     github: "#"
-  //   }
-  // }
+  {
+    name: "Raj Aryan",
+    role: "Digital Marketing",
+    image: "/team/raj.jpg",
+    bio: "2+ years in digital marketing, specialized in SEO, SMM, and Content Marketing",
+    social: {
+      linkedin: "https://www.linkedin.com/in/mr-clicks/",
+      instagram: "https://www.instagram.com/mr_c1icks",
+      github: "#" // no github
+    }
+  },
+  {
+    name: "Pratik Modi",
+    role: "Business consultant",
+    image: "/team/prateek.jpg",
+    bio: "Over 3 years of experience and expertise in managing business operations.",
+    social: {
+      linkedin: "https://www.linkedin.com/in/pratik-modi-63961627b",
+      instagram: "https://www.instagram.com/modi_pratik_",
+      github: "#" // no github
+    }
+  },
+  {
+    name: "Vikash Kumar",
+    role: "Game Developer",
+    image: "/team/vikash.jpg",
+    bio: "3+ Years in Unity Game Development , Blender, C#,C++ , OPENGL ,Unity framework.",
+    social: {
+      linkedin: "https://www.linkedin.com/in/vikash-kumar-380b99292",
+      instagram: "#",
+      github: "https://github.com/RealityDenied" // no github
+    }
+  }
+
 ]
 
 const coreValues = [
@@ -164,10 +220,10 @@ const satisfactionMetrics = [
 ]
 
 const stats = [
-  { label: "Tech Projects", value: "200+", icon: "💻" },
-  { label: "Expert Developers", value: "20+", icon: "👨‍💻" },
-  { label: "Years Experience", value: "8+", icon: "⏳" },
-  { label: "Tech Stack", value: "15+", icon: "🛠️" }
+  { label: "Business Projects", value: "30+", icon: "💻" },
+  { label: "Expert Developers", value: "10+", icon: "👨‍💻" },
+  { label: "Years Experience", value: "5+", icon: "⏳" },
+  { label: "Tech Stack", value: "10+", icon: "🛠️" }
 ]
 
 // Add animation variants
@@ -374,40 +430,53 @@ const JourneySection = () => (
       </motion.h2>
       
       <div className="relative">
-        {/* Timeline line */}
+        {/* Timeline line - Hidden on mobile, shown on md and up */}
         <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-pink-500 to-purple-500 hidden md:block" />
+        
+        {/* Mobile Timeline */}
+        <div className="md:hidden absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-pink-500 to-purple-500" />
         
         {journeyMilestones.map((milestone, index) => (
           <motion.div
             key={milestone.year}
-            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 0, y: 20 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
-            className={`flex items-center gap-8 mb-12 ${
+            className={`flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 mb-12 relative ${
               index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
             }`}
           >
-            <div className={`flex-1 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
+            {/* Mobile Timeline Dot */}
+            <div className="md:hidden absolute left-4 w-4 h-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 transform -translate-x-1/2 mt-2" />
+            
+            {/* Content for mobile */}
+            <div className="md:hidden pl-12 w-full">
               <div className="text-purple-500 text-xl font-bold mb-2">{milestone.year}</div>
               <h3 className="text-2xl font-bold mb-2">{milestone.title}</h3>
               <p className="text-gray-400">{milestone.description}</p>
             </div>
             
-            <div className="relative hidden md:block">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center text-2xl">
+            {/* Content for desktop */}
+            <div className={`hidden md:block flex-1 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
+              <div className="text-purple-500 text-xl font-bold mb-2">{milestone.year}</div>
+              <h3 className="text-2xl font-bold mb-2">{milestone.title}</h3>
+              <p className="text-gray-400">{milestone.description}</p>
+            </div>
+            
+            {/* Desktop Timeline Dot */}
+            <div className="hidden md:flex relative">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center text-2xl hover:scale-110 transition-transform">
                 {milestone.icon}
               </div>
             </div>
             
-            <div className="flex-1" />
+            <div className="hidden md:block flex-1" />
           </motion.div>
         ))}
       </div>
     </div>
   </section>
 )
-
-
 
 // Component for Core Values Section
 const CoreValuesSection = () => (
@@ -425,7 +494,7 @@ const CoreValuesSection = () => (
             transition={{ delay: index * 0.1 }}
             className="glass-effect p-6 rounded-xl text-center group"
           >
-            <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">
+            <div className="text-4xl mb-4 group-hover:scale-105 transition-transform">
               {value.icon}
             </div>
             <h3 className="text-xl font-bold mb-2">{value.title}</h3>
@@ -444,40 +513,157 @@ const TeamSection = () => (
       <motion.h2 className="text-3xl font-bold mb-16 text-center text-gradient">
         Our Team
       </motion.h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {teamMembers.map((member, index) => (
-          <motion.div
-            key={member.name}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            className="glass-effect p-6 rounded-xl text-center group"
-          >
-            <div className="relative w-32 h-32 mx-auto mb-4">
+
+      {/* Main Developer Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="mb-20"
+      >
+        <motion.div className="glass-effect p-12 rounded-xl">
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="relative w-64 h-64 shrink-0">
               <Image
-                src={member.image}
-                alt={member.name}
+                src={mainDeveloper.image}
+                alt={mainDeveloper.name}
                 fill
-                className="object-cover rounded-full"
+                className="object-cover rounded-full border-4 border-purple-500/30"
               />
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-500/20 to-transparent" />
             </div>
-            <h3 className="text-xl font-bold mb-2">{member.name}</h3>
-            <p className="text-purple-500 mb-4">{member.role}</p>
-            <p className="text-gray-400 mb-4">{member.bio}</p>
-            <div className="flex justify-center gap-4">
-              <Link href={member.social.linkedin} className="hover:text-purple-500">
-                <FaLinkedinIn />
-              </Link>
-              <Link href={member.social.instagram} className="hover:text-purple-500">
-                <FaInstagram />
-              </Link>
-              <Link href={member.social.github} className="hover:text-purple-500">
-                <FaGithub />
-              </Link>
+            <div className="flex-1 text-center md:text-left">
+              <h3 className="text-4xl font-bold mb-2 text-gradient">{mainDeveloper.name}</h3>
+              <p className="text-purple-500 text-2xl mb-6">{mainDeveloper.role}</p>
+              <p className="text-gray-400 mb-8 text-lg leading-relaxed">{mainDeveloper.bio}</p>
+              
+              {/* Expertise Section */}
+              <div className="mb-8">
+                <h4 className="text-xl font-semibold mb-4 text-gradient">Areas of Expertise</h4>
+                <div className="flex flex-wrap gap-3">
+                  {mainDeveloper.expertise.map((skill, index) => (
+                    <span
+                      key={index}
+                      className="px-4 py-2 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Technologies Section */}
+              <div className="mb-8">
+                <h4 className="text-xl font-semibold mb-4 text-gradient">Core Technologies</h4>
+                <div className="flex flex-wrap gap-3">
+                  {mainDeveloper.technologies.map((tech, index) => (
+                    <span
+                      key={index}
+                      className="px-4 py-2 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/20"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Achievements Section */}
+              <div className="mb-8">
+                <h4 className="text-xl font-semibold mb-4 text-gradient">Key Achievements</h4>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {mainDeveloper.achievements.map((achievement, index) => (
+                    <li key={index} className="flex items-center gap-2 text-gray-400">
+                      <span className="text-purple-500">✓</span>
+                      {achievement}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex justify-center md:justify-start gap-6">
+                <Link 
+                  href={mainDeveloper.social.linkedin} 
+                  className="hover:text-purple-500 transform hover:scale-110 transition-all text-3xl"
+                >
+                  <FaLinkedinIn />
+                </Link>
+                <Link 
+                  href={mainDeveloper.social.instagram} 
+                  className="hover:text-purple-500 transform hover:scale-110 transition-all text-3xl"
+                >
+                  <FaInstagram />
+                </Link>
+                <Link 
+                  href={mainDeveloper.social.github} 
+                  className="hover:text-purple-500 transform hover:scale-110 transition-all text-3xl"
+                >
+                  <FaGithub />
+                </Link>
+                <Link 
+                  href={mainDeveloper.social.whatsapp} 
+                  className="hover:text-purple-500 transform hover:scale-110 transition-all text-3xl"
+                >
+                  <FaWhatsapp />
+                </Link>
+                <Link 
+                  href={`mailto:${mainDeveloper.social.email}`} 
+                  className="hover:text-purple-500 transform hover:scale-110 transition-all text-3xl"
+                >
+                  <FaEnvelope />
+                </Link>
+              </div>
             </div>
-          </motion.div>
-        ))}
-      </div>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Other Team Members Section */}
+      {otherTeamMembers.length > 0 && (
+        <>
+          <motion.h3 
+            className="text-2xl font-bold mb-8 text-center text-gradient"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+          >
+            Other Team Members
+          </motion.h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {otherTeamMembers.map((member, index) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="glass-effect p-4 rounded-xl text-center group hover:scale-105 transition-transform"
+              >
+                <div className="relative w-20 h-20 mx-auto mb-3">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover rounded-full"
+                  />
+                </div>
+                <h3 className="text-lg font-bold mb-1">{member.name}</h3>
+                <p className="text-purple-500 text-sm mb-2">{member.role}</p>
+                <p className="text-gray-400 text-sm mb-3 line-clamp-2">{member.bio}</p>
+                <div className="flex justify-center gap-3">
+                  <Link href={member.social.linkedin} className="hover:text-purple-500 text-sm">
+                    <FaLinkedinIn />
+                  </Link>
+                  <Link href={member.social.instagram} className="hover:text-purple-500 text-sm">
+                    <FaInstagram />
+                  </Link>
+                  <Link href={member.social.github} className="hover:text-purple-500 text-sm">
+                    <FaGithub />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   </section>
 )
@@ -511,8 +697,8 @@ const ServicesSection = () => (
             <div className="flex items-start gap-6">
               <motion.div 
                 initial={{ scale: 1 }}
-                whileHover={{ scale: 1.2, rotate: 360 }}
-                transition={{ duration: 0.5 }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.2 }}
                 className="text-4xl mb-4 bg-gradient-to-r from-purple-600/20 to-pink-600/20 p-4 rounded-xl"
               >
                 {service.icon}
@@ -548,7 +734,7 @@ export default function About() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen pt-24 relative">
+      <main className="min-h-screen pt-24 relative overflow-hidden">
         {/* Background Elements */}
         <motion.div 
           className="fixed inset-0 bg-[radial-gradient(circle_at_center,rgba(123,49,255,0.05)_0%,transparent_100%)]"
@@ -557,131 +743,133 @@ export default function About() {
         <GradientOrbs />
         <GridBackground />
         
-        {/* Hero Section with animated text */}
-        <section className="relative py-20 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-center max-w-3xl mx-auto mb-20"
-            >
+        {/* Content Sections */}
+        <div className="relative w-full">
+          {/* Hero Section */}
+          <section className="relative py-20 overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4">
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="mb-6 flex items-center justify-center gap-2"
-              >
-                <motion.span 
-                  initial={{ width: 0 }}
-                  animate={{ width: "2.5rem" }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
-                  className="h-0.5 bg-gradient-to-r from-purple-500 to-transparent" 
-                />
-                <span className="text-purple-500 font-mono">About Us</span>
-                <motion.span 
-                  initial={{ width: 0 }}
-                  animate={{ width: "2.5rem" }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
-                  className="h-0.5 bg-gradient-to-l from-purple-500 to-transparent" 
-                />
-              </motion.div>
-              
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="text-4xl md:text-6xl font-bold mb-6 text-gradient"
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="text-center max-w-3xl mx-auto mb-20"
               >
-                Elite Tech Solutions
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="text-xl text-gray-400"
-              >
-                Your trusted partner for premium freelance tech services. We transform ideas into powerful digital solutions.
-              </motion.p>
-            </motion.div>
-
-            {/* Enhanced Stats Section */}
-            <motion.div 
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20"
-            >
-              {stats.map((stat) => (
                 <motion.div
-                  key={stat.label}
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.05 }}
-                  className="glass-effect p-6 rounded-xl group hover:border-purple-500/30 transition-all duration-300"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="mb-6 flex items-center justify-center gap-2"
                 >
-                  <motion.div 
-                    initial={{ scale: 1 }}
-                    whileHover={{ scale: 1.2, rotate: 360 }}
-                    transition={{ duration: 0.5 }}
-                    className="text-4xl mb-4"
-                  >
-                    {stat.icon}
-                  </motion.div>
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="text-4xl font-bold text-gradient mb-2"
-                  >
-                    {stat.value}
-                  </motion.div>
-                  <div className="text-gray-400">{stat.label}</div>
+                  <motion.span 
+                    initial={{ width: 0 }}
+                    animate={{ width: "2.5rem" }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                    className="h-0.5 bg-gradient-to-r from-purple-500 to-transparent" 
+                  />
+                  <span className="text-purple-500 font-mono">About Us</span>
+                  <motion.span 
+                    initial={{ width: 0 }}
+                    animate={{ width: "2.5rem" }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                    className="h-0.5 bg-gradient-to-l from-purple-500 to-transparent" 
+                  />
                 </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
+                
+                <motion.h1 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="text-4xl md:text-6xl font-bold mb-6 text-gradient"
+                >
+                  Elite Tech Solutions
+                </motion.h1>
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  className="text-xl text-gray-400"
+                >
+                  Your trusted partner for premium freelance tech services. We transform ideas into powerful digital solutions.
+                </motion.p>
+              </motion.div>
 
-        <ServicesSection />
-        <GoalsSection />
-        <JourneySection />
-        {/* <AchievementsSection /> */}
-        <CoreValuesSection />
-        <TeamSection />
-        <SatisfactionSection />
+              {/* Enhanced Stats Section */}
+              <motion.div 
+                variants={staggerContainer}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20"
+              >
+                {stats.map((stat) => (
+                  <motion.div
+                    key={stat.label}
+                    variants={fadeInUp}
+                    whileHover={{ scale: 1.05 }}
+                    className="glass-effect p-6 rounded-xl group hover:border-purple-500/30 transition-all duration-300"
+                  >
+                    <motion.div 
+                      initial={{ scale: 1 }}
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.2 }}
+                      className="text-4xl mb-4"
+                    >
+                      {stat.icon}
+                    </motion.div>
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      className="text-4xl font-bold text-gradient mb-2"
+                    >
+                      {stat.value}
+                    </motion.div>
+                    <div className="text-gray-400">{stat.label}</div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </section>
 
-        {/* CTA Section */}
-        <section className="py-20 relative">
-          <div className="max-w-7xl mx-auto px-4 text-center">
-            <motion.h2 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-3xl font-bold mb-6 text-gradient"
-            >
-              Ready to Build Something Amazing?
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-gray-400 mb-8 max-w-2xl mx-auto"
-            >
-              Let&apos;s transform your ideas into reality with cutting-edge technology and expert development.
-            </motion.p>
-            <motion.button
-              onClick={() => router.push('/contact')}
-              variants={scaleOnHover}
-              initial="initial"
-              whileHover="hover"
-              whileTap="tap"
-              className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all"
-            >
-              Start Your Project
-            </motion.button>
-          </div>
-        </section>
+          <ServicesSection />
+          <GoalsSection />
+          <JourneySection />
+          <CoreValuesSection />
+          <TeamSection />
+          <SatisfactionSection />
+
+          {/* CTA Section */}
+          <section className="py-20 relative">
+            <div className="max-w-7xl mx-auto px-4 text-center">
+              <motion.h2 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="text-3xl font-bold mb-6 text-gradient"
+              >
+                Ready to Build Something Amazing?
+              </motion.h2>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-gray-400 mb-8 max-w-2xl mx-auto"
+              >
+                Let&apos;s transform your ideas into reality with cutting-edge technology and expert development.
+              </motion.p>
+              <motion.button
+                onClick={() => router.push('/contact')}
+                variants={scaleOnHover}
+                initial="initial"
+                whileHover="hover"
+                whileTap="tap"
+                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all"
+              >
+                Start Your Project
+              </motion.button>
+            </div>
+          </section>
+        </div>
       </main>
       <Footer />
     </>

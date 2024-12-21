@@ -5,7 +5,9 @@ import { useState } from 'react'
 import { 
   FaGithub,
   FaLinkedinIn, 
-  FaInstagram 
+  FaInstagram,
+  FaWhatsapp,
+  FaEnvelope
 } from 'react-icons/fa'
 
 const Footer = () => {
@@ -108,6 +110,24 @@ const Footer = () => {
                 className="text-gray-400 hover:text-purple-500 transition-colors"
               >
                 <FaInstagram size={24} />
+              </motion.a>
+              <motion.a
+                href="https://wa.me/+918299797516"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ y: -3 }}
+                className="text-gray-400 hover:text-purple-500 transition-colors"
+              >
+                <FaWhatsapp size={24} />
+              </motion.a>
+              <motion.a
+                href="mailto:ayush.mauraya.dev@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ y: -3 }}
+                className="text-gray-400 hover:text-purple-500 transition-colors"
+              >
+                <FaEnvelope size={24} />
               </motion.a>
             </div>
           </div>
