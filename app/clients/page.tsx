@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { FiExternalLink, FiStar } from 'react-icons/fi'
+import { useState, useEffect } from 'react'
 
 // Background Components
 const GradientOrbs = () => (
@@ -27,55 +28,53 @@ const GridBackground = () => (
   </div>
 )
 
-// Client Data
-const clients = [
-  {
-    id: 1,
-    name: "Rahul Sharma",
-    role: "Founder, TechStart India",
-    image: "/clients/avatar1.png",
-    testimonial: "DigiCraft transformed our business with their exceptional web development services. The team's attention to detail and innovative solutions helped us achieve our goals.",
-    project: {
-      name: "E-Learning Platform",
-      link: "https://techstart.in",
-      description: "A comprehensive learning management system with live classes and course marketplace."
-    },
-    rating: 5,
-    location: "Mumbai, India"
-  },
-  {
-    id: 2,
-    name: "Priya Patel",
-    role: "CEO, FoodExpress",
-    image: "/clients/avatar2.png",
-    testimonial: "Working with DigiCraft was a game-changer for our food delivery startup. Their mobile app development expertise is unmatched.",
-    project: {
-      name: "Food Delivery App",
-      link: "https://foodexpress.in",
-      description: "Real-time food ordering and delivery tracking application."
-    },
-    rating: 5,
-    location: "Delhi, India"
-  },
-  {
-    id: 3,
-    name: "Amit Kumar",
-    role: "Director, CloudTech Solutions",
-    image: "/clients/avatar3.png",
-    testimonial: "The team at DigiCraft helped us scale our cloud infrastructure seamlessly. Their DevOps expertise saved us both time and resources.",
-    project: {
-      name: "Cloud Management Dashboard",
-      link: "https://cloudtech.in",
-      description: "Enterprise cloud resource management and monitoring system."
-    },
-    rating: 5,
-    location: "Bangalore, India"
-  }
-];
+interface Client {
+  _id: string;
+  name: string;
+  role: string;
+  image: {
+    url: string;
+    publicId: string;
+  };
+  testimonial: string;
+  project: {
+    title: string;
+    link: string;
+    description: string;
+  };
+  rating: number;
+  location: string;
+  order: number;
+  isActive: boolean;
+}
 
 export default function Clients() {
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
+  const [clients, setClients] = useState<Client[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const fetchClients = async () => {
+      try {
+        const response = await fetch('/api/clients');
+        const data = await response.json();
+
+        if (data.success) {
+          setClients(data.data);
+        } else {
+          setError('Failed to fetch clients');
+        }
+      } catch (error) {
+        setError('An error occurred while fetching clients: ' + error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchClients();
+  }, []);
 
   return (
     <>
@@ -105,72 +104,78 @@ export default function Clients() {
           </motion.div>
 
           {/* Client Testimonials */}
-          <div className="space-y-24 mb-20">
-            {clients.map((client, index) => (
-              <motion.div
-                key={client.id}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
-                className="relative"
-              >
-                {/* Connection Lines */}
-                <div className="absolute left-1/2 -translate-x-1/2 h-full top-full">
-                  <div className="h-24 w-px bg-gradient-to-b from-purple-500/50 to-transparent" />
-                </div>
+          {loading ? (
+            <div className="text-center text-white">Loading clients...</div>
+          ) : error ? (
+            <div className="text-center text-red-400">{error}</div>
+          ) : (
+            <div className="space-y-24 mb-20">
+              {clients.map((client, index) => (
+                <motion.div
+                  key={client._id}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.2 }}
+                  className="relative"
+                >
+                  {/* Connection Lines */}
+                  <div className="absolute left-1/2 -translate-x-1/2 h-full top-full">
+                    <div className="h-24 w-px bg-gradient-to-b from-purple-500/50 to-transparent" />
+                  </div>
 
-                <div className="glass-effect p-8 rounded-xl">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    {/* Client Info & Testimonial */}
-                    <div className="space-y-6">
-                      <div className="flex items-center space-x-6">
-                        <div className="relative w-24 h-24 rounded-full overflow-hidden">
-                          <Image
-                            src={client.image}
-                            alt={client.name}
-                            fill
-                            className="object-cover"
-                          />
+                  <div className="glass-effect p-8 rounded-xl">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                      {/* Client Info & Testimonial */}
+                      <div className="space-y-6">
+                        <div className="flex items-center space-x-6">
+                          <div className="relative w-24 h-24 rounded-full overflow-hidden">
+                            <Image
+                              src={client.image.url}
+                              alt={client.name}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <div>
+                            <h3 className="text-2xl font-bold">{client.name}</h3>
+                            <p className="text-purple-400">{client.role}</p>
+                            <p className="text-sm text-gray-400">{client.location}</p>
+                          </div>
                         </div>
-                        <div>
-                          <h3 className="text-2xl font-bold">{client.name}</h3>
-                          <p className="text-purple-400">{client.role}</p>
-                          <p className="text-sm text-gray-400">{client.location}</p>
+
+                        <div className="flex items-center space-x-1">
+                          {[...Array(client.rating)].map((_, i) => (
+                            <FiStar key={i} className="text-yellow-500 fill-yellow-500" />
+                          ))}
                         </div>
+
+                        <blockquote className="text-gray-300 italic border-l-4 border-purple-500/50 pl-4">
+                          &quot;{client.testimonial}&quot;
+                        </blockquote>
                       </div>
 
-                      <div className="flex items-center space-x-1">
-                        {[...Array(client.rating)].map((_, i) => (
-                          <FiStar key={i} className="text-yellow-500 fill-yellow-500" />
-                        ))}
+                      {/* Project Showcase */}
+                      <div className="glass-effect p-6 rounded-lg border border-purple-500/20">
+                        <div className="flex items-center justify-between mb-4">
+                          <h4 className="text-xl font-semibold">Project Showcase</h4>
+                          <Link 
+                            href={client.project.link}
+                            target="_blank"
+                            className="flex items-center text-purple-400 hover:text-purple-300 transition-colors"
+                          >
+                            <span className="mr-2">Visit Project</span>
+                            <FiExternalLink />
+                          </Link>
+                        </div>
+                        <h5 className="text-lg font-medium mb-2">{client.project.title}</h5>
+                        <p className="text-gray-400">{client.project.description}</p>
                       </div>
-
-                      <blockquote className="text-gray-300 italic border-l-4 border-purple-500/50 pl-4">
-                      &quot;{client.testimonial}&quot;
-                      </blockquote>
-                    </div>
-
-                    {/* Project Showcase */}
-                    <div className="glass-effect p-6 rounded-lg border border-purple-500/20">
-                      <div className="flex items-center justify-between mb-4">
-                        <h4 className="text-xl font-semibold">Project Showcase</h4>
-                        <Link 
-                          href={client.project.link}
-                          target="_blank"
-                          className="flex items-center text-purple-400 hover:text-purple-300 transition-colors"
-                        >
-                          <span className="mr-2">Visit Project</span>
-                          <FiExternalLink />
-                        </Link>
-                      </div>
-                      <h5 className="text-lg font-medium mb-2">{client.project.name}</h5>
-                      <p className="text-gray-400">{client.project.description}</p>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
 
           {/* Call to Action */}
           <motion.div
