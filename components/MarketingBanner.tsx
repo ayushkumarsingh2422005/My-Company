@@ -39,8 +39,7 @@ const MarketingBanner = ({
   if (images.length === 1) {
     const image = images[0]
     return (
-      <div className={`relative w-full h-[400px] md:h-[500px] overflow-hidden rounded-2xl ${className}`}>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
+      <div className={`relative w-full h-[400px] md:h-[500px] overflow-hidden ${className}`}>
         {image.link ? (
           <a href={image.link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
             <Image
@@ -68,7 +67,7 @@ const MarketingBanner = ({
 
   // Otherwise, render slideshow
   return (
-    <div className={`relative w-full h-[400px] md:h-[500px] overflow-hidden rounded-2xl ${className}`}>
+    <div className={`relative w-full h-[400px] md:h-[500px] overflow-hidden ${className}`}>
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
@@ -78,7 +77,6 @@ const MarketingBanner = ({
           transition={{ duration: 0.5 }}
           className="relative w-full h-full"
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
           {images[currentIndex].link ? (
             <a 
               href={images[currentIndex].link} 

@@ -187,7 +187,6 @@ export default function Home() {
                 <MarketingBanner 
                   images={marketingBanners}
                   autoPlayInterval={5000}
-                  className="shadow-xl shadow-purple-500/10"
                 />
               </motion.div>
             </div>
