@@ -4,7 +4,6 @@ import { useEffect, useState, useRef } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { FiEdit2, FiTrash2, FiEye, FiEyeOff } from 'react-icons/fi';
 
 interface MarketingBanner {
   _id: string;
