@@ -1,0 +1,44 @@
+{
+  "name": "DigiCraft - Digital Creative Studio",
+  "short_name": "DigiCraft",
+  "description": "Transform your digital presence with innovative web, mobile, and cloud solutions by DigiCraft Studio.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#0f0f0f",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Our Services",
+      "short_name": "Services",
+      "description": "Explore DigiCraft's digital services",
+      "url": "/services",
+      "icons": [{ "src": "/logo.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Our Projects",
+      "short_name": "Projects",
+      "description": "View DigiCraft's portfolio",
+      "url": "/projects",
+      "icons": [{ "src": "/logo.svg", "sizes": "192x192" }]
+    }
+  ]
+} 
