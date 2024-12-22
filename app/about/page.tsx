@@ -2,7 +2,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FaLinkedinIn, FaGithub, FaInstagram, FaWhatsapp, FaEnvelope } from 'react-icons/fa'
+import { FaLinkedinIn, FaGithub, FaInstagram, FaWhatsapp, FaEnvelope, FaGlobe } from 'react-icons/fa'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { useRouter } from 'next/navigation'
@@ -137,7 +137,8 @@ const mainDeveloper = {
     instagram: "https://www.instagram.com/ayush.kr._singh/",
     github: "https://github.com/ayushkumarsingh2422005",
     whatsapp: "https://wa.me/+918299797516",
-    email: "ayushkumarsingh2422005@gmail.com"
+    email: "ayushkumarsingh2422005@gmail.com",
+    website: "https://ayush-intro.vercel.app/"
   }
 }
 
@@ -184,6 +185,17 @@ const otherTeamMembers = [
       linkedin: "https://www.linkedin.com/in/vikash-kumar-380b99292",
       instagram: "#",
       github: "https://github.com/RealityDenied" // no github
+    }
+  },
+  {
+    name: "Harshit",
+    role: "Web Developer + SEO",
+    image: "/team/harshit.jpg",
+    bio: "I build cool stufff",
+    social: {
+      linkedin: "https://www.linkedin.com/in/harshit-raj-805630247",
+      instagram: "https://www.instagram.com/horrid_harshitt",
+      github: "https://github.com/harshit960"
     }
   }
 
@@ -611,6 +623,12 @@ const TeamSection = () => (
                   className="hover:text-purple-500 transform hover:scale-110 transition-all text-3xl"
                 >
                   <FaEnvelope />
+                </Link>
+                <Link 
+                  href={mainDeveloper.social.website} 
+                  className="hover:text-purple-500 transform hover:scale-110 transition-all text-3xl"
+                >
+                  <FaGlobe />
                 </Link>
               </div>
             </div>
