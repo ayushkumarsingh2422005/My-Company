@@ -38,44 +38,56 @@ export default function AdminDashboard() {
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
             <button 
               onClick={() => handleNavigation('/admin/projects')}
-              className="p-4 bg-[#2a2a2a] rounded-lg border border-gray-700 hover:bg-[#3a3a3a] transition-colors"
+              className="p-4 bg-[#2a2a2a] rounded-lg border border-gray-700 hover:bg-[#3a3a3a] transition-all relative overflow-hidden group"
             >
-              <h3 className="text-lg font-semibold mb-2">Manage Projects</h3>
-              <p className="text-gray-400 text-sm">Add, edit, or remove projects from your portfolio</p>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <h3 className="text-lg font-semibold mb-2 relative z-10">Manage Projects</h3>
+              <p className="text-gray-400 text-sm relative z-10">Add, edit, or remove projects from your portfolio</p>
             </button>
             
             <button 
               onClick={() => handleNavigation('/admin/services')}
-              className="p-4 bg-[#2a2a2a] rounded-lg border border-gray-700 hover:bg-[#3a3a3a] transition-colors"
+              className="p-4 bg-[#2a2a2a] rounded-lg border border-gray-700 hover:bg-[#3a3a3a] transition-all relative overflow-hidden group"
             >
-              <h3 className="text-lg font-semibold mb-2">Manage Services</h3>
-              <p className="text-gray-400 text-sm">Update your service offerings and descriptions</p>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <h3 className="text-lg font-semibold mb-2 relative z-10">Manage Services</h3>
+              <p className="text-gray-400 text-sm relative z-10">Update your service offerings and descriptions</p>
             </button>
             
             <button 
               onClick={() => handleNavigation('/admin/testimonials')}
-              className="p-4 bg-[#2a2a2a] rounded-lg border border-gray-700 hover:bg-[#3a3a3a] transition-colors"
+              className="p-4 bg-[#2a2a2a] rounded-lg border border-gray-700 hover:bg-[#3a3a3a] transition-all relative overflow-hidden group"
             >
-              <h3 className="text-lg font-semibold mb-2">Testimonials</h3>
-              <p className="text-gray-400 text-sm">Manage client testimonials and reviews</p>
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-600/20 to-orange-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <h3 className="text-lg font-semibold mb-2 relative z-10">Testimonials</h3>
+              <p className="text-gray-400 text-sm relative z-10">Manage client testimonials and reviews</p>
+            </button>
+
+            <button 
+              onClick={() => handleNavigation('/admin/marketing')}
+              className="p-4 bg-[#2a2a2a] rounded-lg border border-gray-700 hover:bg-[#3a3a3a] transition-all relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <h3 className="text-lg font-semibold mb-2 relative z-10">Marketing</h3>
+              <p className="text-gray-400 text-sm relative z-10">Manage promotional banners and marketing content</p>
             </button>
             
             <button 
               onClick={() => handleNavigation('/admin/newsletter')}
-              className="p-4 bg-[#2a2a2a] rounded-lg border border-gray-700 hover:bg-[#3a3a3a] transition-colors relative overflow-hidden group"
+              className="p-4 bg-[#2a2a2a] rounded-lg border border-gray-700 hover:bg-[#3a3a3a] transition-all relative overflow-hidden group"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <h3 className="text-lg font-semibold mb-2">Newsletter</h3>
-              <p className="text-gray-400 text-sm">Manage newsletter subscribers and settings</p>
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-600/20 to-red-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <h3 className="text-lg font-semibold mb-2 relative z-10">Newsletter</h3>
+              <p className="text-gray-400 text-sm relative z-10">Manage newsletter subscribers and settings</p>
             </button>
 
             <button 
               onClick={() => handleNavigation('/admin/inquiries')}
-              className="p-4 bg-[#2a2a2a] rounded-lg border border-gray-700 hover:bg-[#3a3a3a] transition-colors relative overflow-hidden group"
+              className="p-4 bg-[#2a2a2a] rounded-lg border border-gray-700 hover:bg-[#3a3a3a] transition-all relative overflow-hidden group"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <h3 className="text-lg font-semibold mb-2">Client Inquiries</h3>
-              <p className="text-gray-400 text-sm">Manage and respond to project inquiries</p>
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <h3 className="text-lg font-semibold mb-2 relative z-10">Client Inquiries</h3>
+              <p className="text-gray-400 text-sm relative z-10">Manage and respond to project inquiries</p>
             </button>
           </div>
         </div>
