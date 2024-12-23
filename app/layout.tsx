@@ -7,7 +7,7 @@ import Script from 'next/script'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  metadataBase: new URL('https://digicraft.com'),
+  metadataBase: new URL('https://www.digicraft.one'),
   title: {
     default: 'DigiCraft - Digital Creative Studio | Web, Mobile & Cloud Solutions',
     template: '%s | DigiCraft - Digital Creative Studio'
@@ -32,7 +32,7 @@ export const metadata = {
     'DigiCraft',
     'DigiCraft Studio'
   ],
-  authors: [{ name: 'DigiCraft Team', url: 'https://digicraft.com/about' }],
+  authors: [{ name: 'DigiCraft Team', url: 'https://www.digicraft.one/about' }],
   creator: 'DigiCraft',
   publisher: 'DigiCraft Studio',
   formatDetection: {
@@ -62,7 +62,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://digicraft.com',
+    url: 'https://www.digicraft.one',
     siteName: 'DigiCraft - Digital Creative Studio',
     title: 'DigiCraft - Transform Your Digital Presence',
     description: 'Leading digital studio offering custom web development, mobile apps, cloud solutions, and UI/UX design. Get innovative digital solutions for your business.',
@@ -104,9 +104,9 @@ export const metadata = {
     bing: 'your-bing-verification-code',
   },
   alternates: {
-    canonical: 'https://digicraft.com',
+    canonical: 'https://www.digicraft.one',
     languages: {
-      'en-US': 'https://digicraft.com',
+      'en-US': 'https://www.digicraft.one',
     },
   },
   category: 'technology',
@@ -156,8 +156,8 @@ export default function RootLayout({
               '@type': 'Organization',
               name: 'DigiCraft',
               alternateName: 'DigiCraft Studio',
-              url: 'https://digicraft.com',
-              logo: 'https://digicraft.com/logo.svg',
+              url: 'https://www.digicraft.one',
+              logo: 'https://www.digicraft.one/logo.svg',
               sameAs: [
                 'https://twitter.com/digicraft',
                 'https://facebook.com/digicraft',
@@ -192,9 +192,9 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'ProfessionalService',
               name: 'DigiCraft - Digital Creative Studio',
-              image: 'https://digicraft.com/logo.svg',
-              '@id': 'https://digicraft.com',
-              url: 'https://digicraft.com',
+              image: 'https://www.digicraft.one/logo.svg',
+              '@id': 'https://www.digicraft.one',
+              url: 'https://www.digicraft.one',
               telephone: '+1-234-567-8900',
               priceRange: '₹₹₹',
               address: {

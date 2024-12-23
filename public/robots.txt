@@ -4,4 +4,4 @@ Disallow: /admin/
 Disallow: /api/
 
 # Sitemaps
-Sitemap: https://digicraft.com/sitemap.xml 
+Sitemap: https://www.digicraft.one/sitemap.xml 
