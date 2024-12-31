@@ -2,14 +2,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import confetti from 'canvas-confetti';
 
-const LoadingSpinner = () => (
-  <div className="flex items-center justify-center space-x-2 animate-pulse">
-    <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-    <div className="w-3 h-3 bg-pink-500 rounded-full"></div>
-    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-  </div>
-);
-
 const NewYearCelebration = () => {
   const [isVisible, setIsVisible] = useState(true);
 
@@ -22,7 +14,7 @@ const NewYearCelebration = () => {
         zIndex: 100,
       };
 
-      function fire(particleRatio: number, opts: any) {
+      function fire(particleRatio: number, opts: confetti.Options) {
         confetti({
           ...defaults,
           ...opts,
