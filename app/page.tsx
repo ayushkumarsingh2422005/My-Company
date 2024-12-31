@@ -8,6 +8,7 @@ import TechStack from '@/components/TechStack'
 import Testimonials from '@/components/Testimonials'
 import Footer from '@/components/Footer'
 import MarketingBanner from '@/components/MarketingBanner'
+import NewYearCelebration from '@/components/NewYearCelebration'
 import Link from 'next/link'
 import { FiArrowRight } from 'react-icons/fi'
 
@@ -115,6 +116,9 @@ export default function Home() {
       />
       <GradientOrbs />
       <GridBackground />
+      
+      {/* New Year Celebration */}
+      <NewYearCelebration />
       
       {/* Content */}
       <div className="relative">
