@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 
 // URL mappings stored directly in code
 const urlMappings = {
-  "1": "https://www.digicraft.one"
+  "1": "https://www.digicraft.one",
+  "business-card": "https://www.digicraft.one"
 };
 
 export async function GET(request: NextRequest) {
