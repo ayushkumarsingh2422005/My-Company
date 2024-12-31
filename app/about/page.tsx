@@ -197,6 +197,17 @@ const otherTeamMembers = [
       instagram: "https://www.instagram.com/horrid_harshitt",
       github: "https://github.com/harshit960"
     }
+  },
+  {
+    name: "Adarsh Kumar Jha",
+    role: "Web Developer + SEO",
+    image: "/team/adarsh.jpg",
+    bio: "JustABasicCoder trying to fix Real word Problems.",
+    social: {
+      linkedin: "https://www.linkedin.com/in/adarsh-kumar-jha-306b81245",
+      instagram: "https://www.instagram.com/adarsh_addi/",
+      github: "https://github.com/adarsh-kumar-jha"
+    }
   }
 
 ]
