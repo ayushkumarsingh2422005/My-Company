@@ -6,8 +6,11 @@ import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
 
+const siteUrl = 'https://www.digicraft.one';
+const previewImage = `${siteUrl}/preview.png`; // Make sure to add this image to public folder
+
 export const metadata = {
-  metadataBase: new URL('https://www.digicraft.one'),
+  metadataBase: new URL(siteUrl),
   title: {
     default: 'DigiCraft - Digital Creative Studio | Web, Mobile & Cloud Solutions',
     template: '%s | DigiCraft - Digital Creative Studio'
@@ -32,7 +35,7 @@ export const metadata = {
     'DigiCraft',
     'DigiCraft Studio'
   ],
-  authors: [{ name: 'DigiCraft Team', url: 'https://www.digicraft.one/about' }],
+  authors: [{ name: 'DigiCraft Team', url: siteUrl + '/about' }],
   creator: 'DigiCraft',
   publisher: 'DigiCraft Studio',
   formatDetection: {
@@ -65,17 +68,17 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://www.digicraft.one',
+    url: siteUrl,
     siteName: 'DigiCraft - Digital Creative Studio',
     title: 'DigiCraft - Transform Your Digital Presence',
     description: 'Leading digital studio offering custom web development, mobile apps, cloud solutions, and UI/UX design. Get innovative digital solutions for your business.',
     images: [
       {
-        url: '/logo.svg',
+        url: previewImage,
         width: 1200,
         height: 630,
         alt: 'DigiCraft - Digital Creative Studio',
-        type: 'image/svg+xml',
+        type: 'image/png',
       }
     ],
   },
@@ -83,7 +86,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'DigiCraft - Transform Your Digital Presence',
     description: 'Leading digital studio offering custom web development, mobile apps, cloud solutions, and UI/UX design. Get innovative digital solutions for your business.',
-    images: ['/logo.svg'],
+    images: [previewImage],
     creator: '@digicraft',
     site: '@digicraft',
     creatorId: '1467726470533754880',
@@ -107,9 +110,9 @@ export const metadata = {
     bing: 'your-bing-verification-code',
   },
   alternates: {
-    canonical: 'https://www.digicraft.one',
+    canonical: siteUrl,
     languages: {
-      'en-US': 'https://www.digicraft.one',
+      'en-US': siteUrl,
     },
   },
   category: 'technology',
@@ -144,12 +147,26 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/logo.svg" />
         <link rel="mask-icon" href="/logo.svg" color="#A855F7" />
         
+        {/* WhatsApp and Open Graph specific meta tags */}
+        <meta property="og:image" content={previewImage} />
+        <meta property="og:image:secure_url" content={previewImage} />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="DigiCraft - Digital Creative Studio" />
+        
+        {/* WhatsApp specific */}
+        <meta property="og:site_name" content="DigiCraft" />
+        <meta property="og:title" content="DigiCraft - Digital Creative Studio" />
+        <meta property="og:description" content="Transform your digital presence with our innovative solutions." />
+        
         {/* Preconnect to important domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
         {/* Preload critical assets */}
         <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href={previewImage} as="image" />
       </head>
       <body className={`${inter.className} bg-[#0f0f0f] text-white`}>
         <Providers>{children}</Providers>
@@ -165,8 +182,9 @@ export default function RootLayout({
               '@type': 'Organization',
               name: 'DigiCraft',
               alternateName: 'DigiCraft Studio',
-              url: 'https://www.digicraft.one',
-              logo: 'https://www.digicraft.one/logo.svg',
+              url: siteUrl,
+              logo: `${siteUrl}/logo.svg`,
+              image: previewImage,
               sameAs: [
                 'https://twitter.com/digicraft',
                 'https://facebook.com/digicraft',
@@ -201,9 +219,9 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'ProfessionalService',
               name: 'DigiCraft - Digital Creative Studio',
-              image: 'https://www.digicraft.one/logo.svg',
-              '@id': 'https://www.digicraft.one',
-              url: 'https://www.digicraft.one',
+              image: previewImage,
+              '@id': siteUrl,
+              url: siteUrl,
               telephone: '+1-234-567-8900',
               priceRange: '₹₹₹',
               address: {
