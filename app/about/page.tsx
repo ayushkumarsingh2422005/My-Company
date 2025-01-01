@@ -208,6 +208,17 @@ const otherTeamMembers = [
       instagram: "https://www.instagram.com/adarsh_addi/",
       github: "https://github.com/adarsh-kumar-jha"
     }
+  },
+  {
+    name: "Aditya Arayan",
+    role: "AI/ML",
+    image: "/team/aditya.jpg",
+    bio: "2+ years of experience in AI/ML, specializing in NLP, Predictive Analytics, and Data Engineering.",
+    social: {
+      linkedin: "https://www.linkedin.com/in/aditya-aryan-4a5195200",
+      instagram: "https://www.instagram.com/ad_aryan_offcl",
+      github: "https://github.com/Ad-Tech1009" // no github
+    }
   }
 
 ]
