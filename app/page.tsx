@@ -5,6 +5,7 @@ import Hero from '@/components/Hero'
 import Navbar from '@/components/Navbar'
 import Projects from '@/components/Projects'
 import TechStack from '@/components/TechStack'
+import Products from '@/components/Products'
 import Testimonials from '@/components/Testimonials'
 import Footer from '@/components/Footer'
 import MarketingBanner from '@/components/MarketingBanner'
@@ -197,6 +198,7 @@ export default function Home() {
           )}
 
           <TechStack />
+          <Products />
           <Projects />
           <Testimonials />
           <Footer />

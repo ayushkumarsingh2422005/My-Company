@@ -37,6 +37,15 @@ export default function AdminDashboard() {
           {/* Navigation Section */}
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
             <button 
+              onClick={() => handleNavigation('/admin/products')}
+              className="p-4 bg-[#2a2a2a] rounded-lg border border-gray-700 hover:bg-[#3a3a3a] transition-all relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <h3 className="text-lg font-semibold mb-2 relative z-10">Manage Products</h3>
+              <p className="text-gray-400 text-sm relative z-10">Add, edit, or remove products from your portfolio</p>
+            </button>
+
+            <button 
               onClick={() => handleNavigation('/admin/projects')}
               className="p-4 bg-[#2a2a2a] rounded-lg border border-gray-700 hover:bg-[#3a3a3a] transition-all relative overflow-hidden group"
             >
