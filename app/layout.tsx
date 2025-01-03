@@ -5,6 +5,7 @@ import ChatBot from '@/components/ChatBot'
 import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS
 
 const siteUrl = 'https://www.digicraft.one';
 const previewImage = `${siteUrl}/preview.png`; // Make sure to add this image to public folder
@@ -136,6 +137,24 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {/* Google Analytics */}
+        {GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_MEASUREMENT_ID}');
+              `}
+            </Script>
+          </>
+        )}
+
         <meta name="theme-color" content="#0f0f0f" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -222,15 +241,15 @@ export default function RootLayout({
               image: previewImage,
               '@id': siteUrl,
               url: siteUrl,
-              telephone: '+1-234-567-8900',
+              telephone: '+918299797516',
               priceRange: '₹₹₹',
               address: {
-                '@type': 'PostalAddress',
-                streetAddress: 'Your Street Address',
-                addressLocality: 'Your City',
-                addressRegion: 'Your Region',
-                postalCode: 'Your Postal Code',
-                addressCountry: 'Your Country'
+                '@type': 'Bharehata',
+                streetAddress: 'Jamui',
+                addressLocality: 'Chunar',
+                addressRegion: 'Mirzapur',
+                postalCode: '231304',
+                addressCountry: 'India'
               },
               geo: {
                 '@type': 'GeoCoordinates',
