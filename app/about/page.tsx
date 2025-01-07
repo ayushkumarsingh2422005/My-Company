@@ -219,6 +219,17 @@ const otherTeamMembers = [
       instagram: "https://www.instagram.com/ad_aryan_offcl",
       github: "https://github.com/Ad-Tech1009" // no github
     }
+  },
+  {
+    name: "Anshu Raj",
+    role: "Android Developer",
+    image: "/team/anshu.jpg",
+    bio: "5+ years experience in Native Development | Unity 3D developer(C#)",
+    social: {
+      linkedin: "https://www.linkedin.com/in/anshu-raj-142b55253",
+      instagram: "https://www.instagram.com/ig_anshuraj_",
+      github: "https://github.com/MrAnshuRaj" // no github
+    }
   }
 
 ]

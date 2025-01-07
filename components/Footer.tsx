@@ -95,7 +95,7 @@ const Footer = () => {
                 <FaGithub size={24} />
               </motion.a>
               <motion.a
-                href="https://www.linkedin.com/in/its-ayushkrsingh/"
+                href="https://www.linkedin.com/company/digicraft-one"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}

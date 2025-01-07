@@ -19,7 +19,7 @@ const testimonials = [
     author: "Ayush Kumar Singh",
     role: "Owner of Codophile.in",
     rating: 5,
-    image: "/testimonials/avatar2.png"
+    image: "/testimonials/avatar1.png"
   },
   {
     id: 3,
