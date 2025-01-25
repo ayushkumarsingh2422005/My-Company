@@ -68,13 +68,37 @@ const GlowingOrb = ({ color, delay, duration, x }: { color: string; delay: numbe
 
 // Generate random glowing orbs
 const PermanentOrbs = () => {
-  const orbs = Array.from({ length: 50 }).map((_, i) => ({
-    id: i,
-    color: ['#FF9933', '#FFFFFF', '#138808'][Math.floor(Math.random() * 3)],
-    delay: Math.random() * 15,
-    duration: 20 + Math.random() * 30, // Slower, more graceful fall
-    x: (window.innerWidth * (i % 25)) / 25 + (Math.random() * 50 - 25)
-  }));
+  const [orbs, setOrbs] = useState<Array<{
+    id: number;
+    color: string;
+    delay: number;
+    duration: number;
+    x: number;
+  }>>([]);
+
+  useEffect(() => {
+    // Generate orbs only on client side
+    const generateOrbs = () => {
+      const windowWidth = window.innerWidth;
+      return Array.from({ length: 50 }).map((_, i) => ({
+        id: i,
+        color: ['#FF9933', '#FFFFFF', '#138808'][Math.floor(Math.random() * 3)],
+        delay: Math.random() * 15,
+        duration: 20 + Math.random() * 30,
+        x: (windowWidth * (i % 25)) / 25 + (Math.random() * 50 - 25)
+      }));
+    };
+
+    setOrbs(generateOrbs());
+
+    // Optional: Update orbs on window resize
+    const handleResize = () => {
+      setOrbs(generateOrbs());
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-10">
