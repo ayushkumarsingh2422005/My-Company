@@ -12,7 +12,7 @@ import MarketingBanner from '@/components/MarketingBanner'
 // import NewYearCelebration from '@/components/NewYearCelebration'
 import Link from 'next/link'
 import { FiArrowRight } from 'react-icons/fi'
-import RepublicDayCelebration from '@/components/RepublicDayCelebration'
+// import RepublicDayCelebration from '@/components/RepublicDayCelebration'
 
 // Background Components
 const GradientOrbs = () => (
@@ -120,7 +120,7 @@ export default function Home() {
       <GridBackground />
       
       {/* Republic Day Celebration */}
-      <RepublicDayCelebration />
+      {/* <RepublicDayCelebration /> */}
       
       {/* Content */}
       <div className="relative">
