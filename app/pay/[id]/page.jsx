@@ -5,39 +5,35 @@ import { FiCopy, FiDownload, FiMail, FiCalendar, FiUser, FiMapPin, FiPhone } fro
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { generateReceipt } from '@/app/utils/generateReceipt'
-import { Transaction } from '@/app/types/transaction'
 import Link from 'next/link'
 
 // Background Components
-const GradientOrbs = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl" />
-    <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl" />
-    <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl" />
-  </div>
-)
-
-const GridBackground = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-    <div className="absolute inset-0" 
-      style={{
-        backgroundImage: `linear-gradient(90deg, rgba(123,49,255,0.1) 1px, transparent 1px),
-                         linear-gradient(rgba(123,49,255,0.1) 1px, transparent 1px)`,
-        backgroundSize: '4rem 4rem',
-      }}
-    />
-  </div>
-)
-
-// Info Card Component
-interface InfoCardProps {
-  icon: React.ElementType;
-  label: string;
-  value: string;
-  copyable?: boolean;
+const GradientOrbs = () => {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl" />
+      <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl" />
+    </div>
+  )
 }
 
-const InfoCard = ({ icon: Icon, label, value, copyable = false }: InfoCardProps) => {
+const GridBackground = () => {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+      <div className="absolute inset-0" 
+        style={{
+          backgroundImage: `linear-gradient(90deg, rgba(123,49,255,0.1) 1px, transparent 1px),
+                           linear-gradient(rgba(123,49,255,0.1) 1px, transparent 1px)`,
+          backgroundSize: '4rem 4rem',
+        }}
+      />
+    </div>
+  )
+}
+
+// Info Card Component
+const InfoCard = ({ icon: Icon, label, value, copyable = false }) => {
   const handleCopy = () => {
     navigator.clipboard.writeText(value)
   }
@@ -61,14 +57,8 @@ const InfoCard = ({ icon: Icon, label, value, copyable = false }: InfoCardProps)
   )
 }
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
-
-export default function PaymentDetails({ params }: PageProps) {
-  const [transaction, setTransaction] = useState<Transaction | null>(null)
+const PaymentDetails = ({ params }) => {
+  const [transaction, setTransaction] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
@@ -83,7 +73,7 @@ export default function PaymentDetails({ params }: PageProps) {
           setError('Transaction not found')
         }
       } catch (error) {
-        setError('Failed to load transaction details' + error)
+        setError('Failed to load transaction details')
       } finally {
         setLoading(false)
       }
@@ -286,3 +276,5 @@ export default function PaymentDetails({ params }: PageProps) {
     </>
   )
 }
+
+export default PaymentDetails

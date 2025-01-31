@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import Transaction from '@/app/models/Transiction'
 import dbConnect from '@/app/lib/mongodb'
 
-export async function GET(){
+export async function GET(request, { params }) {
   try {
     await dbConnect()
 

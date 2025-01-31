@@ -29,6 +29,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "types/**/*.d.ts"
-, "app/api/transactions/[id]/route.js"  ],
+, "app/api/transactions/[id]/route.js", "app/pay/[id]/page.jsx"  ],
   "exclude": ["node_modules"]
 }
