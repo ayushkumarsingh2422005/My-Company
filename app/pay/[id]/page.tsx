@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import { FiCopy, FiDownload, FiMail, FiCalendar, FiUser, FiMapPin, FiPhone } from 'react-icons/fi'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { generateReceipt } from '@/app/utils/generateReceipt'
+import { Transaction } from '@/app/types/transaction'
 
 // Background Components
 const GradientOrbs = () => (
@@ -59,7 +61,7 @@ const InfoCard = ({ icon: Icon, label, value, copyable = false }: InfoCardProps)
 }
 
 export default function PaymentDetails({ params }: { params: { id: string } }) {
-  const [transaction, setTransaction] = useState<any>(null)
+  const [transaction, setTransaction] = useState<Transaction | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
@@ -84,8 +86,9 @@ export default function PaymentDetails({ params }: { params: { id: string } }) {
   }, [params.id])
 
   const downloadReceipt = () => {
-    // This is a placeholder - implement actual receipt download functionality
-    alert('Receipt download functionality will be implemented')
+    if (transaction) {
+      generateReceipt(transaction)
+    }
   }
 
   if (loading) {
