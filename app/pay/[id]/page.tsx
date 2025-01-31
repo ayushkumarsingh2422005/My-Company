@@ -65,10 +65,9 @@ interface PageProps {
   params: {
     id: string;
   };
-  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-export default function PaymentDetails({ params, searchParams }: PageProps) {
+export default function PaymentDetails({ params }: PageProps) {
   const [transaction, setTransaction] = useState<Transaction | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
