@@ -144,6 +144,9 @@ export default function RootLayout({
               src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
               strategy="afterInteractive"
             />
+            <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5986104671426760"
+              crossOrigin="anonymous"
+            />
             <Script id="google-analytics" strategy="afterInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];
@@ -159,13 +162,13 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <link rel="manifest" href="/manifest.json" />
-        
+
         {/* Explicit favicon declarations */}
         <link rel="icon" type="image/svg+xml" href="/logo.svg" />
         <link rel="alternate icon" type="image/svg+xml" href="/logo.svg" />
         <link rel="apple-touch-icon" href="/logo.svg" />
         <link rel="mask-icon" href="/logo.svg" color="#A855F7" />
-        
+
         {/* WhatsApp and Open Graph specific meta tags */}
         <meta property="og:image" content={previewImage} />
         <meta property="og:image:secure_url" content={previewImage} />
@@ -173,16 +176,16 @@ export default function RootLayout({
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="DigiCraft - Digital Creative Studio" />
-        
+
         {/* WhatsApp specific */}
         <meta property="og:site_name" content="DigiCraft" />
         <meta property="og:title" content="DigiCraft - Digital Creative Studio" />
         <meta property="og:description" content="Transform your digital presence with our innovative solutions." />
-        
+
         {/* Preconnect to important domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
+
         {/* Preload critical assets */}
         <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href={previewImage} as="image" />
@@ -190,7 +193,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-[#0f0f0f] text-white`}>
         <Providers>{children}</Providers>
         <ChatBot />
-        
+
         {/* Structured Data */}
         <Script
           id="structured-data"
@@ -228,7 +231,7 @@ export default function RootLayout({
             })
           }}
         />
-        
+
         {/* Local Business Structured Data */}
         <Script
           id="local-business-data"
