@@ -2,9 +2,15 @@ import { NextResponse } from 'next/server'
 import Transaction from '@/app/models/Transiction'
 import dbConnect from '@/app/lib/mongodb'
 
+type Props = {
+  params: {
+    id: string
+  }
+}
+
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: Props
 ) {
   try {
     await dbConnect()
