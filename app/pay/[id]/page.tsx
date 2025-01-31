@@ -78,7 +78,7 @@ export default function PaymentDetails({ params }: { params: Promise<{ id: strin
           setError('Transaction not found')
         }
       } catch (error) {
-        setError('Failed to load transaction details')
+        setError('Failed to load transaction details' + error)
       } finally {
         setLoading(false)
       }
