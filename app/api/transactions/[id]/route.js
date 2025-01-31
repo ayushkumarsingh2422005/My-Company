@@ -2,16 +2,7 @@ import { NextResponse } from 'next/server'
 import Transaction from '@/app/models/Transiction'
 import dbConnect from '@/app/lib/mongodb'
 
-interface RouteContext {
-  params: {
-    id: string;
-  };
-}
-
-export async function GET(
-  _request: Request,
-  { params }: RouteContext
-): Promise<NextResponse> {
+export async function GET(){
   try {
     await dbConnect()
 
