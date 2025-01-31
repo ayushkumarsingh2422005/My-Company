@@ -77,7 +77,7 @@ export default function PaymentDetails({ params }: { params: { id: string } }) {
           setError('Transaction not found')
         }
       } catch (error) {
-        setError('Failed to load transaction details')
+        setError('Failed to load transaction details' + error)
       } finally {
         setLoading(false)
       }
