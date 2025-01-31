@@ -1,15 +1,21 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import Transaction from '@/app/models/Transiction'
 import dbConnect from '@/app/lib/mongodb'
 
+interface RouteContext {
+  params: {
+    id: string;
+  };
+}
+
 export async function GET(
-  request: NextRequest,
-  context: { params: { id: string } }
-) {
+  _request: Request,
+  { params }: RouteContext
+): Promise<NextResponse> {
   try {
     await dbConnect()
 
-    const transaction = await Transaction.findById(context.params.id)
+    const transaction = await Transaction.findById(params.id)
     if (!transaction) {
       return NextResponse.json(
         { success: false, message: 'Transaction not found' },

@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState, use } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { FiCopy, FiDownload, FiMail, FiCalendar, FiUser, FiMapPin, FiPhone } from 'react-icons/fi'
 import Navbar from '@/components/Navbar'
@@ -61,8 +61,7 @@ const InfoCard = ({ icon: Icon, label, value, copyable = false }: InfoCardProps)
   )
 }
 
-export default function PaymentDetails({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params)
+export default function PaymentDetails({ params }: { params: { id: string } }) {
   const [transaction, setTransaction] = useState<Transaction | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -70,7 +69,7 @@ export default function PaymentDetails({ params }: { params: Promise<{ id: strin
   useEffect(() => {
     const fetchTransaction = async () => {
       try {
-        const response = await fetch(`/api/transactions/${id}`)
+        const response = await fetch(`/api/transactions/${params.id}`)
         const data = await response.json()
         if (data.success) {
           setTransaction(data.transaction)
@@ -78,14 +77,14 @@ export default function PaymentDetails({ params }: { params: Promise<{ id: strin
           setError('Transaction not found')
         }
       } catch (error) {
-        setError('Failed to load transaction details' + error)
+        setError('Failed to load transaction details')
       } finally {
         setLoading(false)
       }
     }
 
     fetchTransaction()
-  }, [id])
+  }, [params.id])
 
   const downloadReceipt = () => {
     if (transaction) {
