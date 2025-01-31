@@ -61,7 +61,14 @@ const InfoCard = ({ icon: Icon, label, value, copyable = false }: InfoCardProps)
   )
 }
 
-export default function PaymentDetails({ params }: { params: { id: string } }) {
+interface PageProps {
+  params: {
+    id: string;
+  };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
+export default function PaymentDetails({ params, searchParams }: PageProps) {
   const [transaction, setTransaction] = useState<Transaction | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
