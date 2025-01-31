@@ -1,11 +1,12 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, use } from 'react'
 import { motion } from 'framer-motion'
 import { FiCopy, FiDownload, FiMail, FiCalendar, FiUser, FiMapPin, FiPhone } from 'react-icons/fi'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { generateReceipt } from '@/app/utils/generateReceipt'
 import { Transaction } from '@/app/types/transaction'
+import Link from 'next/link'
 
 // Background Components
 const GradientOrbs = () => (
@@ -60,7 +61,8 @@ const InfoCard = ({ icon: Icon, label, value, copyable = false }: InfoCardProps)
   )
 }
 
-export default function PaymentDetails({ params }: { params: { id: string } }) {
+export default function PaymentDetails({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params)
   const [transaction, setTransaction] = useState<Transaction | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -68,7 +70,7 @@ export default function PaymentDetails({ params }: { params: { id: string } }) {
   useEffect(() => {
     const fetchTransaction = async () => {
       try {
-        const response = await fetch(`/api/transactions/${params.id}`)
+        const response = await fetch(`/api/transactions/${id}`)
         const data = await response.json()
         if (data.success) {
           setTransaction(data.transaction)
@@ -83,7 +85,7 @@ export default function PaymentDetails({ params }: { params: { id: string } }) {
     }
 
     fetchTransaction()
-  }, [params.id])
+  }, [id])
 
   const downloadReceipt = () => {
     if (transaction) {
@@ -128,12 +130,12 @@ export default function PaymentDetails({ params }: { params: { id: string } }) {
             <div className="glass-effect p-8 rounded-xl text-center">
               <h1 className="text-2xl font-bold text-red-500 mb-4">Error</h1>
               <p className="text-gray-400">{error || 'Transaction not found'}</p>
-              <a
+              <Link
                 href="/"
                 className="inline-block mt-6 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all"
               >
                 Return Home
-              </a>
+              </Link>
             </div>
           </div>
         </main>
