@@ -8,7 +8,7 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline'
 const products = [
   {
     id: 1,
-    title: "DigiCraft Color Picker",
+    title: "Pixel",
     description: "Extract and analyze colors from any image with precision and ease. Perfect for designers and developers.",
     image: "/products/color-picker.png",
     link: "https://pixel.digicraft.one/",
@@ -22,32 +22,18 @@ const products = [
   },
   {
     id: 2,
-    title: "DigiCraft Code Editor",
-    description: "A powerful, cloud-based code editor with real-time collaboration and AI assistance.",
-    image: "/products/color-picker.png",
-    link: "#",
+    title: "Excela",
+    description: "Simplify project setup with Excela. Quickly configure backend, frontend, or full-stack projects using tools like TailwindCSS, Vite, and MERN stack.",
+    image: "/products/excela.webp",
+    link: "https://www.npmjs.com/package/excela",
     features: [
-      "Real-time Collaboration",
-      "AI Code Assistance",
-      "Multi-language Support",
-      "Git Integration"
+      "Quick Project Initialization",
+      "MERN Stack Setup",
+      "Frontend Tools Integration",
+      "Customizable Configurations"
     ],
     gradient: "from-blue-500 to-cyan-500"
   },
-  {
-    id: 3,
-    title: "DigiCraft Design System",
-    description: "A comprehensive design system for building modern web applications with ease.",
-    image: "/products/color-picker.png",
-    link: "#",
-    features: [
-      "Component Library",
-      "Design Tokens",
-      "Responsive Layouts",
-      "Theme Customization"
-    ],
-    gradient: "from-emerald-500 to-teal-500"
-  }
 ]
 
 interface ProductCardProps {
