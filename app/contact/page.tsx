@@ -388,7 +388,7 @@ export default function Contact() {
                   </a>
 
                   <a 
-                    href="mailto:ayush.mauraya.dev@gmail.com"
+                    href="mailto:hello@digicraft.one"
                     className="flex items-start p-4 rounded-lg hover:bg-white/5 transition-colors group"
                   >
                     <div className="p-3 rounded-full bg-purple-500/10 text-purple-500 group-hover:bg-purple-500/20">
@@ -398,7 +398,7 @@ export default function Contact() {
                     </div>
                     <div className="ml-4">
                       <h3 className="font-semibold mb-1">Email</h3>
-                      <p className="text-gray-400">ayush.mauraya.dev@gmail.com</p>
+                      <p className="text-gray-400">hello@digicraft.one</p>
                       <p className="text-sm text-gray-500 mt-1">We&apos;ll respond within 24 hours</p>
                     </div>
                   </a>

@@ -137,7 +137,7 @@ const mainDeveloper = {
     instagram: "https://www.instagram.com/ayush.kr._singh/",
     github: "https://github.com/ayushkumarsingh2422005",
     whatsapp: "https://wa.me/+918299797516",
-    email: "ayushkumarsingh2422005@gmail.com",
+    email: "ayush.kumar@digicraft.one",
     website: "https://ayush-intro.vercel.app/"
   }
 }

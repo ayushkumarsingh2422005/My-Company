@@ -104,7 +104,7 @@ const Footer = () => {
                 <FaLinkedinIn size={24} />
               </motion.a>
               <motion.a
-                href="https://www.instagram.com/ayush.kr._singh/"
+                href="https://www.instagram.com/digicraft.one/"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
@@ -113,7 +113,7 @@ const Footer = () => {
                 <FaInstagram size={24} />
               </motion.a>
               <motion.a
-                href="https://wa.me/+918299797516"
+                href="https://chat.whatsapp.com/LsdAmwogrUkB2cNQ7MWKtQ"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
@@ -122,7 +122,7 @@ const Footer = () => {
                 <FaWhatsapp size={24} />
               </motion.a>
               <motion.a
-                href="mailto:ayush.mauraya.dev@gmail.com"
+                href="mailto:hello@digicraft.one"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
