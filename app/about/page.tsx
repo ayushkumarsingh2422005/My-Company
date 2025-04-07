@@ -230,7 +230,18 @@ const otherTeamMembers = [
       instagram: "https://www.instagram.com/ig_anshuraj_",
       github: "https://github.com/MrAnshuRaj" // no github
     }
-  }
+  },
+  {
+    name: "Priya Raj",
+    role: "UI/UX + Mern",
+    image: "/team/priyaraj.jpg",
+    bio: "2+ years experience Web Devlopemt",
+    social: {
+      linkedin: "https://www.linkedin.com/in/priya-raj-4b0380273/",
+      instagram: "https://www.instagram.com/satyam_tiwari87/",
+      github: "https://github.com/satyam969" // no github
+    }
+  },
 
 ]
 
