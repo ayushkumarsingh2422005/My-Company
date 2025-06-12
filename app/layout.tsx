@@ -182,6 +182,9 @@ export default function RootLayout({
         <meta property="og:title" content="DigiCraft - Digital Creative Studio" />
         <meta property="og:description" content="Transform your digital presence with our innovative solutions." />
 
+        {/* Meta business */}
+        <meta name="facebook-domain-verification" content="qcxltqxjocup0be2pmbw7fg8rjr57n" />
+
         {/* Preconnect to important domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

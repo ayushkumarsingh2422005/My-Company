@@ -52,10 +52,4 @@
   <circle cx="80" cy="50" r="2" fill="#EC4899" />
   
   <!-- Connection Lines -->
-  <path
-    d="M27 50 L48 50"
-    stroke="url(#mainGradient)"
-    stroke-width="1"
-    stroke-dasharray="2 2"
-  />
 </svg> 
