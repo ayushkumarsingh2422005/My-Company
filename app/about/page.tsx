@@ -143,17 +143,17 @@ const mainDeveloper = {
 }
 
 const otherTeamMembers = [
-  {
-    name: "Sonu Hansda",
-    role: "Web/App Developer + DevOps",
-    image: "/team/sonu.png",
-    bio: "Full-stack developer with 6+ years of experience, specializing in frameworks like MERN, Django, Next.js, and Flutter, with expertise in DevOps.",
-    social: {
-      linkedin: "https://www.linkedin.com/in/sonu-hansda",
-      instagram: "https://www.instagram.com/_sonu.hansda",
-      github: "https://www.github.com/Sonu-Hansda"
-    }
-  },
+  // {
+  //   name: "Sonu Hansda",
+  //   role: "Web/App Developer + DevOps",
+  //   image: "/team/sonu.png",
+  //   bio: "Full-stack developer with 6+ years of experience, specializing in frameworks like MERN, Django, Next.js, and Flutter, with expertise in DevOps.",
+  //   social: {
+  //     linkedin: "https://www.linkedin.com/in/sonu-hansda",
+  //     instagram: "https://www.instagram.com/_sonu.hansda",
+  //     github: "https://www.github.com/Sonu-Hansda"
+  //   }
+  // },
   {
     name: "Raj Aryan",
     role: "Digital Marketing",
@@ -176,50 +176,50 @@ const otherTeamMembers = [
       github: "#" // no github
     }
   },
-  {
-    name: "Vikash Kumar",
-    role: "Game Developer",
-    image: "/team/vikash.jpg",
-    bio: "3+ Years in Unity Game Development , Blender, C#,C++ , OPENGL ,Unity framework.",
-    social: {
-      linkedin: "https://www.linkedin.com/in/vikash-kumar-380b99292",
-      instagram: "#",
-      github: "https://github.com/RealityDenied" // no github
-    }
-  },
-  {
-    name: "Harshit",
-    role: "Web Developer + SEO",
-    image: "/team/harshit.jpg",
-    bio: "I build cool stufff",
-    social: {
-      linkedin: "https://www.linkedin.com/in/harshit-raj-805630247",
-      instagram: "https://www.instagram.com/horrid_harshitt",
-      github: "https://github.com/harshit960"
-    }
-  },
-  {
-    name: "Adarsh Kumar Jha",
-    role: "Web Developer + SEO",
-    image: "/team/adarsh.jpg",
-    bio: "JustABasicCoder trying to fix Real word Problems.",
-    social: {
-      linkedin: "https://www.linkedin.com/in/adarsh-kumar-jha-306b81245",
-      instagram: "https://www.instagram.com/adarsh_addi/",
-      github: "https://github.com/adarsh-kumar-jha"
-    }
-  },
-  {
-    name: "Aditya Arayan",
-    role: "AI/ML",
-    image: "/team/aditya.jpg",
-    bio: "2+ years of experience in AI/ML, specializing in NLP, Predictive Analytics, and Data Engineering.",
-    social: {
-      linkedin: "https://www.linkedin.com/in/aditya-aryan-4a5195200",
-      instagram: "https://www.instagram.com/ad_aryan_offcl",
-      github: "https://github.com/Ad-Tech1009" // no github
-    }
-  },
+  // {
+  //   name: "Vikash Kumar",
+  //   role: "Game Developer",
+  //   image: "/team/vikash.jpg",
+  //   bio: "3+ Years in Unity Game Development , Blender, C#,C++ , OPENGL ,Unity framework.",
+  //   social: {
+  //     linkedin: "https://www.linkedin.com/in/vikash-kumar-380b99292",
+  //     instagram: "#",
+  //     github: "https://github.com/RealityDenied" // no github
+  //   }
+  // },
+  // {
+  //   name: "Harshit",
+  //   role: "Web Developer + SEO",
+  //   image: "/team/harshit.jpg",
+  //   bio: "I build cool stufff",
+  //   social: {
+  //     linkedin: "https://www.linkedin.com/in/harshit-raj-805630247",
+  //     instagram: "https://www.instagram.com/horrid_harshitt",
+  //     github: "https://github.com/harshit960"
+  //   }
+  // },
+  // {
+  //   name: "Adarsh Kumar Jha",
+  //   role: "Web Developer + SEO",
+  //   image: "/team/adarsh.jpg",
+  //   bio: "JustABasicCoder trying to fix Real word Problems.",
+  //   social: {
+  //     linkedin: "https://www.linkedin.com/in/adarsh-kumar-jha-306b81245",
+  //     instagram: "https://www.instagram.com/adarsh_addi/",
+  //     github: "https://github.com/adarsh-kumar-jha"
+  //   }
+  // },
+  // {
+  //   name: "Aditya Arayan",
+  //   role: "AI/ML",
+  //   image: "/team/aditya.jpg",
+  //   bio: "2+ years of experience in AI/ML, specializing in NLP, Predictive Analytics, and Data Engineering.",
+  //   social: {
+  //     linkedin: "https://www.linkedin.com/in/aditya-aryan-4a5195200",
+  //     instagram: "https://www.instagram.com/ad_aryan_offcl",
+  //     github: "https://github.com/Ad-Tech1009" // no github
+  //   }
+  // },
   {
     name: "Anshu Raj",
     role: "Android Developer",
@@ -240,6 +240,17 @@ const otherTeamMembers = [
       linkedin: "https://www.linkedin.com/in/priya-raj-4b0380273/",
       instagram: "https://www.instagram.com/satyam_tiwari87/",
       github: "https://github.com/satyam969" // no github
+    }
+  },
+  {
+    name: "Mohak Raj",
+    role: "UI/UX + Web + App",
+    image: "/team/mohakraj.jpg",
+    bio: "3+ years experience Software Devlopemt",
+    social: {
+      linkedin: "http://linkedin.com/in/mohak-raj-65a921309",
+      instagram: "http://instagram.com/_mohak.04",
+      github: "https://github.com/mohak-git" // no github
     }
   },
 
