@@ -6,7 +6,7 @@ export function middleware(request: NextRequest) {
   // console.log(hostname=="http://localhost:5173");
   
   // Allow access from media.digicraft.one or localhost/127.0.0.1:5173
-  if (hostname === 'media.digicraft.one' || hostname === 'http://127.0.0.1:5173' || hostname === 'http://localhost:5173') {
+  if (hostname === 'https://media.digicraft.one' || hostname === 'http://127.0.0.1:5173' || hostname === 'http://localhost:5173') {
     // For CORS preflight requests
     console.log(request.method);
     if (request.method === 'OPTIONS') {
