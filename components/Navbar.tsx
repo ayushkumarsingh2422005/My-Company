@@ -19,7 +19,7 @@ const navItems = [
 const productDropdownItems = [
   { name: "Marketplace", href: "https://marketplace.digicraft.one", logo: "https://marketplace.digicraft.one/logo.svg" },
   { name: "Dbdash", href: "https://dbdash.live", logo: "https://www.dbdash.live/logo_noBg.png" },
-  { name: "Media", href: "https://media.digicraft.one", logo: "https://media.digicraft.one/img/logo.png" },
+  { name: "Media", href: "https://media.digicraft.one", logo: "https://media.digicraft.one/logo.svg" },
 ];
 
 const Navbar = () => {
