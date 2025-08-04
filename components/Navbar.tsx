@@ -13,8 +13,7 @@ const navItems = [
   { name: 'Services', path: '/services' },
   { name: 'Projects', path: '/projects' },
   { name: 'Pricing', path: '/pricing' },
-  { name: 'About', path: '/about' },
-  { name: 'Contact', path: '/contact' }
+  { name: 'About', path: '/about' }
 ]
 const productDropdownItems = [
   { name: "Marketplace", href: "https://marketplace.digicraft.one", logo: "https://marketplace.digicraft.one/logo.svg" },
