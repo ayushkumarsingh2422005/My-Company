@@ -86,7 +86,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <motion.a
-                href="https://github.com/ayushkumarsingh2422005"
+                href="https://github.com/digicraft-one"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
