@@ -8,6 +8,41 @@ export async function POST(req: Request) {
     const data = await req.json();
 
     const contact = await Contact.create(data);
+
+    // Send notification to external service
+    try {
+      const notificationResponse = await fetch('https://notification.digicraft.one/api/external/send-notification', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': process.env.NOTIFICATION_API_KEY || '414930a3b0d878b8c8b63a3de3368060a59e78a5344d409b1e090e396764dc82'
+        },
+        body: JSON.stringify({
+          title: "DigiCraft Enquiry",
+          body: data.description,
+          data: {
+            customerName: data.name,
+            customerEmail: data.email,
+            customerPhone: data.phone,
+            company: data.company,
+            serviceType: data.serviceType,
+            projectType: data.projectType,
+            budget: data.budget,
+            timeline: data.timeline,
+            requirements: data.requirements,
+            enquiryDescription: data.description
+          },
+          sender: "Main"
+        })
+      });
+
+      if (!notificationResponse.ok) {
+        console.error("Failed to send notification:", await notificationResponse.text());
+      }
+    } catch (notificationError) {
+      console.error("Error sending notification:", notificationError);
+    }
+
     return NextResponse.json({ success: true, data: contact });
   } catch (error: unknown) {
     return NextResponse.json(
