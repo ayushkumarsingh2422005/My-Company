@@ -26,6 +26,36 @@ export async function POST(req: Request) {
       description
     });
 
+    // Send notification to external service
+    try {
+      const notificationResponse = await fetch('https://notification.digicraft.one/api/external/send-notification', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': process.env.NOTIFICATION_API_KEY || '414930a3b0d878b8c8b63a3de3368060a59e78a5344d409b1e090e396764dc82'
+        },
+        body: JSON.stringify({
+          title: "Media Enquiry",
+          body: description,
+          data: {
+            customerName: name,
+            customerEmail: email,
+            customerPhone: phone,
+            company: company,
+            budget: budget,
+            enquiryDescription: description
+          },
+          sender: "Media"
+        })
+      });
+
+      if (!notificationResponse.ok) {
+        console.error("Failed to send notification:", await notificationResponse.text());
+      }
+    } catch (notificationError) {
+      console.error("Error sending notification:", notificationError);
+    }
+
     return NextResponse.json({ 
       success: true, 
       data: mediaContact,
