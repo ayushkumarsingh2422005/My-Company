@@ -95,7 +95,7 @@ const Footer = () => {
                 <FaGithub size={24} />
               </motion.a>
               <motion.a
-                href="https://www.linkedin.com/company/digicraft-one"
+                href="https://www.linkedin.com/company/digicraft-tech"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
@@ -104,7 +104,7 @@ const Footer = () => {
                 <FaLinkedinIn size={24} />
               </motion.a>
               <motion.a
-                href="https://www.instagram.com/digicraft.one/"
+                href="https://www.instagram.com/digicraft_technologies"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
@@ -113,7 +113,7 @@ const Footer = () => {
                 <FaInstagram size={24} />
               </motion.a>
               <motion.a
-                href="https://chat.whatsapp.com/LsdAmwogrUkB2cNQ7MWKtQ"
+                href="https://api.whatsapp.com/send/?phone=%2B918299797516&text=Can+I+get+more+information+about+this+%3F&type=phone_number"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
