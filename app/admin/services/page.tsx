@@ -16,6 +16,7 @@ interface Service {
   features: string[];
   color: string;
   order: number;
+  slug: string;
   isActive: boolean;
 }
 
@@ -34,7 +35,8 @@ export default function ServicesManagement() {
     features: [''],
     color: '',
     order: 0,
-    isActive: true
+    isActive: true,
+    slug: ''
   });
 
   useEffect(() => {
@@ -119,7 +121,8 @@ export default function ServicesManagement() {
           features: [''],
           color: '',
           order: 0,
-          isActive: true
+          isActive: true,
+          slug: ''
         });
       } else {
         setError(data.error || 'Failed to save service');
@@ -140,7 +143,8 @@ export default function ServicesManagement() {
       features: service.features,
       color: service.color,
       order: service.order,
-      isActive: service.isActive
+      isActive: service.isActive,
+      slug: service.slug
     });
     setIsEditing(true);
   };
@@ -221,7 +225,8 @@ export default function ServicesManagement() {
                       features: [''],
                       color: '',
                       order: services.length,
-                      isActive: true
+                      isActive: true,
+                      slug: ''
                     });
                   }}
                   className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors"
@@ -371,6 +376,20 @@ export default function ServicesManagement() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Slug
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.slug}
+                    onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+                    placeholder="e.g., web-development"
+                    className="w-full px-4 py-2 bg-[#2a2a2a] border border-gray-700 rounded text-white focus:outline-none focus:border-purple-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
                     Display Order
                   </label>
                   <input
@@ -409,7 +428,8 @@ export default function ServicesManagement() {
                       features: [''],
                       color: '',
                       order: services.length,
-                      isActive: true
+                      isActive: true,
+                      slug: ''
                     });
                   }}
                   className="px-4 py-2 bg-[#2a2a2a] text-white rounded hover:bg-[#3a3a3a] transition-colors"

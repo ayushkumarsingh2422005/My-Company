@@ -197,6 +197,17 @@ export default function RootLayout({
         <Providers>{children}</Providers>
         <ChatBot />
 
+        {/* <div className="relative z-10 mb-[40vh] bg-black">
+          <Providers>{children}</Providers>
+        </div>
+        <div
+          aria-hidden
+          className="pointer-events-none h-[40vh] fixed inset-x-0 bottom-0 sm:h-72 md:h-80 bg-[url('/bottom.png')] bg-no-repeat bg-co bg-bottom z-0"
+        />
+        <div className="relative z-20">
+          <ChatBot />
+        </div> */}
+
         {/* Structured Data */}
         <Script
           id="structured-data"

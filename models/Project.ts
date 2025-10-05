@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
-import { CATEGORIES } from '../types/project';
+// import { CATEGORIES } from '../types/project';
+import { CATEGORIES } from '@/app/types/project';
 
 const projectSchema = new mongoose.Schema({
   title: {

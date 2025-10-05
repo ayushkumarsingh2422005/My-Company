@@ -1,8 +1,10 @@
 'use client'
+import React from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FaLinkedinIn, FaGithub, FaInstagram, FaWhatsapp, FaEnvelope, FaGlobe } from 'react-icons/fa'
+import { FaLinkedinIn, FaGithub, FaInstagram, FaWhatsapp, FaEnvelope, FaGlobe, FaLaptopCode, FaMobileAlt, FaCloud, FaRobot, FaBullseye, FaLightbulb, FaRocket, FaStar, FaHandshake, FaShieldAlt, FaClock, FaSmile, FaCode, FaUsers, FaTools, FaAward, FaGlobeAmericas, FaBuilding, FaUserFriends } from 'react-icons/fa'
+import { TbTargetArrow } from "react-icons/tb";
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { useRouter } from 'next/navigation'
@@ -33,25 +35,25 @@ const services = [
   {
     title: "Web Development",
     description: "Full-stack development with modern frameworks and technologies",
-    icon: "💻",
+    icon: FaLaptopCode,
     tech: ["React", "Next.js", "Node.js", "Python", "Django"]
   },
   {
     title: "Mobile Development",
     description: "Native and cross-platform mobile app development",
-    icon: "📱",
+    icon: FaMobileAlt,
     tech: ["React Native", "Flutter", "iOS", "Android"]
   },
   {
     title: "Cloud Solutions",
     description: "Scalable cloud architecture and DevOps services",
-    icon: "☁️",
+    icon: FaCloud,
     tech: ["AWS", "Azure", "Docker", "Kubernetes"]
   },
   {
     title: "AI & Machine Learning",
     description: "Custom AI solutions and data analytics",
-    icon: "🤖",
+    icon: FaRobot,
     tech: ["TensorFlow", "PyTorch", "OpenAI", "Data Science"]
   }
 ]
@@ -287,10 +289,10 @@ const satisfactionMetrics = [
 ]
 
 const stats = [
-  { label: "Business Projects", value: "30+", icon: "💻" },
-  { label: "Expert Developers", value: "10+", icon: "👨‍💻" },
-  { label: "Years Experience", value: "5+", icon: "⏳" },
-  { label: "Tech Stack", value: "10+", icon: "🛠️" }
+  { label: "Business Projects", value: "30+", icon: FaLaptopCode },
+  { label: "Expert Developers", value: "10+", icon: FaUsers },
+  { label: "Years Experience", value: "5+", icon: FaClock },
+  { label: "Tech Stack", value: "10+", icon: FaTools }
 ]
 
 // Add animation variants
@@ -456,31 +458,31 @@ const journeyMilestones = [
     year: "2019",
     title: "Our Beginning",
     description: "Started with a vision to transform digital landscapes",
-    icon: "🚀"
+    icon: FaRocket
   },
   {
     year: "2020",
     title: "First Major Project",
     description: "Successfully delivered enterprise-level solutions",
-    icon: "💼"
+    icon: FaBuilding
   },
   {
     year: "2021",
     title: "Team Expansion",
     description: "Grew our talented team across multiple domains",
-    icon: "👥"
+    icon: FaUserFriends
   },
   {
     year: "2022",
     title: "Global Reach",
     description: "Extended our services to international clients",
-    icon: "🌍"
+    icon: FaGlobeAmericas
   },
   {
     year: "2023",
     title: "Innovation Hub",
     description: "Launched our R&D division for cutting-edge solutions",
-    icon: "💡"
+    icon: FaLightbulb
   }
 ]
 
@@ -532,8 +534,8 @@ const JourneySection = () => (
             
             {/* Desktop Timeline Dot */}
             <div className="hidden md:flex relative">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center text-2xl hover:scale-110 transition-transform">
-                {milestone.icon}
+              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center text-2xl hover:scale-110 transition-transform text-white">
+                <milestone.icon />
               </div>
             </div>
             
@@ -772,9 +774,9 @@ const ServicesSection = () => (
                 initial={{ scale: 1 }}
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.2 }}
-                className="text-4xl mb-4 bg-gradient-to-r from-purple-600/20 to-pink-600/20 p-4 rounded-xl"
+                className="text-4xl mb-4 bg-gradient-to-r from-purple-600/20 to-pink-600/20 p-4 rounded-xl text-purple-500"
               >
-                {service.icon}
+                <service.icon />
               </motion.div>
               <div>
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
@@ -872,32 +874,36 @@ export default function About() {
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true }}
-                className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"
               >
                 {stats.map((stat) => (
                   <motion.div
                     key={stat.label}
                     variants={fadeInUp}
                     whileHover={{ scale: 1.05 }}
-                    className="glass-effect p-6 rounded-xl group hover:border-purple-500/30 transition-all duration-300"
+                    className="glass-effect p-6 rounded-xl group hover:border-purple-500/30 transition-all duration-300 flex flex-row items-center gap-6 md:gap-6"
                   >
+                    {/* Logo/Icon on the left with theme gradient background */}
                     <motion.div 
                       initial={{ scale: 1 }}
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.2 }}
-                      className="text-4xl mb-4"
+                      className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-gradient-to-br from-purple-600 to-pink-500 text-3xl md:text-4xl text-white flex-shrink-0 shadow-lg"
                     >
-                      {stat.icon}
+                      <stat.icon />
                     </motion.div>
-                    <motion.div 
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                      className="text-4xl font-bold text-gradient mb-2"
-                    >
-                      {stat.value}
-                    </motion.div>
-                    <div className="text-gray-400">{stat.label}</div>
+                    {/* Content on the right */}
+                    <div className="flex flex-col flex-1">
+                      <motion.div 
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        className="text-2xl md:text-4xl font-bold text-gradient mb-1"
+                      >
+                        {stat.value}
+                      </motion.div>
+                      <div className="text-gray-400 text-base md:text-lg">{stat.label}</div>
+                    </div>
                   </motion.div>
                 ))}
               </motion.div>

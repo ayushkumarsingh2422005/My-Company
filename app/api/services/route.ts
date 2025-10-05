@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from '@/app/lib/auth';
-import dbConnect from '@/app/lib/mongodb';
-import Service from '@/app/models/Service';
+import { authOptions } from '@/lib/auth';
+import dbConnect from '@/lib/mongodb';
+import Service from '@/models/Service';
 
 // Get all services
 export async function GET() {

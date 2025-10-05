@@ -36,7 +36,11 @@ const serviceSchema = new mongoose.Schema({
   updatedAt: {
     type: Date,
     default: Date.now,
-  }
+  },
+  slug: {
+    type: String,
+    required: true,
+  },
 });
 
 // Update the updatedAt timestamp before saving

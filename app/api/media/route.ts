@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import dbConnect from '@/app/lib/mongodb';
-import MediaContact from '@/app/models/MediaContacts';
+import dbConnect from '@/lib/mongodb';
+import MediaContact from '@/models/MediaContacts';
 import { MongoError } from 'mongodb';
 
 export async function POST(req: Request) {

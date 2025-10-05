@@ -11,7 +11,8 @@ import Footer from '@/components/Footer'
 import MarketingBanner from '@/components/MarketingBanner'
 // import NewYearCelebration from '@/components/NewYearCelebration'
 import Link from 'next/link'
-import { FiArrowRight } from 'react-icons/fi'
+import { FiArrowRight, FiGlobe, FiSmartphone, FiCloud, FiTablet } from 'react-icons/fi'
+import { FaPaintBrush } from 'react-icons/fa'
 // import RepublicDayCelebration from '@/components/RepublicDayCelebration'
 
 // Background Components
@@ -38,25 +39,25 @@ const GridBackground = () => (
 // Quick Services Preview
 const services = [
   {
-    icon: '🌐',
+    icon: FiGlobe,
     name: 'Web Development',
     description: 'Custom web applications with modern frameworks.',
     price: 'From ₹15,000'
   },
   {
-    icon: '📱',
+    icon: FiSmartphone,
     name: 'Mobile Apps',
     description: 'Native and cross-platform mobile solutions.',
     price: 'From ₹35,000'
   },
   {
-    icon: '☁️',
+    icon: FiCloud,
     name: 'Cloud Solutions',
     description: 'Scalable infrastructure and DevOps services.',
     price: 'From ₹25,000'
   },
   {
-    icon: '🎨',
+    icon: FaPaintBrush,
     name: 'UI/UX Design',
     description: 'Beautiful and intuitive user interfaces.',
     price: 'From ₹20,000'
@@ -150,7 +151,9 @@ export default function Home() {
                     >
                       <Link href="/services" className="block">
                         <div className="glass-effect p-6 rounded-xl border border-white/10 group-hover:border-purple-500/50 transition-all h-full">
-                          <div className="text-3xl mb-4">{service.icon}</div>
+                          <div className="text-6xl mb-4 text-purple-400 text-center justify-center items-center flex">
+                            <service.icon />
+                          </div>
                           <h3 className="text-xl font-bold mb-2 group-hover:text-gradient transition-all">
                             {service.name}
                           </h3>

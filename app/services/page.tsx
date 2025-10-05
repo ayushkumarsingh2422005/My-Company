@@ -18,6 +18,7 @@ interface Service {
   color: string;
   order: number;
   isActive: boolean;
+  slug: string;
 }
 
 // Floating Gradient Orbs
@@ -42,7 +43,7 @@ const GridBackground = () => (
   </div>
 )
 
-const ServiceCard = ({ service }: { service: Service }) => {
+const ServiceCard = ({ service, slug }: { service: Service, slug: string }) => {
   const Icon = Icons[service.icon as keyof typeof Icons] as IconType;
 
   if (!Icon) {
@@ -84,13 +85,14 @@ const ServiceCard = ({ service }: { service: Service }) => {
           ))}
         </div>
         
-        <motion.button 
+        <motion.a 
           className="flex items-center text-sm text-purple-400 hover:text-purple-300 transition-colors"
           whileHover={{ x: 5 }}
+          href={`/services/${slug}`}
         >
           Learn More
           <HiOutlineArrowRight className="ml-2 w-4 h-4" />
-        </motion.button>
+        </motion.a>
       </div>
     </motion.div>
   )
@@ -237,7 +239,7 @@ export default function Services() {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {services.map((service) => (
-                  <ServiceCard key={service._id} service={service} />
+                  <ServiceCard key={service._id} service={service} slug={service.slug} />
                 ))}
               </div>
             )}
