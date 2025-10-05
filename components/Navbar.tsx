@@ -122,7 +122,9 @@ const Navbar = () => {
                           style={{ minHeight: '36px' }}
                           onClick={() => setIsDropdownOpen(false)}
                         >
-                          <img src={item.logo} alt={item.name + ' logo'} className="w-5 h-5 object-contain" />
+                          <Image src={item.logo} alt={item.name + ' logo'} className="w-5 h-5 object-contain" />
+                          width={20}
+                          height={20}
                           <span className="text-sm font-medium">{item.name}</span>
                         </a>
                       </li>

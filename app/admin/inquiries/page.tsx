@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
@@ -59,7 +59,7 @@ export default function InquiriesManagement() {
     }
   }, [status, router]);
 
-  const fetchContacts = async (
+  const fetchContacts = useCallback(async (
     search: string = searchTerm,
     sort: string = sortBy,
     order: string = sortOrder,
@@ -88,7 +88,7 @@ export default function InquiriesManagement() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [searchTerm, sortBy, sortOrder, statusFilter]);
 
   useEffect(() => {
     if (status === 'authenticated') {

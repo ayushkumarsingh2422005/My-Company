@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import confetti from 'canvas-confetti';
+import Image from 'next/image';
 
 // Glowing Orb Component with enhanced animations
 const GlowingOrb = ({ color, delay, duration, x }: { color: string; delay: number; duration: number; x: number }) => {
@@ -267,10 +268,12 @@ const RepublicDayCelebration = () => {
                       transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                       className="relative z-10"
                     >
-                      <img 
+                      <Image 
                         src="/ashok.png" 
                         alt="Ashoka Chakra"
                         className="w-full h-full drop-shadow-2xl"
+                        width={96}
+                        height={96}
                       />
                     </motion.div>
                   </div>

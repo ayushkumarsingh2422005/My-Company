@@ -1,10 +1,9 @@
 'use client'
-import React from 'react'
-import { motion } from 'framer-motion'
-import { FaCheck, FaTimes, FaShoppingCart, FaRocket, FaCrown, FaBuilding, FaUsers, FaChartLine, FaMobileAlt, FaCreditCard, FaSearch, FaFilter, FaBox, FaFileInvoice, FaGift, FaWarehouse, FaUser, FaDownload, FaCog, FaChartBar, FaSearch as FaSearchIcon, FaPlug, FaStar, FaTruck, FaCalculator, FaUpload, FaImages, FaShoppingBag, FaPlus, FaEye, FaComments, FaGlobe } from 'react-icons/fa'
-import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import Navbar from '@/components/Navbar'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { FaBox, FaBuilding, FaCalculator, FaChartBar, FaChartLine, FaCheck, FaCog, FaComments, FaCreditCard, FaCrown, FaDownload, FaEye, FaFileInvoice, FaFilter, FaGift, FaGlobe, FaImages, FaMobileAlt, FaPlug, FaPlus, FaRocket, FaSearch, FaSearch as FaSearchIcon, FaShoppingBag, FaShoppingCart, FaStar, FaTruck, FaUpload, FaUser, FaUsers, FaWarehouse } from 'react-icons/fa'
 
 // Add Floating Gradient Orbs
 const GradientOrbs = () => (
@@ -235,7 +234,7 @@ export default function ECommerceServices() {
                 className="text-xl text-gray-400 mb-8"
               >
                 Transform your business with our comprehensive e-commerce solutions. 
-                From premium packages to enterprise solutions, we've got you covered.
+                From premium packages to enterprise solutions, we&apos;ve got you covered.
               </motion.p>
             </motion.div>
           </div>
@@ -260,7 +259,7 @@ export default function ECommerceServices() {
               viewport={{ once: true }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto"
             >
-              {pricingPackages.map((pkg, index) => (
+              {pricingPackages.map((pkg, ) => (
                 <motion.div
                   key={pkg.name}
                   variants={fadeInUp}
@@ -337,7 +336,7 @@ export default function ECommerceServices() {
               viewport={{ once: true }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
-              {coreFeatures.map((feature, index) => (
+              {coreFeatures.map((feature, ) => (
                 <motion.div
                   key={feature.title}
                   variants={fadeInUp}
@@ -378,7 +377,7 @@ export default function ECommerceServices() {
               viewport={{ once: true }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
             >
-              {allFeatures.map((feature, index) => (
+              {allFeatures.map((feature, ) => (
                 <motion.div
                   key={feature.name}
                   variants={fadeInUp}
@@ -608,7 +607,7 @@ export default function ECommerceServices() {
               viewport={{ once: true }}
               className="text-gray-400 mb-8 max-w-2xl mx-auto"
             >
-              Let's transform your business with a professional e-commerce solution that drives sales and growth.
+              Let&apos;s transform your business with a professional e-commerce solution that drives sales and growth.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -635,7 +634,7 @@ export default function ECommerceServices() {
                   whileTap="tap"
                   className="px-8 py-4 border border-purple-500/30 rounded-full font-semibold hover:bg-purple-500/10 transition-all"
                 >
-                  Let's Talk
+                  Let&apos;s Talk
                 </motion.button>
               </Link>
             </motion.div>

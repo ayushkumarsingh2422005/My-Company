@@ -1,13 +1,11 @@
 'use client'
-import React from 'react'
+import Footer from '@/components/Footer'
+import Navbar from '@/components/Navbar'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FaLinkedinIn, FaGithub, FaInstagram, FaWhatsapp, FaEnvelope, FaGlobe, FaLaptopCode, FaMobileAlt, FaCloud, FaRobot, FaBullseye, FaLightbulb, FaRocket, FaStar, FaHandshake, FaShieldAlt, FaClock, FaSmile, FaCode, FaUsers, FaTools, FaAward, FaGlobeAmericas, FaBuilding, FaUserFriends } from 'react-icons/fa'
-import { TbTargetArrow } from "react-icons/tb";
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 import { useRouter } from 'next/navigation'
+import { FaBuilding, FaClock, FaCloud, FaEnvelope, FaGithub, FaGlobe, FaGlobeAmericas, FaInstagram, FaLaptopCode, FaLightbulb, FaLinkedinIn, FaMobileAlt, FaRobot, FaRocket, FaTools, FaUserFriends, FaUsers, FaWhatsapp } from 'react-icons/fa'
 
 // Add Floating Gradient Orbs
 const GradientOrbs = () => (

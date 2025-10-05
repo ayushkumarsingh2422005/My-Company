@@ -1,10 +1,9 @@
 'use client'
-import React from 'react'
-import { motion } from 'framer-motion'
-import { FaMobileAlt, FaApple, FaAndroid, FaReact, FaFlutter, FaCode, FaDatabase, FaCloud, FaShieldAlt, FaRocket, FaUsers, FaChartLine, FaBell, FaCamera, FaMapMarkerAlt, FaCreditCard, FaShoppingCart, FaComments, FaDownload, FaSync, FaCog, FaSearch, FaFilter, FaHeart, FaShare, FaGamepad, FaVideo, FaMusic, FaImage, FaFileAlt, FaLock, FaEye, FaGlobe, FaWifi, FaBluetooth, FaQrcode, FaFingerprint, FaMicrophone, FaHeadphones, FaBatteryFull, FaWifi as FaWifiIcon, FaPlug, FaServer, FaTools, FaBug, FaCheckCircle, FaClock, FaAward, FaHandshake, FaLightbulb, FaStar, FaRocket as FaRocketIcon, FaBuilding } from 'react-icons/fa'
-import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import Navbar from '@/components/Navbar'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { FaAndroid, FaApple, FaBell, FaBuilding, FaCamera, FaChartLine, FaCheckCircle, FaCode, FaCog, FaComments, FaCreditCard, FaEye, FaFileAlt, FaFingerprint, FaGamepad, FaGlobe, FaLightbulb, FaLock, FaMapMarkerAlt, FaMicrophone, FaMobileAlt, FaPlug, FaQrcode, FaReact, FaRocket, FaRocket as FaRocketIcon, FaShare, FaShieldAlt, FaStar, FaSync, FaVideo, FaWifi as FaWifiIcon } from 'react-icons/fa'
 
 // Add Floating Gradient Orbs
 const GradientOrbs = () => (
@@ -343,7 +342,7 @@ export default function MobileAppDevelopment() {
               viewport={{ once: true }}
               className="grid grid-cols-1 lg:grid-cols-3 gap-8"
             >
-              {developmentTypes.map((type, index) => (
+              {developmentTypes.map((type, ) => (
                 <motion.div
                   key={type.title}
                   variants={fadeInUp}
@@ -395,7 +394,7 @@ export default function MobileAppDevelopment() {
               viewport={{ once: true }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
-              {coreFeatures.map((feature, index) => (
+              {coreFeatures.map((feature, ) => (
                 <motion.div
                   key={feature.title}
                   variants={fadeInUp}
@@ -445,7 +444,7 @@ export default function MobileAppDevelopment() {
               viewport={{ once: true }}
               className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4"
             >
-              {advancedFeatures.map((feature, index) => (
+              {advancedFeatures.map((feature, ) => (
                 <motion.div
                   key={feature.name}
                   variants={fadeInUp}
@@ -481,7 +480,7 @@ export default function MobileAppDevelopment() {
               viewport={{ once: true }}
               className="grid grid-cols-1 lg:grid-cols-3 gap-8"
             >
-              {pricingTiers.map((tier, index) => (
+              {pricingTiers.map((tier, ) => (
                 <motion.div
                   key={tier.name}
                   variants={fadeInUp}
@@ -612,7 +611,7 @@ export default function MobileAppDevelopment() {
               viewport={{ once: true }}
               className="grid grid-cols-1 md:grid-cols-3 gap-8"
             >
-              {techStack.map((category, index) => (
+              {techStack.map((category, ) => (
                 <motion.div
                   key={category.category}
                   variants={fadeInUp}
@@ -650,8 +649,8 @@ export default function MobileAppDevelopment() {
               viewport={{ once: true }}
               className="text-gray-400 mb-8 max-w-2xl mx-auto"
             >
-              Let's discuss your mobile app idea and create a solution that exceeds your expectations. 
-              From concept to app store, we're with you every step of the way.
+              Let&apos;s discuss your mobile app idea and create a solution that exceeds your expectations. 
+              From concept to app store, we&apos;re with you every step of the way.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
