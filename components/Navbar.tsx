@@ -24,6 +24,7 @@ const productDropdownItems = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -31,15 +32,23 @@ const Navbar = () => {
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isMounted) return
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [isMounted])
 
   // Add click outside functionality for dropdown
   useEffect(() => {
+    if (!isMounted) return
+    
     const handleClickOutside = (event: MouseEvent) => {
       if (
         productButtonRef.current &&
@@ -55,7 +64,7 @@ const Navbar = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [])
+  }, [isMounted])
 
   const handleNavClick = (path: string) => {
     setIsOpen(false)
@@ -96,7 +105,7 @@ const Navbar = () => {
               />
             </Link>
             <div className="relative">
-              <div onClick={() => setIsDropdownOpen((prev) => !prev)} ref={productButtonRef}>
+              <div onClick={() => isMounted && setIsDropdownOpen((prev) => !prev)} ref={productButtonRef}>
                 <button
                   id="product-button"
                   title="Others"
@@ -106,7 +115,7 @@ const Navbar = () => {
                 </button>
               </div>
 
-              {isDropdownOpen && (
+              {isMounted && isDropdownOpen && (
                 <div
                   ref={dropdownRef}
                   className="absolute left-0 mt-2 w-44 rounded-md shadow-lg bg-black/90 backdrop-blur-md border border-white/20 z-50"
@@ -122,9 +131,13 @@ const Navbar = () => {
                           style={{ minHeight: '36px' }}
                           onClick={() => setIsDropdownOpen(false)}
                         >
-                          <Image src={item.logo} alt={item.name + ' logo'} className="w-5 h-5 object-contain" />
-                          width={20}
-                          height={20}
+                          <Image 
+                            src={item.logo} 
+                            alt={item.name + ' logo'} 
+                            width={20}
+                            height={20}
+                            className="w-5 h-5 object-contain" 
+                          />
                           <span className="text-sm font-medium">{item.name}</span>
                         </a>
                       </li>
