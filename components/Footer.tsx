@@ -2,9 +2,9 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useState } from 'react'
-import { 
+import {
   FaGithub,
-  FaLinkedinIn, 
+  FaLinkedinIn,
   FaInstagram,
   FaWhatsapp,
   FaEnvelope
@@ -81,9 +81,14 @@ const Footer = () => {
             <Link href="/" className="text-2xl font-bold mb-6 block">
               <span className="text-purple-500">Digi</span>Craft
             </Link>
-            <p className="text-gray-400 mb-6">
+            <p className="text-gray-400 mb-4">
               Crafting digital experiences that inspire, innovate, and impact.
             </p>
+            <div className="text-sm text-gray-500 mb-6 space-y-1">
+              <p>DigiCraft Innovation Private Limited</p>
+              <p>CIN: [Update CIN]</p>
+              <p>GST: [Update GST]</p>
+            </div>
             <div className="flex space-x-4">
               <motion.a
                 href="https://github.com/digicraft-one"
@@ -139,7 +144,7 @@ const Footer = () => {
             <ul className="space-y-4">
               {quickLinks.map((item) => (
                 <li key={item.name}>
-                  <Link 
+                  <Link
                     href={item.path}
                     className="text-gray-400 hover:text-purple-500 transition-colors"
                   >
@@ -156,7 +161,7 @@ const Footer = () => {
             <ul className="space-y-4">
               {services.map((item) => (
                 <li key={item.name}>
-                  <Link 
+                  <Link
                     href={item.path}
                     className="text-gray-400 hover:text-purple-500 transition-colors"
                   >
@@ -180,13 +185,12 @@ const Footer = () => {
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className={`w-full px-4 py-3 bg-white/5 border rounded-lg focus:outline-none transition-colors ${
-                    status === 'error' 
-                      ? 'border-red-500/50 focus:border-red-500' 
-                      : status === 'success'
+                  className={`w-full px-4 py-3 bg-white/5 border rounded-lg focus:outline-none transition-colors ${status === 'error'
+                    ? 'border-red-500/50 focus:border-red-500'
+                    : status === 'success'
                       ? 'border-green-500/50 focus:border-green-500'
                       : 'border-purple-500/20 focus:border-purple-500'
-                  }`}
+                    }`}
                   required
                 />
                 {status === 'loading' && (
@@ -198,17 +202,15 @@ const Footer = () => {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className={`w-full px-4 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all ${
-                  status === 'loading' ? 'opacity-75 cursor-not-allowed' : ''
-                }`}
+                className={`w-full px-4 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all ${status === 'loading' ? 'opacity-75 cursor-not-allowed' : ''
+                  }`}
               >
                 {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
               </button>
               {message && (
                 <div
-                  className={`text-sm ${
-                    status === 'success' ? 'text-green-400' : 'text-red-400'
-                  }`}
+                  className={`text-sm ${status === 'success' ? 'text-green-400' : 'text-red-400'
+                    }`}
                 >
                   {message}
                 </div>
@@ -222,7 +224,7 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
-          <p>© 2024 DigiCraft. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} DigiCraft Innovation Private Limited. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link href="/privacy-policy" className="hover:text-purple-500 transition-colors">
               Privacy Policy

@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { FaBuilding, FaClock, FaCloud, FaEnvelope, FaGithub, FaGlobe, FaGlobeAmericas, FaInstagram, FaLaptopCode, FaLightbulb, FaLinkedinIn, FaMobileAlt, FaRobot, FaRocket, FaTools, FaUserFriends, FaUsers, FaWhatsapp } from 'react-icons/fa'
+import { FaBuilding, FaClock, FaCloud, FaEnvelope, FaGithub, FaGlobe, FaGlobeAmericas, FaInstagram, FaLaptopCode, FaLightbulb, FaLinkedinIn, FaMobileAlt, FaRobot, FaRocket, FaTools, FaUserFriends, FaUsers, FaWhatsapp, FaFileContract, FaIdCard, FaRegistered } from 'react-icons/fa'
 
 // Add Floating Gradient Orbs
 const GradientOrbs = () => (
@@ -19,7 +19,7 @@ const GradientOrbs = () => (
 // Add Grid Background
 const GridBackground = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-    <div className="absolute inset-0" 
+    <div className="absolute inset-0"
       style={{
         backgroundImage: `linear-gradient(90deg, rgba(123,49,255,0.1) 1px, transparent 1px),
                          linear-gradient(rgba(123,49,255,0.1) 1px, transparent 1px)`,
@@ -318,7 +318,7 @@ const scaleOnHover = {
 const GoalsSection = () => (
   <section className="py-20 relative">
     <div className="max-w-7xl mx-auto px-4">
-      <motion.h2 
+      <motion.h2
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -326,7 +326,7 @@ const GoalsSection = () => (
       >
         Our Goals
       </motion.h2>
-      <motion.div 
+      <motion.div
         variants={staggerContainer}
         initial="initial"
         whileInView="animate"
@@ -340,7 +340,7 @@ const GoalsSection = () => (
             whileHover={{ scale: 1.05 }}
             className="glass-effect p-8 rounded-xl text-center hover:border-purple-500/30 transition-all duration-300"
           >
-            <motion.div 
+            <motion.div
               initial={{ scale: 1 }}
               whileHover={{ scale: 1.2, rotate: 360 }}
               transition={{ duration: 0.5 }}
@@ -404,7 +404,7 @@ const GoalsSection = () => (
 const SatisfactionSection = () => (
   <section className="py-20 relative">
     <div className="max-w-7xl mx-auto px-4">
-      <motion.h2 
+      <motion.h2
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -412,7 +412,7 @@ const SatisfactionSection = () => (
       >
         Client Satisfaction
       </motion.h2>
-      <motion.div 
+      <motion.div
         variants={staggerContainer}
         initial="initial"
         whileInView="animate"
@@ -426,15 +426,15 @@ const SatisfactionSection = () => (
             whileHover={{ scale: 1.05 }}
             className="glass-effect p-6 rounded-xl text-center group"
           >
-            <motion.div 
+            <motion.div
               initial={{ scale: 1 }}
-              whileHover={{ scale: 1.2, rotate: 360 }}
+              // whileHover={{ scale: 1.2, rotate: 360 }}
               transition={{ duration: 0.5 }}
               className="text-4xl mb-4"
             >
               {metric.icon}
             </motion.div>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -488,55 +488,54 @@ const journeyMilestones = [
 const JourneySection = () => (
   <section className="py-20 relative">
     <div className="max-w-7xl mx-auto px-4">
-      <motion.h2 
+      <motion.h2
         className="text-3xl font-bold mb-16 text-center text-gradient"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
       >
         Our Journey
       </motion.h2>
-      
+
       <div className="relative">
         {/* Timeline line - Hidden on mobile, shown on md and up */}
         <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-pink-500 to-purple-500 hidden md:block" />
-        
+
         {/* Mobile Timeline */}
         <div className="md:hidden absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-pink-500 to-purple-500" />
-        
+
         {journeyMilestones.map((milestone, index) => (
           <motion.div
             key={milestone.year}
             initial={{ opacity: 0, x: 0, y: 20 }}
             whileInView={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
-            className={`flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 mb-12 relative ${
-              index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-            }`}
+            className={`flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 mb-12 relative ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+              }`}
           >
             {/* Mobile Timeline Dot */}
             <div className="md:hidden absolute left-4 w-4 h-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 transform -translate-x-1/2 mt-2" />
-            
+
             {/* Content for mobile */}
             <div className="md:hidden pl-12 w-full">
               <div className="text-purple-500 text-xl font-bold mb-2">{milestone.year}</div>
               <h3 className="text-2xl font-bold mb-2">{milestone.title}</h3>
               <p className="text-gray-400">{milestone.description}</p>
             </div>
-            
+
             {/* Content for desktop */}
             <div className={`hidden md:block flex-1 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
               <div className="text-purple-500 text-xl font-bold mb-2">{milestone.year}</div>
               <h3 className="text-2xl font-bold mb-2">{milestone.title}</h3>
               <p className="text-gray-400">{milestone.description}</p>
             </div>
-            
+
             {/* Desktop Timeline Dot */}
             <div className="hidden md:flex relative">
               <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center text-2xl hover:scale-110 transition-transform text-white">
                 <milestone.icon />
               </div>
             </div>
-            
+
             <div className="hidden md:block flex-1" />
           </motion.div>
         ))}
@@ -603,7 +602,7 @@ const TeamSection = () => (
               <h3 className="text-4xl font-bold mb-2 text-gradient">{mainDeveloper.name}</h3>
               <p className="text-purple-500 text-2xl mb-6">{mainDeveloper.role}</p>
               <p className="text-gray-400 mb-8 text-lg leading-relaxed">{mainDeveloper.bio}</p>
-              
+
               {/* Expertise Section */}
               <div className="mb-8">
                 <h4 className="text-xl font-semibold mb-4 text-gradient">Areas of Expertise</h4>
@@ -649,38 +648,38 @@ const TeamSection = () => (
 
               {/* Social Links */}
               <div className="flex justify-center md:justify-start gap-6">
-                <Link 
-                  href={mainDeveloper.social.linkedin} 
+                <Link
+                  href={mainDeveloper.social.linkedin}
                   className="hover:text-purple-500 transform hover:scale-110 transition-all text-3xl"
                 >
                   <FaLinkedinIn />
                 </Link>
-                <Link 
-                  href={mainDeveloper.social.instagram} 
+                <Link
+                  href={mainDeveloper.social.instagram}
                   className="hover:text-purple-500 transform hover:scale-110 transition-all text-3xl"
                 >
                   <FaInstagram />
                 </Link>
-                <Link 
-                  href={mainDeveloper.social.github} 
+                <Link
+                  href={mainDeveloper.social.github}
                   className="hover:text-purple-500 transform hover:scale-110 transition-all text-3xl"
                 >
                   <FaGithub />
                 </Link>
-                <Link 
-                  href={mainDeveloper.social.whatsapp} 
+                <Link
+                  href={mainDeveloper.social.whatsapp}
                   className="hover:text-purple-500 transform hover:scale-110 transition-all text-3xl"
                 >
                   <FaWhatsapp />
                 </Link>
-                <Link 
-                  href={`mailto:${mainDeveloper.social.email}`} 
+                <Link
+                  href={`mailto:${mainDeveloper.social.email}`}
                   className="hover:text-purple-500 transform hover:scale-110 transition-all text-3xl"
                 >
                   <FaEnvelope />
                 </Link>
-                <Link 
-                  href={mainDeveloper.social.website} 
+                <Link
+                  href={mainDeveloper.social.website}
                   className="hover:text-purple-500 transform hover:scale-110 transition-all text-3xl"
                 >
                   <FaGlobe />
@@ -694,7 +693,7 @@ const TeamSection = () => (
       {/* Other Team Members Section */}
       {otherTeamMembers.length > 0 && (
         <>
-          <motion.h3 
+          <motion.h3
             className="text-2xl font-bold mb-8 text-center text-gradient"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -745,7 +744,7 @@ const TeamSection = () => (
 const ServicesSection = () => (
   <section className="py-20 relative">
     <div className="max-w-7xl mx-auto px-4">
-      <motion.h2 
+      <motion.h2
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -753,7 +752,7 @@ const ServicesSection = () => (
       >
         Our Services
       </motion.h2>
-      <motion.div 
+      <motion.div
         variants={staggerContainer}
         initial="initial"
         whileInView="animate"
@@ -768,7 +767,7 @@ const ServicesSection = () => (
             className="glass-effect p-8 rounded-xl hover:border-purple-500/30 transition-all duration-300"
           >
             <div className="flex items-start gap-6">
-              <motion.div 
+              <motion.div
                 initial={{ scale: 1 }}
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.2 }}
@@ -781,7 +780,7 @@ const ServicesSection = () => (
                 <p className="text-gray-400 mb-4">{service.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {service.tech.map((tech, i) => (
-                    <span 
+                    <span
                       key={i}
                       className="text-sm px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20"
                     >
@@ -798,6 +797,82 @@ const ServicesSection = () => (
   </section>
 )
 
+// Component for Company Details Section
+const CompanyDetailsSection = () => (
+  <section className="py-20 relative">
+    <div className="max-w-7xl mx-auto px-4">
+      <motion.h2
+        className="text-3xl font-bold mb-16 text-center text-gradient"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+      >
+        Company Details
+      </motion.h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="glass-effect p-8 rounded-xl text-center group hover:scale-105 transition-transform"
+        >
+          <div className="text-4xl mb-4 text-purple-500 transition-transform">
+            <FaRegistered />
+          </div>
+          <h3 className="text-xl font-bold mb-2">Legal Name</h3>
+          <p className="text-gray-300 font-semibold">DigiCraft Innovation Private Limited</p>
+          <p className="text-gray-400 text-sm mt-2">Registered Entity</p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="glass-effect p-8 rounded-xl text-center group hover:scale-105 transition-transform"
+        >
+          <div className="text-4xl mb-4 text-purple-500 transition-transform">
+            <FaFileContract />
+          </div>
+          <h3 className="text-xl font-bold mb-2">CIN & GST</h3>
+          <div className="space-y-2">
+            <p className="text-gray-300">
+              <span className="text-purple-400 text-sm block">CIN</span>
+              <span className="font-mono">U62010UP2026PTC241890</span>
+            </p>
+            <p className="text-gray-300">
+              <span className="text-purple-400 text-sm block">GST NO</span>
+              <span className="font-mono">09AAMCD3672L1Z2</span>
+            </p>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="glass-effect p-8 rounded-xl text-center group hover:scale-105 transition-transform"
+        >
+          <div className="text-4xl mb-4 text-purple-500 transition-transform">
+            <FaIdCard />
+          </div>
+          <h3 className="text-xl font-bold mb-2">PAN Details</h3>
+          <p className="text-gray-300 font-mono">AAMCD3672L</p>
+          <p className="text-gray-400 text-sm mt-2">Permanent Account Number</p>
+        </motion.div>
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className="text-center mt-12"
+      >
+        <p className="text-gray-400 italic">
+          * Official certificates and documents are available upon request for verification purposes.
+        </p>
+      </motion.div>
+    </div>
+  </section>
+)
+
 export default function About() {
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
@@ -809,13 +884,13 @@ export default function About() {
       <Navbar />
       <main className="min-h-screen pt-24 relative overflow-hidden">
         {/* Background Elements */}
-        <motion.div 
+        <motion.div
           className="fixed inset-0 bg-[radial-gradient(circle_at_center,rgba(123,49,255,0.05)_0%,transparent_100%)]"
           style={{ y, opacity }}
         />
         <GradientOrbs />
         <GridBackground />
-        
+
         {/* Content Sections */}
         <div className="relative w-full">
           {/* Hero Section */}
@@ -833,22 +908,22 @@ export default function About() {
                   transition={{ duration: 0.5, delay: 0.3 }}
                   className="mb-6 flex items-center justify-center gap-2"
                 >
-                  <motion.span 
+                  <motion.span
                     initial={{ width: 0 }}
                     animate={{ width: "2.5rem" }}
                     transition={{ duration: 0.5, delay: 0.6 }}
-                    className="h-0.5 bg-gradient-to-r from-purple-500 to-transparent" 
+                    className="h-0.5 bg-gradient-to-r from-purple-500 to-transparent"
                   />
                   <span className="text-purple-500 font-mono">About Us</span>
-                  <motion.span 
+                  <motion.span
                     initial={{ width: 0 }}
                     animate={{ width: "2.5rem" }}
                     transition={{ duration: 0.5, delay: 0.6 }}
-                    className="h-0.5 bg-gradient-to-l from-purple-500 to-transparent" 
+                    className="h-0.5 bg-gradient-to-l from-purple-500 to-transparent"
                   />
                 </motion.div>
-                
-                <motion.h1 
+
+                <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
@@ -856,7 +931,7 @@ export default function About() {
                 >
                   Elite Tech Solutions
                 </motion.h1>
-                <motion.p 
+                <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
@@ -867,7 +942,7 @@ export default function About() {
               </motion.div>
 
               {/* Enhanced Stats Section */}
-              <motion.div 
+              <motion.div
                 variants={staggerContainer}
                 initial="initial"
                 whileInView="animate"
@@ -882,7 +957,7 @@ export default function About() {
                     className="glass-effect p-6 rounded-xl group hover:border-purple-500/30 transition-all duration-300 flex flex-row items-center gap-6 md:gap-6"
                   >
                     {/* Logo/Icon on the left with theme gradient background */}
-                    <motion.div 
+                    <motion.div
                       initial={{ scale: 1 }}
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.2 }}
@@ -892,7 +967,7 @@ export default function About() {
                     </motion.div>
                     {/* Content on the right */}
                     <div className="flex flex-col flex-1">
-                      <motion.div 
+                      <motion.div
                         initial={{ opacity: 0, scale: 0 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
@@ -911,6 +986,7 @@ export default function About() {
           <ServicesSection />
           <GoalsSection />
           <JourneySection />
+          <CompanyDetailsSection />
           <CoreValuesSection />
           <TeamSection />
           <SatisfactionSection />
@@ -918,7 +994,7 @@ export default function About() {
           {/* CTA Section */}
           <section className="py-20 relative">
             <div className="max-w-7xl mx-auto px-4 text-center">
-              <motion.h2 
+              <motion.h2
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -926,7 +1002,7 @@ export default function About() {
               >
                 Ready to Build Something Amazing?
               </motion.h2>
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

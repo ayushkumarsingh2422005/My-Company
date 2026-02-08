@@ -1,7 +1,7 @@
 {
-  "name": "DigiCraft - Digital Creative Studio",
+  "name": "DigiCraft Innovation Private Limited",
   "short_name": "DigiCraft",
-  "description": "Transform your digital presence with innovative web, mobile, and cloud solutions by DigiCraft Studio.",
+  "description": "Transform your digital presence with innovative web, mobile, and cloud solutions by DigiCraft Innovation Private Limited.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f0f0f",
@@ -31,14 +31,24 @@
       "short_name": "Services",
       "description": "Explore DigiCraft's digital services",
       "url": "/services",
-      "icons": [{ "src": "/logo.svg", "sizes": "192x192" }]
+      "icons": [
+        {
+          "src": "/logo.svg",
+          "sizes": "192x192"
+        }
+      ]
     },
     {
       "name": "Our Projects",
       "short_name": "Projects",
       "description": "View DigiCraft's portfolio",
       "url": "/projects",
-      "icons": [{ "src": "/logo.svg", "sizes": "192x192" }]
+      "icons": [
+        {
+          "src": "/logo.svg",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
-} 
+}

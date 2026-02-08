@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { FiCheck } from 'react-icons/fi'
+import { FaRegistered, FaFileContract, FaIdCard } from 'react-icons/fa'
 
 // Background Components
 const GradientOrbs = () => (
@@ -16,7 +17,7 @@ const GradientOrbs = () => (
 
 const GridBackground = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-    <div className="absolute inset-0" 
+    <div className="absolute inset-0"
       style={{
         backgroundImage: `linear-gradient(90deg, rgba(123,49,255,0.1) 1px, transparent 1px),
                          linear-gradient(rgba(123,49,255,0.1) 1px, transparent 1px)`,
@@ -117,7 +118,7 @@ const ContactForm = () => {
   ]
 
   return (
-    <motion.div 
+    <motion.div
       className="max-w-3xl mx-auto"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -139,7 +140,7 @@ const ContactForm = () => {
               required
             />
           </div>
-          
+
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
               Email Address *
@@ -169,7 +170,7 @@ const ContactForm = () => {
               className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"
             />
           </div>
-          
+
           <div>
             <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
               Company/Organization
@@ -268,7 +269,7 @@ const ContactForm = () => {
             </select>
           </div>
         </div>
-        
+
         <div>
           <label htmlFor="description" className="block text-sm font-medium text-gray-300 mb-2">
             Project Description *
@@ -297,15 +298,14 @@ const ContactForm = () => {
             className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white resize-none"
           />
         </div>
-        
+
         <motion.button
           type="submit"
           disabled={status === 'submitting'}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className={`w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all ${
-            status === 'submitting' ? 'opacity-75 cursor-not-allowed' : ''
-          }`}
+          className={`w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all ${status === 'submitting' ? 'opacity-75 cursor-not-allowed' : ''
+            }`}
         >
           {status === 'submitting' ? 'Sending...' : 'Send Inquiry'}
         </motion.button>
@@ -314,11 +314,10 @@ const ContactForm = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className={`p-4 rounded-lg text-center ${
-              status === 'success' 
-                ? 'bg-green-900/30 text-green-400 border border-green-900'
-                : 'bg-red-900/30 text-red-400 border border-red-900'
-            }`}
+            className={`p-4 rounded-lg text-center ${status === 'success'
+              ? 'bg-green-900/30 text-green-400 border border-green-900'
+              : 'bg-red-900/30 text-red-400 border border-red-900'
+              }`}
           >
             {message}
           </motion.div>
@@ -337,13 +336,13 @@ export default function Contact() {
       <Navbar />
       <main className="min-h-screen pt-24 relative">
         {/* Background Elements */}
-        <motion.div 
+        <motion.div
           className="fixed inset-0 bg-[radial-gradient(circle_at_center,rgba(123,49,255,0.05)_0%,transparent_100%)]"
           style={{ y }}
         />
         <GradientOrbs />
         <GridBackground />
-        
+
         <div className="max-w-7xl mx-auto px-4 py-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -371,8 +370,8 @@ export default function Contact() {
               <div className="glass-effect p-8 rounded-xl">
                 <h2 className="text-2xl font-bold mb-6">Quick Contact</h2>
                 <div className="space-y-6">
-                  <a 
-                    href="tel:+918299797516" 
+                  <a
+                    href="tel:+918299797516"
                     className="flex items-start p-4 rounded-lg hover:bg-white/5 transition-colors group"
                   >
                     <div className="p-3 rounded-full bg-purple-500/10 text-purple-500 group-hover:bg-purple-500/20">
@@ -387,7 +386,7 @@ export default function Contact() {
                     </div>
                   </a>
 
-                  <a 
+                  <a
                     href="mailto:hello@digicraft.one"
                     className="flex items-start p-4 rounded-lg hover:bg-white/5 transition-colors group"
                   >
@@ -420,8 +419,51 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Why Choose Us */}
+              {/* Company Details */}
               <div className="glass-effect p-8 rounded-xl">
+                <h2 className="text-2xl font-bold mb-6">Company Details</h2>
+                <div className="space-y-6">
+                  <div className="flex items-start group">
+                    <div className="p-3 rounded-full bg-purple-500/10 text-purple-500 group-hover:bg-purple-500/20 transition-colors">
+                      <FaRegistered className="w-6 h-6" />
+                    </div>
+                    <div className="ml-4">
+                      <h3 className="font-semibold mb-1">Legal Name</h3>
+                      <p className="text-gray-400">DigiCraft Innovation Private Limited</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start group">
+                    <div className="p-3 rounded-full bg-purple-500/10 text-purple-500 group-hover:bg-purple-500/20 transition-colors">
+                      <FaFileContract className="w-6 h-6" />
+                    </div>
+                    <div className="ml-4">
+                      <h3 className="font-semibold mb-1">Registration</h3>
+                      <div className="space-y-1">
+                        <p className="text-gray-400 text-sm">
+                          <span className="text-purple-400">CIN:</span> <span className="font-mono">U62010UP2026PTC241890</span>
+                        </p>
+                        <p className="text-gray-400 text-sm">
+                          <span className="text-purple-400">GST:</span> <span className="font-mono">09AAMCD3672L1Z2</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start group">
+                    <div className="p-3 rounded-full bg-purple-500/10 text-purple-500 group-hover:bg-purple-500/20 transition-colors">
+                      <FaIdCard className="w-6 h-6" />
+                    </div>
+                    <div className="ml-4">
+                      <h3 className="font-semibold mb-1">PAN</h3>
+                      <p className="text-gray-400 font-mono">AAMCD3672L</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Why Choose Us */}
+              {/* <div className="glass-effect p-8 rounded-xl">
                 <h2 className="text-2xl font-bold mb-6">Why Work With Us?</h2>
                 <div className="space-y-4">
                   <div className="flex items-center">
@@ -449,7 +491,7 @@ export default function Contact() {
                     <p className="ml-3 text-gray-300">Free consultation and project estimate</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -472,8 +514,8 @@ export default function Contact() {
                 icon: '⚡',
               }
             ].map((item, index) => (
-              <motion.div 
-                key={index} 
+              <motion.div
+                key={index}
                 className="p-8 text-center glass-effect rounded-xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -486,7 +528,7 @@ export default function Contact() {
             ))}
           </div>
         </div>
-      </main>
+      </main >
       <Footer />
     </>
   )

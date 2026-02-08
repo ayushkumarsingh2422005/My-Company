@@ -13,10 +13,10 @@ const previewImage = `${siteUrl}/preview.png`; // Make sure to add this image to
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'DigiCraft - Digital Creative Studio | Web, Mobile & Cloud Solutions',
-    template: '%s | DigiCraft - Digital Creative Studio'
+    default: 'DigiCraft Innovation - Digital Creative Studio | Web, Mobile & Cloud Solutions',
+    template: '%s | DigiCraft Innovation Private Limited'
   },
-  description: 'DigiCraft is a leading digital creative studio specializing in custom web development, mobile apps, cloud solutions, and UI/UX design. Transform your digital presence with our innovative solutions. Get a free consultation today!',
+  description: 'DigiCraft Innovation Private Limited is a leading digital creative studio specializing in custom web development, mobile apps, cloud solutions, and UI/UX design. Transform your digital presence with our innovative solutions. Get a free consultation today!',
   keywords: [
     'digital studio',
     'web development',
@@ -34,7 +34,9 @@ export const metadata = {
     'IT services',
     'custom software',
     'DigiCraft',
-    'DigiCraft Studio'
+    'DigiCraft Studio',
+    'DigiCraft Innovation Private Limited',
+    'DigiCraft Innovation'
   ],
   authors: [{ name: 'DigiCraft Team', url: siteUrl + '/about' }],
   creator: 'DigiCraft',
@@ -70,8 +72,8 @@ export const metadata = {
     type: 'website',
     locale: 'en_US',
     url: siteUrl,
-    siteName: 'DigiCraft - Digital Creative Studio',
-    title: 'DigiCraft - Transform Your Digital Presence',
+    siteName: 'DigiCraft Innovation Private Limited',
+    title: 'DigiCraft Innovation - Transform Your Digital Presence',
     description: 'Leading digital studio offering custom web development, mobile apps, cloud solutions, and UI/UX design. Get innovative digital solutions for your business.',
     images: [
       {
@@ -216,8 +218,8 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Organization',
-              name: 'DigiCraft',
-              alternateName: 'DigiCraft Studio',
+              name: 'DigiCraft Innovation Private Limited',
+              alternateName: 'DigiCraft',
               url: siteUrl,
               logo: `${siteUrl}/logo.svg`,
               image: previewImage,
@@ -236,11 +238,11 @@ export default function RootLayout({
               },
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: 'Your Street Address',
-                addressLocality: 'Your City',
-                addressRegion: 'Your Region',
-                postalCode: 'Your Postal Code',
-                addressCountry: 'Your Country'
+                streetAddress: 'Jamui',
+                addressLocality: 'Chunar',
+                addressRegion: 'Mirzapur',
+                postalCode: '231304',
+                addressCountry: 'India'
               }
             })
           }}
@@ -254,14 +256,14 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'ProfessionalService',
-              name: 'DigiCraft - Digital Creative Studio',
+              name: 'DigiCraft Innovation Private Limited',
               image: previewImage,
               '@id': siteUrl,
               url: siteUrl,
               telephone: '+918299797516',
               priceRange: '₹₹₹',
               address: {
-                '@type': 'Bharehata',
+                '@type': 'PostalAddress',
                 streetAddress: 'Jamui',
                 addressLocality: 'Chunar',
                 addressRegion: 'Mirzapur',
