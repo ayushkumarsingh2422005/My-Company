@@ -1,10 +1,9 @@
 'use client'
+import Footer from '@/components/Footer'
+import Navbar from '@/components/Navbar'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useState } from 'react'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
-import { FiCheck } from 'react-icons/fi'
-import { FaRegistered, FaFileContract, FaIdCard } from 'react-icons/fa'
+import { FaFileContract, FaIdCard, FaRegistered } from 'react-icons/fa'
 
 // Background Components
 const GradientOrbs = () => (
