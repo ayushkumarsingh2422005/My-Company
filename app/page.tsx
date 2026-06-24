@@ -5,7 +5,7 @@ import MarketingBanner from '@/components/MarketingBanner'
 import Navbar from '@/components/Navbar'
 import Products from '@/components/Products'
 import Projects from '@/components/Projects'
-import TechStack from '@/components/TechStack'
+import TechStackPreview from '@/components/TechStackPreview'
 import Testimonials from '@/components/Testimonials'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useEffect, useState } from 'react'
@@ -201,7 +201,7 @@ export default function Home() {
             </div>
           )}
 
-          <TechStack />
+          <TechStackPreview />
           <Products />
           <Projects />
           <Testimonials />

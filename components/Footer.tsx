@@ -57,6 +57,7 @@ const Footer = () => {
     { name: 'Products', path: '/products' },
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
+    { name: 'Tech Stack', path: '/tech-stack' },
     { name: 'Projects', path: '/projects' },
     { name: 'Contact', path: '/contact' },
     { name: 'Markeplace', path: 'https://marketplace.digicraft.one/' },
