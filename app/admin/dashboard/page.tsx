@@ -98,6 +98,15 @@ export default function AdminDashboard() {
               <h3 className="text-lg font-semibold mb-2 relative z-10">Client Inquiries</h3>
               <p className="text-gray-400 text-sm relative z-10">Manage and respond to project inquiries</p>
             </button>
+
+            <button 
+              onClick={() => handleNavigation('/admin/media')}
+              className="p-4 bg-[#2a2a2a] rounded-lg border border-gray-700 hover:bg-[#3a3a3a] transition-all relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-yellow-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <h3 className="text-lg font-semibold mb-2 relative z-10">Media Inquiries</h3>
+              <p className="text-gray-400 text-sm relative z-10">Quotes from media.digicraft.one — packs, languages, totals</p>
+            </button>
           </div>
         </div>
       </div>

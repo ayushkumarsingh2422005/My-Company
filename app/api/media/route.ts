@@ -151,10 +151,40 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET() {
+export async function GET(req: Request) {
   try {
     await dbConnect();
-    const mediaContacts = await MediaContact.find({}).sort({ createdAt: -1 });
+    const { searchParams } = new URL(req.url);
+
+    const search = searchParams.get('search');
+    const sortBy = searchParams.get('sortBy') || 'createdAt';
+    const sortOrder = searchParams.get('sortOrder') || 'desc';
+    const status = searchParams.get('status');
+
+    let query: Record<string, unknown> = {};
+
+    if (search) {
+      query = {
+        $or: [
+          { $text: { $search: search } },
+          { name: { $regex: search, $options: 'i' } },
+          { email: { $regex: search, $options: 'i' } },
+          { phone: { $regex: search, $options: 'i' } },
+          { company: { $regex: search, $options: 'i' } },
+          { editTypeLabel: { $regex: search, $options: 'i' } },
+          { description: { $regex: search, $options: 'i' } },
+        ],
+      };
+    }
+
+    if (status) {
+      query = { ...query, status };
+    }
+
+    const sortOptions: Record<string, 1 | -1> = {};
+    sortOptions[sortBy] = sortOrder === 'asc' ? 1 : -1;
+
+    const mediaContacts = await MediaContact.find(query).sort(sortOptions);
     return NextResponse.json({ success: true, data: mediaContacts });
   } catch (error: unknown) {
     return NextResponse.json(

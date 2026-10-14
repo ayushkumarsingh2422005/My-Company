@@ -82,6 +82,15 @@ const MediaContactSchema = new Schema({
     enum: ['new', 'in_progress', 'quoted', 'won', 'lost'],
     default: 'new',
   },
+  notes: [
+    {
+      content: String,
+      createdAt: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now,
